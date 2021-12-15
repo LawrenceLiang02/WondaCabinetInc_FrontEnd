@@ -1,0 +1,48 @@
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { order } from './order';
+import { OrderServiceService } from './order-service.service';
+
+@Component({
+  selector: 'app-view-orders',
+  template: `
+
+      <table class="table table-striped">
+        <tr>
+          <th scope="col">Tracking Number</th>
+          <th scope="col">Order Status</th>
+          <th scope="col">Design</th>
+        </tr>
+        <tr *ngFor="let order of orders">
+          <td scope="row">{{order.trackingNo}}</td>
+          <td>{{order.orderStatus}}</td>
+          <td>{{order.design}}</td>
+        </tr>
+      </table>
+  `,
+  styles: [
+  ]
+})
+
+
+export class ViewOrdersComponent implements OnInit {
+  public orders: order[] = [];
+
+  constructor(private OrderService:OrderServiceService) { }
+
+  ngOnInit(): void {
+    this.getAllOrders();
+  }
+
+  public getAllOrders(): void{
+    this.OrderService.getAllOrders().subscribe(
+      (response: order[]) => {
+        this.orders = response;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+}
