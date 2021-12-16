@@ -8,6 +8,9 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { ViewOrdersComponent } from './view-orders/view-orders.component';
+import { OrderServiceService } from './view-orders/order-service.service';
+import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
+import { CreateorderComponent } from './createorder/createorder.component';
 
 @NgModule({
   declarations: [
@@ -15,14 +18,16 @@ import { ViewOrdersComponent } from './view-orders/view-orders.component';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    ViewOrdersComponent
+    ViewOrdersComponent,
+    OrderdetailsComponent,
+    CreateorderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [OrderServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

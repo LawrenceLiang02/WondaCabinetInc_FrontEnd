@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { order } from './order';
 import { OrderServiceService } from './order-service.service';
+import {NavigationExtras} from '@angular/router';
 
 @Component({
   selector: 'app-view-orders',
@@ -17,6 +18,7 @@ import { OrderServiceService } from './order-service.service';
           <td scope="row">{{order.trackingNo}}</td>
           <td>{{order.orderStatus}}</td>
           <td>{{order.design}}</td>
+          <td routerLink="/view-orders/{{order.orderId}}"><button>Details</button></td>
         </tr>
       </table>
   `,
@@ -28,7 +30,9 @@ import { OrderServiceService } from './order-service.service';
 export class ViewOrdersComponent implements OnInit {
   public orders: order[] = [];
 
-  constructor(private OrderService:OrderServiceService) { }
+  constructor(private OrderService:OrderServiceService
+    
+    ) { }
 
   ngOnInit(): void {
     this.getAllOrders();
