@@ -18,7 +18,7 @@ import {NavigationExtras} from '@angular/router';
           <td scope="row">{{order.trackingNo}}</td>
           <td>{{order.orderStatus}}</td>
           <td>{{order.design}}</td>
-          <td routerLink="/view-orders/{{order.orderId}}"><button>Details</button></td>
+          <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button>Details</button></td>
         </tr>
       </table>
   `,

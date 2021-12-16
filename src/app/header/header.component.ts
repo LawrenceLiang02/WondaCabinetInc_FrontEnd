@@ -14,7 +14,7 @@ import { Component, OnInit } from '@angular/core';
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <div class="container-fluid">
             <a class="navbar-brand" routerLink="/">
-              <img src="assets/images/Wonda Cabinet Inc. Logo.png" alt="" width="30" height="auto" class="d-inline-block align-text-top">
+              <img src="assets/images/Wonda Cabinet Inc. Logo.png" alt="" width="30" height="auto" class="wci-logo d-inline-block align-text-top">
               Wonda Cabinet Inc.</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -25,7 +25,7 @@ import { Component, OnInit } from '@angular/core';
                   <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" routerLink="/view-orders">View orders</a>
+                  <a class="nav-link" name="view-orders" routerLink="/view-orders">View orders</a>
                 </li>
                 <!-- <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
