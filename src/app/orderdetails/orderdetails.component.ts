@@ -14,8 +14,20 @@ import { OrderServiceService } from '../view-orders/order-service.service';
       <div>
        <strong>Status:</strong> {{order.orderStatus}}
       </div>
+      <div >
+       <strong>Name:</strong> {{order.orderDetails.cabinetType}}
+      </div>
+      <div >
+       <strong>Color:</strong> {{order.orderDetails.color}}
+      </div>
+      <div >
+       <strong>Material:</strong> {{order.orderDetails.material}}
+      </div>
+      <div >
+       <strong>Handle Type:</strong> {{order.orderDetails.handleType}}
+      </div>
       <div>
-       <strong>Name:</strong> {{order.orderdetails.color}}
+        <embed type="application/pdf" scr="assets/pdf/210 Arctic Court, Oshawa - Island.pdf"/>
       </div>
       
     </div>
@@ -26,7 +38,7 @@ import { OrderServiceService } from '../view-orders/order-service.service';
 })
 
 export class OrderdetailsComponent implements OnInit {
-  order!: order;
+  order:any;
 
   constructor(
     private OrderService:OrderServiceService,

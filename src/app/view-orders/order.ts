@@ -3,7 +3,7 @@ import { orderdetails } from "./orderdetails";
 
 export interface order{
     orderId: number;
-    orderdetails:orderdetails;
+    orderDetails:orderdetails;
     orderStatus :string;
     trackingNo:number;
     design:string;
