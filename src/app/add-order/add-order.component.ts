@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { order } from '../view-orders/order';
 import { OrderServiceService } from '../view-orders/order-service.service';
 
@@ -61,7 +62,7 @@ import { OrderServiceService } from '../view-orders/order-service.service';
         <textarea class="form-control" id="additional_items" rows="3" placeholder="E.g. Lazy Suzan, Spice Rack" name="additional_items"></textarea>
       </div>
       <div>
-      <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary mb-2" name="submit" routerLink="/view-orders/">Submit</button>
+      <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary mb-2" name="submit">Submit</button>
       </div>
     </form>
   `,
@@ -70,7 +71,8 @@ import { OrderServiceService } from '../view-orders/order-service.service';
 })
 export class AddOrderComponent implements OnInit {
 
-  constructor(private OrderService:OrderServiceService) { }
+  constructor(private OrderService:OrderServiceService,
+    private router: Router) { }
 
   ngOnInit(): void {
     // this.addOrder(addForm:NgForm);
@@ -80,6 +82,7 @@ export class AddOrderComponent implements OnInit {
     this.OrderService.addOrder(addForm.value).subscribe(
       (response: order) => {
         console.log(response);
+        this.router.navigate(['/', 'view-orders']);
         
       },
       (error:HttpErrorResponse) => {
