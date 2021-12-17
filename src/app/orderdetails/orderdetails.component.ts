@@ -7,6 +7,7 @@ import { OrderServiceService } from '../view-orders/order-service.service';
 @Component({
   selector: 'app-orderdetails',
   template: `
+    <h2>Order Details</h2>
     <div *ngIf="order">
       <div>
        <strong>Tracking Number:</strong> {{order.trackingNo}}

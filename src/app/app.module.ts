@@ -11,6 +11,7 @@ import { ViewOrdersComponent } from './view-orders/view-orders.component';
 import { OrderServiceService } from './view-orders/order-service.service';
 import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
 import { AddOrderComponent } from './add-order/add-order.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AddOrderComponent } from './add-order/add-order.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [OrderServiceService],
   bootstrap: [AppComponent]
