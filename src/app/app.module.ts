@@ -10,7 +10,8 @@ import { HomeComponent } from './home/home.component';
 import { ViewOrdersComponent } from './view-orders/view-orders.component';
 import { OrderServiceService } from './view-orders/order-service.service';
 import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
-import { CreateorderComponent } from './createorder/createorder.component';
+import { AddOrderComponent } from './add-order/add-order.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,12 +21,13 @@ import { CreateorderComponent } from './createorder/createorder.component';
     HomeComponent,
     ViewOrdersComponent,
     OrderdetailsComponent,
-    CreateorderComponent
+    AddOrderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [OrderServiceService],
   bootstrap: [AppComponent]

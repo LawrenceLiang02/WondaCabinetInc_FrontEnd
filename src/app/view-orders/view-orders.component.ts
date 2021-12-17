@@ -7,7 +7,7 @@ import {NavigationExtras} from '@angular/router';
 @Component({
   selector: 'app-view-orders',
   template: `
-
+      <h2>Orders</h2>
       <table class="table table-striped">
         <tr>
           <th scope="col">Tracking Number</th>
