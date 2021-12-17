@@ -20,4 +20,8 @@ export class OrderServiceService {
     public getOrder(id: number): Observable<order> {
       return this.http.get<order>(`${this.apiServerUrl}/orders/${id}`)
   }
+
+  public addOrder(order:order):Observable<order>{
+    return this.http.post<order>(`${this.apiServerUrl}/orders`, order)
+  }
 }

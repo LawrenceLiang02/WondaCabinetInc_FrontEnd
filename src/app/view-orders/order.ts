@@ -9,4 +9,5 @@ export interface order{
     orderStatus :string;
     trackingNo:number;
     design:string;
+    handle_type:string;
 }
