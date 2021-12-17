@@ -50,7 +50,7 @@ import { OrderServiceService } from '../view-orders/order-service.service';
       </div> -->
       <div class="form-group">
       <label for="select_handle">Select a handle</label>
-      <select class="form-control" ngModel id="handle_type" name="handle_type">
+      <select class="form-control" ngModel id="handleType" name="handleType">
         <option>Square</option>
         <option>Round</option>
         <option>Knob</option>
@@ -61,7 +61,7 @@ import { OrderServiceService } from '../view-orders/order-service.service';
         <textarea class="form-control" id="additional_items" rows="3" placeholder="E.g. Lazy Suzan, Spice Rack" name="additional_items"></textarea>
       </div>
       <div>
-      <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary mb-2" name="submit">Submit</button>
+      <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary mb-2" name="submit" routerLink="/view-orders/">Submit</button>
       </div>
     </form>
   `,
