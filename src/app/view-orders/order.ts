@@ -3,7 +3,9 @@ import { orderdetails } from "./orderdetails";
 
 export interface order{
     orderId: number;
-    orderDetails:orderdetails;
+    cabinetType :string;
+    color:string;
+    material:string;
     orderStatus :string;
     trackingNo:number;
     design:string;
