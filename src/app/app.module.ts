@@ -12,6 +12,7 @@ import { OrderServiceService } from './view-orders/order-service.service';
 import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
 import { AddOrderComponent } from './add-order/add-order.component';
 import { FormsModule } from '@angular/forms';
+import { UpdateOrderComponent } from './update-order/update-order.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     ViewOrdersComponent,
     OrderdetailsComponent,
-    AddOrderComponent
+    AddOrderComponent,
+    UpdateOrderComponent
   ],
   imports: [
     BrowserModule,
