@@ -20,6 +20,7 @@ import {NavigationExtras} from '@angular/router';
           <td name="design">{{order.design}}</td>
           <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button>Details</button></td>
           <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button>Update</button></td>
+          <td name="cancel-order" routerLink=""><button>Cancel</button></td>
         </tr>
       </table>
   `,
@@ -36,11 +37,15 @@ export class ViewOrdersComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.getAllOrders();
+    this.getAllActiveOrders();
+    this.CancelOrder();
+  }
+  public CancelOrder():void {
+    throw new Error('Method not implemented.');
   }
 
-  public getAllOrders(): void{
-    this.OrderService.getAllOrders().subscribe(
+  public getAllActiveOrders(): void{
+    this.OrderService.getAllActiveOrders().subscribe(
       (response: order[]) => {
         this.orders = response;
       },
