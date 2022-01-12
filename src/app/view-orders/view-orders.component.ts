@@ -37,14 +37,11 @@ export class ViewOrdersComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.getAllActiveOrders();
-    this.CancelOrder();
-  }
-  public CancelOrder():void {
-    throw new Error('Method not implemented.');
+    this.getOrders();
+    // this.CancelOrder();
   }
 
-  public getAllActiveOrders(): void{
+  public getOrders(): void{
     this.OrderService.getAllActiveOrders().subscribe(
       (response: order[]) => {
         this.orders = response;
