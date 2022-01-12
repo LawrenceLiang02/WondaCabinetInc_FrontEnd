@@ -31,7 +31,7 @@ import { OrderServiceService } from '../view-orders/order-service.service';
         <input type="text" ngModel class="form-control" id="cabinetType" name = "cabinetType" placeholder="Kitchen">
       </div>
       <div class="form-group">
-        <label>Color (please reference to <a href="https://www.benjaminmoore.com/en-ca/colour-overview">BenjaminMoore</a> catalog)</label>
+        <label>Color (please reference to <a href="https://www.benjaminmoore.com/en-ca/colour-overview" target="_blank" >BenjaminMoore</a> catalog)</label>
         <input type="text" ngModel class="form-control" name ="color" id="color" placeholder="#000000">
       </div>
       <div class="form-group">
@@ -67,6 +67,7 @@ import { OrderServiceService } from '../view-orders/order-service.service';
     </form>
   `,
   styles: [
+    
   ]
 })
 export class AddOrderComponent implements OnInit {
