@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { OrderdetailsComponent } from '../orderdetails/orderdetails.component';
 import { order } from '../view-orders/order';
 import { OrderServiceService } from '../view-orders/order-service.service';
 
@@ -11,32 +12,32 @@ import { OrderServiceService } from '../view-orders/order-service.service';
   <form #updateForm="ngForm" (ngSubmit)="onUpdateOrder(updateForm)">
   <div class="form-group">
       <label>ID</label>
-      <input type="number" ngModel class="form-control" id="orderId" name = "orderId" placeholder="Id">
+      <input type="number" ngModel class="form-control" id="orderId" name = "orderId" placeholder="Id" [(ngModel)]="order.orderId">
     </div> 
     
     <div class="form-group">
       <label>Tracking Number</label>
-      <input type="number" ngModel class="form-control" id="trackingNo" name = "trackingNo" placeholder="Tracking Number">
+      <input type="number" ngModel class="form-control" id="trackingNo" name = "trackingNo" placeholder="123123" [(ngModel)]="order.trackingNo">
     </div> 
     <div class="form-group">
       <label>Order Status</label>
-      <input type="text" ngModel class="form-control" id="orderStatus" name = "orderStatus" placeholder="Order Status">
+      <input type="text" ngModel class="form-control" id="orderStatus" name = "orderStatus" placeholder="Order Status" [(ngModel)]="order.orderStatus">
     </div> 
     <div class="form-group">
       <label>Design</label>
-      <input type="text" ngModel class="form-control" id="design" name = "design" placeholder="Design">
+      <input type="text" ngModel class="form-control" id="design" name = "design" placeholder="Design" [(ngModel)]="order.design">
     </div> 
   <div class="form-group">
       <label>Reference Name</label>
-      <input type="text" ngModel class="form-control" id="cabinetType" name = "cabinetType" placeholder="Kitchen">
+      <input type="text" ngModel class="form-control" id="cabinetType" name = "cabinetType" placeholder="Kitchen" [(ngModel)]="order.cabinetType">
     </div>
     <div class="form-group">
       <label>Color (please reference to <a href="https://www.benjaminmoore.com/en-ca/colour-overview">BenjaminMoore</a> catalog)</label>
-      <input type="text" ngModel class="form-control" name ="color" id="color" placeholder="#000000">
+      <input type="text" ngModel class="form-control" name ="color" id="color" placeholder="#000000" [(ngModel)]="order.color">
     </div>
     <div class="form-group">
     <label for="select_handle">Material</label>
-    <select class="form-control" ngModel id="material" name="material">
+    <select class="form-control" ngModel id="material" name="material" [(ngModel)]="order.material">
       <option>Oak</option>
       <option>Maple</option>
       <option>Medium-density fibreboard</option>
@@ -51,7 +52,7 @@ import { OrderServiceService } from '../view-orders/order-service.service';
     </div> -->
     <div class="form-group">
     <label for="select_handle">Select a handle</label>
-    <select class="form-control" ngModel id="handleType" name="handleType">
+    <select class="form-control" ngModel id="handleType" name="handleType" [(ngModel)]="order.handleType">
       <option>Square</option>
       <option>Round</option>
       <option>Knob</option>
@@ -70,13 +71,27 @@ import { OrderServiceService } from '../view-orders/order-service.service';
   ]
 })
 export class UpdateOrderComponent implements OnInit {
+  order:any;
 
   constructor(private OrderService:OrderServiceService,
     private route: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit(): void {
-   
+    this.route.params.subscribe(params => {
+      const orderId = params['orderId'];
+
+      this.OrderService.getOrder(orderId).subscribe(
+        data => {
+          console.log(data)
+          this.order = data
+        }, error => console.log(error)
+        
+        
+      );
+      
+    }
+    )
   }
 
   public onUpdateOrder(updateForm:NgForm):void{
