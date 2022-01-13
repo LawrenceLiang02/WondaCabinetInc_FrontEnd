@@ -9,7 +9,7 @@ import { OrderServiceService } from '../view-orders/order-service.service';
 @Component({
   selector: 'app-update-order',
   template: `
-  <div class="my-container">
+  <div class ="my-container">
     <form #updateForm="ngForm" (ngSubmit)="onUpdateOrder(updateForm)">
     <div class="form-group">
         <label>ID</label>
