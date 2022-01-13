@@ -9,75 +9,78 @@ import { OrderServiceService } from '../view-orders/order-service.service';
 @Component({
   selector: 'app-update-order',
   template: `
-  <form #updateForm="ngForm" (ngSubmit)="onUpdateOrder(updateForm)">
-  <div class="form-group">
-      <label>ID</label>
-      <input type="number" ngModel class="form-control" id="orderId" name = "orderId" placeholder="Id" [(ngModel)]="order.orderId">
-    </div> 
-    
+  <div class ="my-container">
+    <form #updateForm="ngForm" (ngSubmit)="onUpdateOrder(updateForm)">
     <div class="form-group">
-      <label>Tracking Number</label>
-      <input type="number" ngModel class="form-control" id="trackingNo" name = "trackingNo" placeholder="123123" [(ngModel)]="order.trackingNo">
-    </div> 
+        <label>ID</label>
+        <input type="number" ngModel class="form-control" id="orderId" name = "orderId" placeholder="Id" [(ngModel)]="order.orderId">
+      </div> 
+      
+      <div class="form-group">
+        <label>Tracking Number</label>
+        <input type="number" ngModel class="form-control" id="trackingNo" name = "trackingNo" placeholder="123123" [(ngModel)]="order.trackingNo">
+      </div> 
+      <div class="form-group">
+        <label for="select_handle">Order Satus</label>
+        <select class="form-control" ngModel id="orderStatus" name="orderStatus">
+          <option>Awaiting Order</option>
+          <option>Order Received</option>
+          <option>Design Ready</option>
+          <option>Design Confirmed</option>
+          <option>Awaiting Deposit</option>
+          <option>In Progress</option>
+          <option>Awaiting Shipment</option>
+          <option>Shipped</option>
+          <option>Awaiting Payment</option>
+          <option>Done</option>
+          <option>Cancelled</option>
+        </select>
+        </div>
+      <div class="form-group">
+        <label>Design</label>
+        <input type="text" ngModel class="form-control" id="design" name = "design" placeholder="Design" [(ngModel)]="order.design">
+      </div> 
     <div class="form-group">
-      <label for="select_handle">Order Satus</label>
-      <select class="form-control" ngModel id="orderStatus" name="orderStatus">
-        <option>Awaiting Order</option>
-        <option>Order Received</option>
-        <option>Design Ready</option>
-        <option>Design Confirmed</option>
-        <option>Awaiting Deposit</option>
-        <option>In Progress</option>
-        <option>Awaiting Shipment</option>
-        <option>Shipped</option>
-        <option>Awaiting Payment</option>
-        <option>Done</option>
-        <option>Cancelled</option>
+        <label>Reference Name</label>
+        <input type="text" ngModel class="form-control" id="cabinetType" name = "cabinetType" placeholder="Kitchen" [(ngModel)]="order.cabinetType">
+      </div>
+      <div class="form-group">
+        <label>Color (please reference to <a href="https://www.benjaminmoore.com/en-ca/colour-overview">BenjaminMoore</a> catalog)</label>
+        <input type="text" ngModel class="form-control" name ="color" id="color" placeholder="#000000" [(ngModel)]="order.color">
+      </div>
+      <div class="form-group">
+      <label for="select_handle">Material</label>
+      <select class="form-control" ngModel id="material" name="material" [(ngModel)]="order.material">
+        <option>Oak</option>
+        <option>Maple</option>
+        <option>Medium-density fibreboard</option>
       </select>
       </div>
-    <div class="form-group">
-      <label>Design</label>
-      <input type="text" ngModel class="form-control" id="design" name = "design" placeholder="Design" [(ngModel)]="order.design">
-    </div> 
-  <div class="form-group">
-      <label>Reference Name</label>
-      <input type="text" ngModel class="form-control" id="cabinetType" name = "cabinetType" placeholder="Kitchen" [(ngModel)]="order.cabinetType">
-    </div>
-    <div class="form-group">
-      <label>Color (please reference to <a href="https://www.benjaminmoore.com/en-ca/colour-overview">BenjaminMoore</a> catalog)</label>
-      <input type="text" ngModel class="form-control" name ="color" id="color" placeholder="#000000" [(ngModel)]="order.color">
-    </div>
-    <div class="form-group">
-    <label for="select_handle">Material</label>
-    <select class="form-control" ngModel id="material" name="material" [(ngModel)]="order.material">
-      <option>Oak</option>
-      <option>Maple</option>
-      <option>Medium-density fibreboard</option>
-    </select>
-    </div>
-    <!-- <div class="form-group">
-    <label for="select_handle">Paint Type</label>
-    <select class="form-control" id="paint_type">
-      <option>Spray</option>
-      <option>Wrapped</option>
-    </select>
-    </div> -->
-    <div class="form-group">
-    <label for="select_handle">Select a handle</label>
-    <select class="form-control" ngModel id="handleType" name="handleType" [(ngModel)]="order.handleType">
-      <option>Square</option>
-      <option>Round</option>
-      <option>Knob</option>
-    </select>
-    </div>
-    <div>
-      <label for="exampleFormControlTextarea1">Additional Items</label>
-      <textarea class="form-control" id="additional_items" rows="3" placeholder="E.g. Lazy Suzan, Spice Rack" name="additional_items"></textarea>
-    </div>
-    <div>
-    <button [disabled]="updateForm.invalid" type="submit" class="btn btn-primary mb-2" name="submit">Submit</button>
-    </div>
-  </form>
+      <!-- <div class="form-group">
+      <label for="select_handle">Paint Type</label>
+      <select class="form-control" id="paint_type">
+        <option>Spray</option>
+        <option>Wrapped</option>
+      </select>
+      </div> -->
+      <div class="form-group">
+      <label for="select_handle">Select a handle</label>
+      <select class="form-control" ngModel id="handleType" name="handleType" [(ngModel)]="order.handleType">
+        <option>Square</option>
+        <option>Round</option>
+        <option>Knob</option>
+      </select>
+      </div>
+      <div>
+        <label for="exampleFormControlTextarea1">Additional Items</label>
+        <textarea class="form-control" id="additional_items" rows="3" placeholder="E.g. Lazy Suzan, Spice Rack" name="additional_items"></textarea>
+      </div>
+      <br>
+      <div>
+      <button [disabled]="updateForm.invalid" type="submit" class="btn btn-primary mb-2" name="submit">Submit</button>
+      </div>
+    </form>
+  </div>
 `,
   styles: [
   ]
