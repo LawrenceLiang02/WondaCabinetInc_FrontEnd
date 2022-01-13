@@ -16,7 +16,7 @@ import {NavigationExtras} from '@angular/router';
         </tr>
         <tr *ngFor="let order of orders">
           <td scope="row" name="trackingNo">{{order.trackingNo}}</td>
-          <td name="status">{{order.orderStatus}}</td>
+          <td name="orderStatus">{{order.orderStatus}}</td>
           <td name="design">{{order.design}}</td>
           <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button>Details</button></td>
           <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button>Update</button></td>
