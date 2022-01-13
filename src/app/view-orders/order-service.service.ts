@@ -15,12 +15,12 @@ export class OrderServiceService {
   
   public getAllActiveOrders(): Observable<order[]>{
         // return this.http.get<order[]>(`${this.apiServerUrl}/orders`)
-        return this.http.get<order[]>(`${this.apiServerUrl}/active`)
+        return this.http.get<order[]>(`${this.apiServerUrl}/orders/active`)
     }
 
   public getAllCancelledOrders(): Observable<order[]>{
       // return this.http.get<order[]>(`${this.apiServerUrl}/orders`)
-      return this.http.get<order[]>(`${this.apiServerUrl}/cancelled`)
+      return this.http.get<order[]>(`${this.apiServerUrl}/orders/cancelled`)
   }
 
   public getAllOrders(): Observable<order[]>{
@@ -34,5 +34,9 @@ export class OrderServiceService {
 
   public addOrder(order:order):Observable<order>{
     return this.http.post<order>(`${this.apiServerUrl}/orders`, order)
+  }
+
+  public updateOrder(id:number,order:order):Observable<order>{
+    return this.http.put<order>(`${this.apiServerUrl}/orders/${id}`, order)
   }
 }
