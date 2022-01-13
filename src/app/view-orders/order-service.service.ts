@@ -13,9 +13,20 @@ export class OrderServiceService {
 
   constructor(private http: HttpClient) { }
   
-  public getAllOrders(): Observable<order[]>{
-        return this.http.get<order[]>(`${this.apiServerUrl}/orders`)
+  public getAllActiveOrders(): Observable<order[]>{
+        // return this.http.get<order[]>(`${this.apiServerUrl}/orders`)
+        return this.http.get<order[]>(`${this.apiServerUrl}/orders/active`)
     }
+
+  public getAllCancelledOrders(): Observable<order[]>{
+      // return this.http.get<order[]>(`${this.apiServerUrl}/orders`)
+      return this.http.get<order[]>(`${this.apiServerUrl}/orders/cancelled`)
+  }
+
+  public getAllOrders(): Observable<order[]>{
+    // return this.http.get<order[]>(`${this.apiServerUrl}/orders`)
+    return this.http.get<order[]>(`${this.apiServerUrl}/orders`)
+}
 
     public getOrder(id: number): Observable<order> {
       return this.http.get<order>(`${this.apiServerUrl}/orders/${id}`)

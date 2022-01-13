@@ -13,6 +13,8 @@ import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
 import { AddOrderComponent } from './add-order/add-order.component';
 import { FormsModule } from '@angular/forms';
 import { UpdateOrderComponent } from './update-order/update-order.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { UpdateOrderComponent } from './update-order/update-order.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatTabsModule
   ],
   providers: [OrderServiceService],
   bootstrap: [AppComponent]

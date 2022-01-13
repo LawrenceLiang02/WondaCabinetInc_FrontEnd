@@ -20,9 +20,21 @@ import { OrderServiceService } from '../view-orders/order-service.service';
       <input type="number" ngModel class="form-control" id="trackingNo" name = "trackingNo" placeholder="123123" [(ngModel)]="order.trackingNo">
     </div> 
     <div class="form-group">
-      <label>Order Status</label>
-      <input type="text" ngModel class="form-control" id="orderStatus" name = "orderStatus" placeholder="Order Status" [(ngModel)]="order.orderStatus">
-    </div> 
+      <label for="select_handle">Order Satus</label>
+      <select class="form-control" ngModel id="orderStatus" name="orderStatus">
+        <option>Awaiting Order</option>
+        <option>Order Received</option>
+        <option>Design Ready</option>
+        <option>Design Confirmed</option>
+        <option>Awaiting Deposit</option>
+        <option>In Progress</option>
+        <option>Awaiting Shipment</option>
+        <option>Shipped</option>
+        <option>Awaiting Payment</option>
+        <option>Done</option>
+        <option>Cancelled</option>
+      </select>
+      </div>
     <div class="form-group">
       <label>Design</label>
       <input type="text" ngModel class="form-control" id="design" name = "design" placeholder="Design" [(ngModel)]="order.design">

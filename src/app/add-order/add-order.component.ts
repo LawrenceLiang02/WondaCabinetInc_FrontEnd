@@ -19,9 +19,21 @@ import { OrderServiceService } from '../view-orders/order-service.service';
         <input type="number" ngModel class="form-control" id="trackingNo" name = "trackingNo" placeholder="Tracking Number">
       </div> 
       <div class="form-group">
-        <label>Order Status</label>
-        <input type="text" ngModel class="form-control" id="orderStatus" name = "orderStatus" placeholder="Order Status">
-      </div> 
+      <label for="select_handle">Order Satus</label>
+      <select class="form-control" ngModel id="orderStatus" name="orderStatus">
+        <option>Awaiting Order</option>
+        <option>Order Received</option>
+        <option>Design Ready</option>
+        <option>Design Confirmed</option>
+        <option>Awaiting Deposit</option>
+        <option>In Progress</option>
+        <option>Awaiting Shipment</option>
+        <option>Shipped</option>
+        <option>Awaiting Payment</option>
+        <option>Done</option>
+        <option>Cancelled</option>
+      </select>
+      </div>
       <div class="form-group">
         <label>Design</label>
         <input type="text" ngModel class="form-control" id="design" name = "design" placeholder="Design">
@@ -31,7 +43,7 @@ import { OrderServiceService } from '../view-orders/order-service.service';
         <input type="text" ngModel class="form-control" id="cabinetType" name = "cabinetType" placeholder="Kitchen">
       </div>
       <div class="form-group">
-        <label>Color (please reference to <a href="https://www.benjaminmoore.com/en-ca/colour-overview">BenjaminMoore</a> catalog)</label>
+        <label>Color (please reference to <a href="https://www.benjaminmoore.com/en-ca/colour-overview" target="_blank" >BenjaminMoore</a> catalog)</label>
         <input type="text" ngModel class="form-control" name ="color" id="color" placeholder="#000000">
       </div>
       <div class="form-group">
@@ -67,6 +79,7 @@ import { OrderServiceService } from '../view-orders/order-service.service';
     </form>
   `,
   styles: [
+    
   ]
 })
 export class AddOrderComponent implements OnInit {
