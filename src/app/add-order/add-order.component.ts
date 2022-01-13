@@ -8,6 +8,7 @@ import { OrderServiceService } from '../view-orders/order-service.service';
 @Component({
   selector: 'app-add-order',
   template: `
+  <div class="my-container">
     <form #addForm="ngForm" (ngSubmit)="onAddEmployee(addForm)">
     <div class="form-group">
         <label>ID</label>
@@ -73,10 +74,12 @@ import { OrderServiceService } from '../view-orders/order-service.service';
         <label for="exampleFormControlTextarea1">Additional Items</label>
         <textarea class="form-control" id="additional_items" rows="3" placeholder="E.g. Lazy Suzan, Spice Rack" name="additional_items"></textarea>
       </div>
+      <br>
       <div>
       <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary mb-2" name="submit">Submit</button>
       </div>
     </form>
+  </div>
   `,
   styles: [
     
