@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { order } from '../view-orders/order';
 import { OrderServiceService } from '../view-orders/order-service.service';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 
 @Component({
   selector: 'app-orderdetails',
@@ -27,8 +28,11 @@ import { OrderServiceService } from '../view-orders/order-service.service';
       <div >
        <strong>Handle Type:</strong> {{order.handleType}}
       </div>
-      <div>
-        <embed type="application/pdf" scr="assets/pdf/210 Arctic Court, Oshawa - Island.pdf"/>
+      <div class="my-container">
+        <!-- <embed type="application/pdf" scr="https://s2.q4cdn.com/498544986/files/doc_downloads/test.pdf" width="100%" height="600px"/> -->
+        <!-- https://www.keepandshare.com/doc19/38089/210-arctic-court-oshawa-color-pdf-432k?da=y -->
+        <ngx-extended-pdf-viewer [src]="'assets/pdf/210_Arctic_Court.pdf'" 
+        [useBrowserLocale]="true"></ngx-extended-pdf-viewer>
       </div>
       
     </div>
@@ -41,10 +45,16 @@ import { OrderServiceService } from '../view-orders/order-service.service';
 export class OrderdetailsComponent implements OnInit {
   order:any;
 
+  title = 'sampleapp';
+
+  public page = 2;
+
+  public pageLabel!: string;
+  
+
   constructor(
     private OrderService:OrderServiceService,
-    private route:ActivatedRoute
-    ) { }
+    private route:ActivatedRoute    ) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {

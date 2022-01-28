@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { UpdateOrderComponent } from './update-order/update-order.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from '@angular/material/tabs';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatTabsModule
+    MatTabsModule,
+    NgxExtendedPdfViewerModule
   ],
   providers: [OrderServiceService],
   bootstrap: [AppComponent]
