@@ -31,8 +31,10 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
       <div class="my-container">
         <!-- <embed type="application/pdf" scr="https://s2.q4cdn.com/498544986/files/doc_downloads/test.pdf" width="100%" height="600px"/> -->
         <!-- https://www.keepandshare.com/doc19/38089/210-arctic-court-oshawa-color-pdf-432k?da=y -->
-        <ngx-extended-pdf-viewer [src]="'assets/pdf/210_Arctic_Court.pdf'" 
-        [useBrowserLocale]="true"></ngx-extended-pdf-viewer>
+        <ngx-extended-pdf-viewer 
+        [src]="order.design" 
+        [useBrowserLocale]="true"
+        [showOpenFileButton]="false"></ngx-extended-pdf-viewer>
       </div>
       
     </div>
@@ -45,12 +47,6 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 export class OrderdetailsComponent implements OnInit {
   order:any;
 
-  title = 'sampleapp';
-
-  public page = 2;
-
-  public pageLabel!: string;
-  
 
   constructor(
     private OrderService:OrderServiceService,
