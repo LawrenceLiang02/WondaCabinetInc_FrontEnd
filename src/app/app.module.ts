@@ -16,6 +16,8 @@ import { UpdateOrderComponent } from './update-order/update-order.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
     ViewOrdersComponent,
     OrderdetailsComponent,
     AddOrderComponent,
-    UpdateOrderComponent
+    UpdateOrderComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
