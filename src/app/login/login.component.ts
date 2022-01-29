@@ -25,7 +25,7 @@ import { Component, OnInit } from '@angular/core';
    </div>
    <div style="display: block; margin-left: 510px">
      <h1>Don't have an account?</h1>
-     <a href="#" style="font-size: 150%">Sign Up For Free</a><br><br>
+     <a routerLink="/signup" style="font-size: 150%">Sign Up For Free</a><br><br>
      <a href="#" style="font-size: 150%">Continue as Guest</a>
    </div>
 
