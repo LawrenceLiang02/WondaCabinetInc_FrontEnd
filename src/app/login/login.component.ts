@@ -71,6 +71,7 @@ import { TokenStorageService } from './tokenstorage.service';
       </form>
       <div class="alert alert-success" *ngIf="isLoggedIn">
         Logged in as {{ roles }}.
+        <a href="#">Continue</a>
       </div>
     </div>
     <div style="display: block; margin-left: 510px">

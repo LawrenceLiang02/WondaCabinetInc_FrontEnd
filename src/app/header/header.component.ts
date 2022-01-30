@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenStorageService } from '../login/tokenstorage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -22,10 +24,14 @@ import { Component, OnInit } from '@angular/core';
                   <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" name="view-orders" routerLink="/view-orders">View orders</a>
+                  <a class="nav-link" *ngIf="isLoggedIn" name="view-orders" routerLink="/view-orders">View orders</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" name="add-orders" routerLink="/add-orders">Order Now</a>
+                  <a class="nav-link" *ngIf="isLoggedIn" name="add-orders" routerLink="/add-orders">Order Now</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" *ngIf="isLoggedIn" name="logout" (click)="logout()" routerLink="/login">Log Out</a>
+                  <a class="nav-link" *ngIf="!isLoggedIn" name="logout" routerLink="/login">Log In</a>
                 </li>
                 <!-- <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -40,6 +46,7 @@ import { Component, OnInit } from '@angular/core';
                 </li> -->
               </ul>
             </div>
+            <p *ngIf="isLoggedIn">Welcome, {{ username }}</p>
           </div>
         </nav>
         
@@ -50,9 +57,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  private roles: string[] = [];
+  isLoggedIn = false;
+  showEmployeeContent = false;
+  username?: string;
+
+  constructor(private tokenStorageService: TokenStorageService, private router: Router) { }
 
   ngOnInit(): void {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
+
+      this.showEmployeeContent = this.roles.includes('ROLE_EMPLOYEE');
+
+      this.username = user.username;
+    }
+  }
+
+  logout(): void {
+    if(this.router.url === '/login'){
+      this.tokenStorageService.signOut();
+      this.isLoggedIn = false;
+      window.location.reload();
+    }
+    else{
+      this.tokenStorageService.signOut();
+      this.router.navigate(['/', 'login'])
+      this.isLoggedIn = false;
+    }
+   
   }
 
 }
