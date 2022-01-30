@@ -74,7 +74,7 @@ import { TokenStorageService } from './tokenstorage.service';
         <a href="#">Continue</a>
       </div>
     </div>
-    <div style="display: block; margin-left: 510px">
+    <div  *ngIf="!isLoggedIn" style="display: block; margin-left: 510px">
      <h1>Don't have an account?</h1>
      <a routerLink="/signup" style="font-size: 150%">Sign Up For Free</a><br><br>
      <a href="#" style="font-size: 150%">Continue as Guest</a>
