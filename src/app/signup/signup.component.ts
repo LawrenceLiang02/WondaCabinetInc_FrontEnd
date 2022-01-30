@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserAuthService } from '../login/login.service';
 
 @Component({
   selector: 'app-signup',
@@ -26,7 +27,7 @@ import { Component, OnInit } from '@angular/core';
        </div>
 
        <div>
-         <a routerLink="/login" style="font-size: 150%">Back to Login</a>
+         <a routerLink="/login" style="font-size: 150%"style="font-size: 150%">Back to Login</a>
        </div>
      </form>
      
@@ -36,10 +37,34 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class SignupComponent implements OnInit {
+  form: any = {
+    username: null,
+    email: null,
+    password: null
+  };
+  isSuccessful = false;
+  isSignUpFailed = false;
+  errorMessage = '';
 
-  constructor() { }
+  constructor(private authService: UserAuthService) { }
 
   ngOnInit(): void {
+  }
+
+  onSubmit(){
+    const { username, email, password } = this.form;
+
+    this.authService.signup(username, email, password).subscribe(
+      data => {
+        console.log(data);
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    );
   }
 
 }
