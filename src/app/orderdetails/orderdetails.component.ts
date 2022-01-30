@@ -30,8 +30,9 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
       </div>
       <div class="my-container">
         <!-- <embed type="application/pdf" scr="https://s2.q4cdn.com/498544986/files/doc_downloads/test.pdf" width="100%" height="600px"/> -->
-        <!-- https://www.keepandshare.com/doc19/38089/210-arctic-court-oshawa-color-pdf-432k?da=y -->
+        <!-- https://www.keepandshare.com/doc19/38089/210-arctic-court-oshawa-color-pdf-432k?da=y 'assets/pdf/210_Arctic_Court.pdf'-->
         <ngx-extended-pdf-viewer 
+        
         [src]="order.design" 
         [useBrowserLocale]="true"
         [showOpenFileButton]="false"></ngx-extended-pdf-viewer>
