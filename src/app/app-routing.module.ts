@@ -5,6 +5,8 @@ import { HomeComponent } from './home/home.component';
 import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
 import { ViewOrdersComponent } from './view-orders/view-orders.component';
 import { UpdateOrderComponent } from './update-order/update-order.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   {
@@ -31,6 +33,14 @@ const routes: Routes = [
     path: 'update-orders/:orderId',
     component: UpdateOrderComponent
   },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'signup',
+    component: SignupComponent
+  }
 ];
 
 @NgModule({
