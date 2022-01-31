@@ -4,6 +4,8 @@ import { order } from './order';
 import { OrderServiceService } from './order-service.service';
 import {NavigationExtras} from '@angular/router';
 import {MatTabsModule} from '@angular/material/tabs';
+import { TokenStorageService } from '../login/tokenstorage.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -13,7 +15,7 @@ import {MatTabsModule} from '@angular/material/tabs';
         <mat-tab label="Active Orders">
           <div class="my-container">
           <h2>Active Orders</h2>
-            <table class="table table-bordered">
+            <table *ngIf="showEmployeeContent" class="table table-bordered">
               <tr>
                 <th scope="col">Tracking Number</th>
                 <th scope="col">Order Status</th>
@@ -28,12 +30,27 @@ import {MatTabsModule} from '@angular/material/tabs';
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
             </table>
+
+            <table *ngIf="!showEmployeeContent" class="table table-bordered">
+              <tr>
+                <th scope="col">Tracking Number</th>
+                <th scope="col">Order Status</th>
+                <th scope="col">Design</th>
+              </tr>
+              <tr *ngFor="let order of activeByEmail">
+                <td scope="row">{{order.trackingNo}}</td>
+                <td name="orderStatus">{{order.orderStatus}}</td>
+                <td name="design">{{order.design}}</td>
+                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button>Details</button></td>
+                <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
+              </tr>
+            </table>
           </div>
         </mat-tab>
         <mat-tab label="Cancelled Orders">
         <div class="my-container">
         <h2>Cancelled Orders</h2>
-            <table class="table table-striped table-bordered">
+            <table *ngIf="showEmployeeContent" class="table table-striped table-bordered">
               <tr>
                 <th scope="col">Tracking Number</th>
                 <th scope="col">Order Status</th>
@@ -48,12 +65,27 @@ import {MatTabsModule} from '@angular/material/tabs';
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
             </table>
+
+            <table *ngIf="!showEmployeeContent" class="table table-bordered">
+              <tr>
+                <th scope="col">Tracking Number</th>
+                <th scope="col">Order Status</th>
+                <th scope="col">Design</th>
+              </tr>
+              <tr *ngFor="let order of cancelledByEmail">
+                <td scope="row">{{order.trackingNo}}</td>
+                <td name="orderStatus">{{order.orderStatus}}</td>
+                <td name="design">{{order.design}}</td>
+                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button>Details</button></td>
+                <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
+              </tr>
+            </table>
         </div>
         </mat-tab>
         <mat-tab label="All Orders">        
         <div class="my-container">  
           <h2>All Orders</h2>
-            <table class="table table-striped table-bordered">
+            <table *ngIf="showEmployeeContent" class="table table-striped table-bordered">
               <tr>
                 <th scope="col">Tracking Number</th>
                 <th scope="col">Order Status</th>
@@ -68,6 +100,21 @@ import {MatTabsModule} from '@angular/material/tabs';
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
             </table>
+
+            <table *ngIf="!showEmployeeContent" class="table table-bordered">
+            <tr>
+              <th scope="col">Tracking Number</th>
+              <th scope="col">Order Status</th>
+              <th scope="col">Design</th>
+            </tr>
+            <tr *ngFor="let order of allByEmail">
+              <td scope="row">{{order.trackingNo}}</td>
+              <td name="orderStatus">{{order.orderStatus}}</td>
+              <td name="design">{{order.design}}</td>
+              <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button>Details</button></td>
+              <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
+            </tr>
+          </table>
         </div>
           </mat-tab>
       </mat-tab-group>
@@ -81,16 +128,49 @@ export class ViewOrdersComponent implements OnInit {
   public orders: order[] = [];
   public cancelledOrders: order[] = [];
   public activeOrders: order[] = [];
+  public activeByEmail: order[] = []
+  public cancelledByEmail: order[] = []
+  public allByEmail: order[] = []
 
-  constructor(private OrderService:OrderServiceService
-    
-    ) { }
+  private roles: string[] = [];
+  isLoggedIn = false;
+  showEmployeeContent = false;
+  username?: string;
+  email?: string;
+
+
+  constructor(private OrderService:OrderServiceService, private tokenStorageService: TokenStorageService,  private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getOrders();
-    this.getAllActiveOrders();
-    this.getAllCancelledOrders();
+    
     // this.CancelOrder();
+
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
+
+      this.showEmployeeContent = this.roles.includes('ROLE_EMPLOYEE');
+
+      this.username = user.username;
+      this.email = user.email;
+      
+    }
+
+    if(this.showEmployeeContent){
+     this.getOrders();
+     this.getAllActiveOrders();
+     this.getAllCancelledOrders();
+    }
+    this.route.params.subscribe(params =>
+      this.email = params['email']
+    );
+    
+    this.getAllByEmail(this.tokenStorageService.getUser().email);
+    this.getAllByEmailActive(this.tokenStorageService.getUser().email);
+    this.getAllByEmailCancelled(this.tokenStorageService.getUser().email);
+   
   }
 
   public getOrders(): void{
@@ -123,6 +203,39 @@ export class ViewOrdersComponent implements OnInit {
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
+      }
+    );
+  }
+
+  public getAllByEmail(email): void{
+    this.OrderService.getAllOrdersByEmail(email).subscribe(
+      (response: order[]) => {
+        this.allByEmail = response;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message)
+      }
+    );
+  }
+
+  public getAllByEmailActive(email): void{
+    this.OrderService.getAllActiveOrdersByEmail(email).subscribe(
+      (response: order[]) => {
+        this.activeByEmail = response;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message)
+      }
+    );
+  }
+
+  public getAllByEmailCancelled(email): void{
+    this.OrderService.getAllCancelledOrdersByEmail(email).subscribe(
+      (response: order[]) => {
+        this.cancelledByEmail = response;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message)
       }
     );
   }
