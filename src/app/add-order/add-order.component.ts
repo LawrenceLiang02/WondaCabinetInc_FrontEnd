@@ -11,35 +11,6 @@ import { OrderServiceService } from '../view-orders/order-service.service';
   <div class="my-container">
     <form #addForm="ngForm" (ngSubmit)="onAddEmployee(addForm)">
     <div class="form-group">
-        <label>ID</label>
-        <input type="number" ngModel class="form-control" id="orderId" name = "orderId" placeholder="Id">
-      </div> 
-      
-      <div class="form-group">
-        <label>Tracking Number</label>
-        <input type="number" ngModel class="form-control" id="trackingNo" name = "trackingNo" placeholder="Tracking Number">
-      </div> 
-      <div class="form-group">
-      <label for="select_handle">Order Satus</label>
-      <select class="form-control" ngModel id="orderStatus" name="orderStatus">
-        <option>Awaiting Order</option>
-        <option>Order Received</option>
-        <option>Design Ready</option>
-        <option>Design Confirmed</option>
-        <option>Awaiting Deposit</option>
-        <option>In Progress</option>
-        <option>Awaiting Shipment</option>
-        <option>Shipped</option>
-        <option>Awaiting Payment</option>
-        <option>Done</option>
-        <option>Cancelled</option>
-      </select>
-      </div>
-      <div class="form-group">
-        <label>Design</label>
-        <input type="text" ngModel class="form-control" id="design" name = "design" placeholder="Design">
-      </div> 
-    <div class="form-group">
         <label>Reference Name</label>
         <input type="text" ngModel class="form-control" id="cabinetType" name = "cabinetType" placeholder="Kitchen">
       </div>
