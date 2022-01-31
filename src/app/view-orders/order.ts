@@ -10,4 +10,5 @@ export interface order{
     trackingNo:number;
     design:string;
     handleType:string;
+    email:string;
 }

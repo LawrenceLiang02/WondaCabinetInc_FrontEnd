@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { order } from '../view-orders/order';
 import { OrderServiceService } from '../view-orders/order-service.service';
+import { TokenStorageService } from '../login/tokenstorage.service';
 
 @Component({
   selector: 'app-add-order',
@@ -41,6 +42,10 @@ import { OrderServiceService } from '../view-orders/order-service.service';
         <option>Knob</option>
       </select>
       </div>
+      <div class="form-group">
+      <label>Email</label>
+      <input type="email" ngModel class="form-control" id="email" name = "email" placeholder="Email" [(ngModel)]="email">
+      </div>
       <div>
         <label for="exampleFormControlTextarea1">Additional Items</label>
         <textarea class="form-control" id="additional_items" rows="3" placeholder="E.g. Lazy Suzan, Spice Rack" name="additional_items"></textarea>
@@ -58,11 +63,27 @@ import { OrderServiceService } from '../view-orders/order-service.service';
 })
 export class AddOrderComponent implements OnInit {
 
-  constructor(private OrderService:OrderServiceService,
+    private roles: string[] = [];
+    isLoggedIn = false;
+    showEmployeeContent = false;
+    username?: string;
+    email?: string;
+
+  constructor(private tokenStorageService: TokenStorageService,private OrderService:OrderServiceService,
     private router: Router) { }
 
   ngOnInit(): void {
-    // this.addOrder(addForm:NgForm);
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
+
+      this.showEmployeeContent = this.roles.includes('ROLE_EMPLOYEE');
+
+      this.username = user.username;
+      this.email = user.email;
+    }
   }
 
   public onAddEmployee(addForm:NgForm):void{

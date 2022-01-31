@@ -23,6 +23,18 @@ export class OrderServiceService {
       return this.http.get<order[]>(`${this.apiServerUrl}/orders/cancelled`)
   }
 
+  public getAllOrdersByEmail(email: string): Observable<order[]>{
+    return this.http.get<order[]>(`${this.apiServerUrl}/orders/email/${email}`);
+  }
+
+  public getAllCancelledOrdersByEmail(email: string): Observable<order[]>{
+    return this.http.get<order[]>(`${this.apiServerUrl}/orders/email/cancelled/${email}`);
+  }
+
+  public getAllActiveOrdersByEmail(email: string): Observable<order[]>{
+    return this.http.get<order[]>(`${this.apiServerUrl}/orders/email/active/${email}`);
+  }
+
   public getAllOrders(): Observable<order[]>{
     // return this.http.get<order[]>(`${this.apiServerUrl}/orders`)
     return this.http.get<order[]>(`${this.apiServerUrl}/orders`)
