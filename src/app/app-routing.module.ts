@@ -7,6 +7,7 @@ import { ViewOrdersComponent } from './view-orders/view-orders.component';
 import { UpdateOrderComponent } from './update-order/update-order.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [
   {
@@ -40,6 +41,10 @@ const routes: Routes = [
   {
     path: 'signup',
     component: SignupComponent
+  },
+  {
+    path: 'contact',
+    component: ContactComponent
   }
 ];
 
