@@ -26,7 +26,7 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
     ViewOrdersComponent,
     OrderdetailsComponent,
     AddOrderComponent,
-    UpdateOrderComponent
+    UpdateOrderComponent,
   ],
   imports: [
     BrowserModule,
