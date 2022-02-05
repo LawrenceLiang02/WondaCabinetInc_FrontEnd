@@ -40,7 +40,6 @@ import { TokenStorageService } from './tokenstorage.service';
         style='max-width: 900px'
         [(ngModel)]="form.password"
         required
-        minlength="6"
         #password="ngModel">
 
         <div
@@ -49,9 +48,6 @@ import { TokenStorageService } from './tokenstorage.service';
           *ngIf="password.errors && f.submitted"
         >
           <div *ngIf="password.errors['required']">Password is required</div>
-          <div *ngIf="password.errors['minlength']">
-            Password must be at least 6 characters
-          </div>
         </div>
         </div>
 
@@ -63,13 +59,14 @@ import { TokenStorageService } from './tokenstorage.service';
         <div
           class="alert alert-danger"
           role="alert"
+          name="failedLogin"
           *ngIf="f.submitted && isLoginFailed"
         >
           Login failed: {{ errorMessage }}
         </div>
        </div>
       </form>
-      <div class="alert alert-success" *ngIf="isLoggedIn">
+      <div class="alert alert-success" name="success" *ngIf="isLoggedIn">
         Logged in as {{ roles }}.
         <a href="#">Continue</a>
       </div>
