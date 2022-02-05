@@ -5,8 +5,69 @@ import { UserAuthService } from '../login/login.service';
   selector: 'app-signup',
   template: `
   <h1 style='text-align: center; font-weight: bold'>Sign Up Now For Free</h1>
-  <div class='my-container' style="display: flex; justify-content: center; align-items: center; height: 500px;">
+  <div class='my-container' style="display: flex; justify-content: center; align-items: center; height: 900px;">
      <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+       <div class="form-group">
+        <label for="firstName" style="font-size: 150%">First Name</label>
+
+        <input type="text"
+        ngModel class="form-control"
+        id="firstName"
+        name="firstName"
+        placeholder="foo"
+        [(ngModel)]="form.firstName"
+        required
+        minlength="2"
+        maxlength="50"
+        #firstName="ngModel">
+
+        <div class="alert-danger" *ngIf="firstName.errors && f.submitted">
+          <div *ngIf="firstName.errors['required']">First Name is required</div>
+          <div *ngIf="firstName.errors['minlength']">First Name must be at least 2 characters</div>
+          <div *ngIf="firstName.errors['maxlength']">First Name must be at most 50 characters</div>
+        </div>
+       </div>
+
+       <div class="form-group">
+        <label for="lastName" style="font-size: 150%">Last Name</label>
+
+        <input type="text"
+        ngModel class="form-control"
+        id="lastName"
+        name="lastName"
+        placeholder="bar"
+        [(ngModel)]="form.lastName"
+        required
+        minlength="2"
+        maxlength="50"
+        #lastName="ngModel">
+
+        <div class="alert-danger" *ngIf="lastName.errors && f.submitted">
+          <div *ngIf="lastName.errors['required']">Last Name is required</div>
+          <div *ngIf="lastName.errors['minlength']">Last Name must be at least 2 characters</div>
+          <div *ngIf="lastName.errors['maxlength']">Last Name must be at most 50 characters</div>
+        </div>
+       </div>
+
+       <div class="form-group">
+        <label for="phone" style="font-size: 150%">Phone Number</label>
+
+        <input type="tel"
+        ngModel class="form-control"
+        id="phone"
+        name="phone"
+        placeholder="(123)-456-7890"
+        [(ngModel)]="form.phone"
+        required
+        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+        #phone="ngModel">
+
+        <div class="alert-danger" *ngIf="phone.errors && f.submitted">
+          <div *ngIf="phone.errors['required']">Phone Number is required</div>
+          <div *ngIf="phone.errors['pattern']">Incorrect phone format! Must be like 123-456-7890</div>
+        </div>
+       </div>
+
        <div class="form-group">
          <label for="username" style="font-size: 150%">Username</label>
 
@@ -101,6 +162,9 @@ import { UserAuthService } from '../login/login.service';
 })
 export class SignupComponent implements OnInit {
   form: any = {
+    firstName: null,
+    lastName: null,
+    phone: null,
     username: null,
     email: null,
     password: null
@@ -115,9 +179,9 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit(){
-    const { username, email, password } = this.form;
+    const {firstName, lastName, phone, username, email, password } = this.form;
 
-    this.authService.signup(username, email, password).subscribe(
+    this.authService.signup(firstName, lastName, phone, username, email, password).subscribe(
       data => {
         console.log(data);
         this.isSuccessful = true;
