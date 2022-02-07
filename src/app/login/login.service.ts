@@ -21,9 +21,6 @@ export class UserAuthService {
     }, httpOptions);
   }
 
-<<<<<<< HEAD
-  signup(firstName: string, lastName: string, phone: string,username: string, email: string, password: string): Observable<any> {
-=======
   loginNoToken(username: string, password: string): Observable<any> {
     return this.http.post(AUTH_API + 'login', {
       username,
@@ -32,11 +29,7 @@ export class UserAuthService {
   }
 
   signup(username: string, email: string, password: string): Observable<any> {
->>>>>>> a55fcbf (commit for rebase)
     return this.http.post(AUTH_API + 'signup',{
-      firstName,
-      lastName,
-      phone,
       username,
       email,
       password
