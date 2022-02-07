@@ -6,37 +6,36 @@ import { UserAuthService } from '../login/login.service';
   selector: 'app-delete-password',
   template: `
     <h2 mat-dialog-title>DELETE</h2>
-    <mat-dialog-content class="mat-typography">
-      <p>Please enter your password in order to continue.</p>
-      <label for="password" style="font-size: 150%">Password</label>
-      <form #f="ngForm">
-        <input 
+    <form #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()">
+      <mat-dialog-content class="mat-typography">
+        <p>Please enter your password in order to continue.</p>
+        <label for="password" style="font-size: 150%">Password</label>
         
-          type="password" 
-          ngModel class="form-control" 
-          id="password" 
-          name="password" 
-          style='max-width: 900px'
-          [(ngModel)]="form.password"
-          required
-          minlength="6"
-          #password="ngModel">
-      <div
-          class="alert alert-danger"
-          role="alert"
-          *ngIf="password.errors && f.submitted"
-        >
-          <div *ngIf="password.errors['required']">Password is required</div>
-          <div *ngIf="password.errors['minlength']">
-            Password must be at least 6 characters
-          </div>
-        </div>
-      </form>
-    </mat-dialog-content>
-    <mat-dialog-actions align="end">
-      <button class="roundedbutton" mat-button mat-dialog-close>Cancel</button>
-      <button class="roundedbutton redbutton" mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="onClick()">Delete</button>
-    </mat-dialog-actions>
+          <input 
+          
+            type="password" 
+            ngModel class="form-control" 
+            id="password" 
+            name="password" 
+            style='max-width: 900px'
+            [(ngModel)]="form.password"
+            required
+            minlength="6"
+            #password="ngModel">
+        <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="password.errors && f.submitted"
+          >
+            <p> Error, please try again </p>
+          </div> 
+        <mat-dialog-actions align="end">
+          <button class="roundedbutton" mat-button mat-dialog-close>Cancel</button>
+          <button class="roundedbutton redbutton" mat-button [mat-dialog-close]="true" cdkFocusInitial >Delete</button>
+        </mat-dialog-actions>
+          
+      </mat-dialog-content>
+    </form>
   `,
   styles: [
   ]
@@ -58,7 +57,7 @@ export class DeletePasswordComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public onClick(){
+  public onSubmit(){
 
     // const dialogConfig = new MatDialogConfig();
     // dialogConfig.disableClose = true;
