@@ -6,6 +6,9 @@ import {NavigationExtras} from '@angular/router';
 import {MatTabsModule} from '@angular/material/tabs';
 import { TokenStorageService } from '../login/tokenstorage.service';
 import { ActivatedRoute } from '@angular/router';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { AddOrderComponent } from '../add-order/add-order.component';
+import { DeleteOrderComponent } from '../delete-order/delete-order.component';
 
 
 @Component({
@@ -19,14 +22,15 @@ import { ActivatedRoute } from '@angular/router';
               <tr>
                 <th scope="col">Tracking Number</th>
                 <th scope="col">Order Status</th>
-                <th scope="col">Design</th>
+                <!-- <th scope="col">Design</th> -->
               </tr>
               <tr *ngFor="let order of activeOrders">
                 <td scope="row">{{order.trackingNo}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
-                <td name="design">{{order.design}}</td>
+                <!-- <td name="design">{{order.design}}</td> -->
                 <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button>Details</button></td>
                 <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button>Update</button></td>
+                <td name="delete-orders" ><button (click)="onCreate(order.orderId)">Delete</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
             </table>
@@ -35,12 +39,12 @@ import { ActivatedRoute } from '@angular/router';
               <tr>
                 <th scope="col">Tracking Number</th>
                 <th scope="col">Order Status</th>
-                <th scope="col">Design</th>
+                <!-- <th scope="col">Design</th> -->
               </tr>
               <tr *ngFor="let order of activeByEmail">
                 <td scope="row">{{order.trackingNo}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
-                <td name="design">{{order.design}}</td>
+                <!-- <td name="design">{{order.design}}</td> -->
                 <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button>Details</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
@@ -54,12 +58,12 @@ import { ActivatedRoute } from '@angular/router';
               <tr>
                 <th scope="col">Tracking Number</th>
                 <th scope="col">Order Status</th>
-                <th scope="col">Design</th>
+                <!-- <th scope="col">Design</th> -->
               </tr>
               <tr *ngFor="let order of cancelledOrders">
                 <td scope="row">{{order.trackingNo}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
-                <td name="design">{{order.design}}</td>
+                <!-- <td name="design">{{order.design}}</td> -->
                 <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button>Details</button></td>
                 <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button>Update</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
@@ -70,12 +74,12 @@ import { ActivatedRoute } from '@angular/router';
               <tr>
                 <th scope="col">Tracking Number</th>
                 <th scope="col">Order Status</th>
-                <th scope="col">Design</th>
+                <!-- <th scope="col">Design</th> -->
               </tr>
               <tr *ngFor="let order of cancelledByEmail">
                 <td scope="row">{{order.trackingNo}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
-                <td name="design">{{order.design}}</td>
+                <!-- <td name="design">{{order.design}}</td> -->
                 <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button>Details</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
@@ -89,12 +93,12 @@ import { ActivatedRoute } from '@angular/router';
               <tr>
                 <th scope="col">Tracking Number</th>
                 <th scope="col">Order Status</th>
-                <th scope="col">Design</th>
+                <!-- <th scope="col">Design</th> -->
               </tr>
               <tr *ngFor="let order of orders">
                 <td scope="row">{{order.trackingNo}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
-                <td name="design">{{order.design}}</td>
+                <!-- <td name="design">{{order.design}}</td> -->
                 <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button>Details</button></td>
                 <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button>Update</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
@@ -105,12 +109,12 @@ import { ActivatedRoute } from '@angular/router';
             <tr>
               <th scope="col">Tracking Number</th>
               <th scope="col">Order Status</th>
-              <th scope="col">Design</th>
+              <!-- <th scope="col">Design</th> -->
             </tr>
             <tr *ngFor="let order of allByEmail">
               <td scope="row">{{order.trackingNo}}</td>
               <td name="orderStatus">{{order.orderStatus}}</td>
-              <td name="design">{{order.design}}</td>
+              <!-- <td name="design">{{order.design}}</td> -->
               <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button>Details</button></td>
               <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
             </tr>
@@ -131,15 +135,21 @@ export class ViewOrdersComponent implements OnInit {
   public activeByEmail: order[] = []
   public cancelledByEmail: order[] = []
   public allByEmail: order[] = []
+  // public dialogRef:any;
 
   private roles: string[] = [];
   isLoggedIn = false;
   showEmployeeContent = false;
   username?: string;
   email?: string;
+  
 
-
-  constructor(private OrderService:OrderServiceService, private tokenStorageService: TokenStorageService,  private route:ActivatedRoute) { }
+  constructor(
+    private OrderService:OrderServiceService, 
+    private tokenStorageService: TokenStorageService,  
+    private route:ActivatedRoute,
+    private dialog:MatDialog
+    ) { }
 
   ngOnInit(): void {
     
@@ -239,5 +249,26 @@ export class ViewOrdersComponent implements OnInit {
       }
     );
   }
+
+  
+  public onCreate(id){
+    const dialogConfig = new MatDialogConfig();
+    // dialogConfig.disableClose = true;
+    // dialogConfig.autoFocus = true;
+    // dialogConfig.width = "60%";
+    dialogConfig.data = {
+      id: id
+    }
+    // alert(dialogConfig.data.id)
+    // this.dialogRef = this.dialog.open(DeleteOrderComponent, dialogConfig);
+    this.dialog.open(DeleteOrderComponent, dialogConfig);
+    // this.dialogRef.afterClosed().subscribe(result => {
+    //       this.reloadPage();
+    // });
+    
+
+  }
+
+  
 
 }

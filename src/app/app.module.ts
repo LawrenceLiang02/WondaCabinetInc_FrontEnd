@@ -19,6 +19,9 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ContactComponent } from './contact/contact.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DeleteOrderComponent } from './delete-order/delete-order.component';
+import { DeletePasswordComponent } from './delete-password/delete-password.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,9 @@ import { ContactComponent } from './contact/contact.component';
     UpdateOrderComponent,
     LoginComponent,
     SignupComponent,
-    ContactComponent
+    ContactComponent,
+    DeleteOrderComponent,
+    DeletePasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,9 +46,12 @@ import { ContactComponent } from './contact/contact.component';
     FormsModule,
     BrowserAnimationsModule,
     MatTabsModule,
-    NgxExtendedPdfViewerModule
+    NgxExtendedPdfViewerModule,
+    MatDialogModule,
+    
   ],
   providers: [OrderServiceService, authInterceptorProviders],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[DeleteOrderComponent, DeletePasswordComponent]
 })
 export class AppModule { }

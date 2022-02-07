@@ -11,4 +11,13 @@ body {
 .my-container {
     margin: auto; 
     width: 80%;
+    font-family: Roboto, "Helvetica Neue", sans-serif;  
+}
+
+.roundedbutton {
+    border-radius: 20%;
+}
+
+.redbutton {
+    background-color: red;
 }

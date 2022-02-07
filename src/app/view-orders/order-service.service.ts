@@ -51,4 +51,8 @@ export class OrderServiceService {
   public updateOrder(id:number,order:order):Observable<order>{
     return this.http.put<order>(`${this.apiServerUrl}/orders/${id}`, order)
   }
+
+  public deleteOrder(id:number){
+    return this.http.delete(`${this.apiServerUrl}/orders/delete/${id}`)
+  }
 }

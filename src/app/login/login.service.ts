@@ -21,6 +21,7 @@ export class UserAuthService {
     }, httpOptions);
   }
 
+
   signup(firstName: string, lastName: string, phone: string,username: string, email: string, password: string): Observable<any> {
     return this.http.post(AUTH_API + 'signup',{
       firstName,
@@ -31,5 +32,12 @@ export class UserAuthService {
       password
     }, httpOptions);
   }
- 
+  
+   loginNoToken(username: string, password: string): Observable<any> {
+    return this.http.post(AUTH_API + 'loginnotoken', {
+      username,
+      password
+    }, httpOptions);
+  }
+
 }
