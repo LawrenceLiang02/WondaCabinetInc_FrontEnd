@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DeletePasswordComponent } from '../delete-password/delete-password.component';
 
 @Component({
@@ -19,18 +19,29 @@ import { DeletePasswordComponent } from '../delete-password/delete-password.comp
 })
 export class DeleteOrderComponent implements OnInit {
 
-  constructor(    private dialog:MatDialog) { }
+  public id:number;
+  constructor(    private dialog:MatDialog, @Inject(MAT_DIALOG_DATA) data) {
+
+    this.id = data.id
+   }
+
 
   ngOnInit(): void {
   }
 
   public onClick(){
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = "60%";
-    this.dialog.open(DeletePasswordComponent);
-
+    // dialogConfig.disableClose = true;
+    // dialogConfig.autoFocus = true;
+    // dialogConfig.width = "60%";
+    dialogConfig.data = {
+      id: this.id
+      
+    }
+    alert(dialogConfig.data.id);
+    this.dialog.open(DeletePasswordComponent, dialogConfig);
+    
+    
   }
 
 }

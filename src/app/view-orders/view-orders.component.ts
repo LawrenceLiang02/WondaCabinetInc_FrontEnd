@@ -30,7 +30,7 @@ import { DeleteOrderComponent } from '../delete-order/delete-order.component';
                 <!-- <td name="design">{{order.design}}</td> -->
                 <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button>Details</button></td>
                 <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button>Update</button></td>
-                <td name="delete-orders" ><button (click)="onCreate()">Delete</button></td>
+                <td name="delete-orders" ><button (click)="onCreate(order.orderId)">Delete</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
             </table>
@@ -135,13 +135,14 @@ export class ViewOrdersComponent implements OnInit {
   public activeByEmail: order[] = []
   public cancelledByEmail: order[] = []
   public allByEmail: order[] = []
+  // public dialogRef:any;
 
   private roles: string[] = [];
   isLoggedIn = false;
   showEmployeeContent = false;
   username?: string;
   email?: string;
-
+  
 
   constructor(
     private OrderService:OrderServiceService, 
@@ -249,13 +250,25 @@ export class ViewOrdersComponent implements OnInit {
     );
   }
 
-  public onCreate(){
+  
+  public onCreate(id){
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = "60%";
-      this.dialog.open(DeleteOrderComponent);
+    // dialogConfig.disableClose = true;
+    // dialogConfig.autoFocus = true;
+    // dialogConfig.width = "60%";
+    dialogConfig.data = {
+      id: id
+    }
+    // alert(dialogConfig.data.id)
+    // this.dialogRef = this.dialog.open(DeleteOrderComponent, dialogConfig);
+    this.dialog.open(DeleteOrderComponent, dialogConfig);
+    // this.dialogRef.afterClosed().subscribe(result => {
+    //       this.reloadPage();
+    // });
+    
 
   }
+
+  
 
 }

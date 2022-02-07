@@ -39,5 +39,5 @@ export class UserAuthService {
       password
     }, httpOptions);
   }
- 
+
 }

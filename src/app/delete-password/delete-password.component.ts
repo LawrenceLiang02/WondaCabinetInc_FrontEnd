@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UserAuthService } from '../login/login.service';
+import { TokenStorageService } from '../login/tokenstorage.service';
+import { OrderServiceService } from '../view-orders/order-service.service';
 
 @Component({
   selector: 'app-delete-password',
@@ -20,18 +23,25 @@ import { UserAuthService } from '../login/login.service';
             style='max-width: 900px'
             [(ngModel)]="form.password"
             required
-            minlength="6"
-            #password="ngModel">
+            #password="ngModel"/>
         <div
             class="alert alert-danger"
             role="alert"
-            *ngIf="password.errors && f.submitted"
-          >
-            <p> Error, please try again </p>
+            *ngIf="password.errors && f.submitted">
+            <p> Error, please try again.</p>
           </div> 
+          <div
+          class="alert alert-danger"
+          role="alert"
+          name="failedLogin"
+          *ngIf="f.submitted && isLoginFailed"
+        >
+          Login failed: {{ errorMessage }}
+        </div>
         <mat-dialog-actions align="end">
           <button class="roundedbutton" mat-button mat-dialog-close>Cancel</button>
-          <button type="submit" class="roundedbutton redbutton" mat-button [mat-dialog-close]="true" cdkFocusInitial >Delete</button>
+          <!-- mat-button [mat-dialog-close]="true" -->
+          <button type="submit" class="roundedbutton redbutton" cdkFocusInitial >Delete</button>
         </mat-dialog-actions>
           
       </mat-dialog-content>
@@ -42,7 +52,15 @@ import { UserAuthService } from '../login/login.service';
 })
 export class DeletePasswordComponent implements OnInit {
 
-  constructor( private dialog:MatDialog, private authService: UserAuthService) { }
+  public id:number;
+  constructor( private dialog:MatDialog, 
+    private authService: UserAuthService,
+    public dialogRef: MatDialogRef<DeletePasswordComponent>,
+    private tokenStorageService: TokenStorageService,
+    private OrderService:OrderServiceService,
+    @Inject(MAT_DIALOG_DATA) data) {
+      this.id = data.id
+     }
   password: string;
 
   form: any = {
@@ -64,14 +82,25 @@ export class DeletePasswordComponent implements OnInit {
     // dialogConfig.autoFocus = true;
     // dialogConfig.width = "60%";
     // this.dialog.open(DeletePasswordComponent);
-    const { username, password } = this.form;
-
+    const { password } = this.form;
+    const username = this.tokenStorageService.getUser().username;
+    
     this.authService.loginNoToken(username, password).subscribe(
       data => {
-
+        
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         // this.reloadPage();
+        this.OrderService.deleteOrder(this.id).subscribe(
+          (response: string) => {
+            console.log(response);
+          },
+          // (error:HttpErrorResponse) => {
+          //   alert(error.message);
+          // }
+          );
+        this.dialogRef.close();
+        this.reloadPage();
       },
       err => {
         this.errorMessage = err.error.message;
@@ -79,5 +108,9 @@ export class DeletePasswordComponent implements OnInit {
       }
     );
 
+  }
+
+  reloadPage(): void {
+    window.location.reload();
   }
 }
