@@ -31,7 +31,7 @@ import { UserAuthService } from '../login/login.service';
           </div> 
         <mat-dialog-actions align="end">
           <button class="roundedbutton" mat-button mat-dialog-close>Cancel</button>
-          <button class="roundedbutton redbutton" mat-button [mat-dialog-close]="true" cdkFocusInitial >Delete</button>
+          <button type="submit" class="roundedbutton redbutton" mat-button [mat-dialog-close]="true" cdkFocusInitial >Delete</button>
         </mat-dialog-actions>
           
       </mat-dialog-content>
