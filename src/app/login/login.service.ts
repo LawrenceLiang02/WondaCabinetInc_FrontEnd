@@ -32,7 +32,7 @@ export class UserAuthService {
       password
     }, httpOptions);
   }
-<<<<<<< HEAD
+
   
    loginNoToken(username: string, password: string): Observable<any> {
     return this.http.post(AUTH_API + 'loginnotoken', {
@@ -41,7 +41,7 @@ export class UserAuthService {
     }, httpOptions);
   }
 
-=======
+
 
   refreshToken(token: string) {
     return this.http.post(AUTH_API + 'refreshtoken', {
@@ -49,5 +49,5 @@ export class UserAuthService {
     }, httpOptions);
   }
  
->>>>>>> 254a395 (added service methods for refresh token and updated auth interceptor)
+
 }

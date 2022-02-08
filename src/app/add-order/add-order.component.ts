@@ -1,10 +1,13 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { order } from '../view-orders/order';
 import { OrderServiceService } from '../view-orders/order-service.service';
 import { TokenStorageService } from '../login/tokenstorage.service';
+import { Subscription } from 'rxjs';
+import { EventBusService } from '../login/eventbus.service';
+import { EventData } from '../login/event.class';
 
 @Component({
   selector: 'app-add-order',
@@ -68,9 +71,10 @@ export class AddOrderComponent implements OnInit {
     showEmployeeContent = false;
     username?: string;
     email?: string;
+    eventBusSub?: Subscription;
 
   constructor(private tokenStorageService: TokenStorageService,private OrderService:OrderServiceService,
-    private router: Router) { }
+    private router: Router, private eventBusService: EventBusService) { }
 
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
@@ -84,8 +88,17 @@ export class AddOrderComponent implements OnInit {
       this.username = user.username;
       this.email = user.email;
     }
+    this.eventBusSub = this.eventBusService.on('logout', () => {
+      this.logout();
+    });
   }
 
+  ngOnDestroy(): void {
+    if (this.eventBusSub)
+      this.eventBusSub.unsubscribe();
+  }
+
+  
   public onAddEmployee(addForm:NgForm):void{
     this.OrderService.addOrder(addForm.value).subscribe(
       (response: order) => {
@@ -94,9 +107,19 @@ export class AddOrderComponent implements OnInit {
         
       },
       (error:HttpErrorResponse) => {
-        alert(error.message);
+       if(error.status == 403){
+         this.eventBusService.emit(new EventData('logout', null))
+       }
       }
     );
+  }
+
+  logout(): void {
+    this.tokenStorageService.signOut();
+    this.isLoggedIn = false;
+    this.roles = [];
+    this.showEmployeeContent = false;
+    
   }
 
 }
