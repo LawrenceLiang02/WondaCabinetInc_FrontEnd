@@ -22,6 +22,7 @@ import { ContactComponent } from './contact/contact.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DeleteOrderComponent } from './delete-order/delete-order.component';
 import { DeletePasswordComponent } from './delete-password/delete-password.component';
+import { ViewOrderWithTrackingNoComponent } from './view-order-with-tracking-no/view-order-with-tracking-no.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { DeletePasswordComponent } from './delete-password/delete-password.compo
     ContactComponent,
     DeleteOrderComponent,
     DeletePasswordComponent,
+    ViewOrderWithTrackingNoComponent,
   ],
   imports: [
     BrowserModule,
