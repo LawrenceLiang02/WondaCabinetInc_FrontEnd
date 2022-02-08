@@ -29,7 +29,7 @@ import { OrderServiceService } from '../view-orders/order-service.service';
       <p>Status: {{order.orderStatus}}</p>
     </div>
     <div class="my-container" name="errorFound" *ngIf="hasError"> 
-      <h2>Uh oh, can't seem to find your error.</h2>
+      <h2>Uh oh, can't seem to find your order.</h2>
       <p>This is what we got: {{ errorMessage }}</p>
       <p>Please check your tracking number and try again.</p>
     </div>
