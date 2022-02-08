@@ -55,17 +55,18 @@ import { DeleteOrderComponent } from '../delete-order/delete-order.component';
         <div class="my-container">
         <h2>Cancelled Orders</h2>
             <table *ngIf="showEmployeeContent" class="table table-striped table-bordered">
-              <tr>
+            <tr>
                 <th scope="col">Tracking Number</th>
                 <th scope="col">Order Status</th>
                 <!-- <th scope="col">Design</th> -->
               </tr>
-              <tr *ngFor="let order of cancelledOrders">
+              <tr *ngFor="let order of activeOrders">
                 <td scope="row">{{order.trackingNo}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
                 <!-- <td name="design">{{order.design}}</td> -->
                 <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button>Details</button></td>
                 <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button>Update</button></td>
+                <td name="delete-orders" ><button (click)="onCreate(order.orderId)">Delete</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
             </table>
@@ -90,17 +91,18 @@ import { DeleteOrderComponent } from '../delete-order/delete-order.component';
         <div class="my-container">  
           <h2>All Orders</h2>
             <table *ngIf="showEmployeeContent" class="table table-striped table-bordered">
-              <tr>
+            <tr>
                 <th scope="col">Tracking Number</th>
                 <th scope="col">Order Status</th>
                 <!-- <th scope="col">Design</th> -->
               </tr>
-              <tr *ngFor="let order of orders">
+              <tr *ngFor="let order of activeOrders">
                 <td scope="row">{{order.trackingNo}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
                 <!-- <td name="design">{{order.design}}</td> -->
                 <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button>Details</button></td>
                 <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button>Update</button></td>
+                <td name="delete-orders" ><button (click)="onCreate(order.orderId)">Delete</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
             </table>

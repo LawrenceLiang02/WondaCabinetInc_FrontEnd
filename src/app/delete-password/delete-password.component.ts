@@ -10,9 +10,9 @@ import { OrderServiceService } from '../view-orders/order-service.service';
   template: `
     <h2 mat-dialog-title>DELETE</h2>
     <form #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()">
-      <mat-dialog-content class="mat-typography">
+      <mat-dialog-content>
         <p>Please enter your password in order to continue.</p>
-        <label for="password" style="font-size: 150%">Password</label>
+        <!-- <label for="password" style="font-size: 150%">Password</label> -->
         
           <input 
           
@@ -39,9 +39,9 @@ import { OrderServiceService } from '../view-orders/order-service.service';
           Login failed: {{ errorMessage }}
         </div>
         <mat-dialog-actions align="end">
-          <button class="roundedbutton" mat-button mat-dialog-close>Cancel</button>
+          <button mat-raised-button mat-dialog-close>Cancel</button>
           <!-- mat-button [mat-dialog-close]="true" -->
-          <button type="submit" class="roundedbutton redbutton" cdkFocusInitial >Delete</button>
+          <button type="submit" mat-raised-button color="warn" cdkFocusInitial >Delete</button>
         </mat-dialog-actions>
           
       </mat-dialog-content>

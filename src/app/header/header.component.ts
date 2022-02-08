@@ -29,12 +29,15 @@ import { Router } from '@angular/router';
                 <li class="nav-item">
                   <a class="nav-link" *ngIf="isLoggedIn" name="add-orders" routerLink="/add-orders">Order Now</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" *ngIf="isLoggedIn" name="logout" (click)="logout()" routerLink="/login">Log Out</a>
-                  <a class="nav-link" *ngIf="!isLoggedIn" name="logout" routerLink="/login">Log In</a>
+                <li>
+                  <a class="nav-link" name="view-order-with-tracking-no" routerLink="/track">Track Your Order</a>
                 </li>
                 <li>
                   <a class="nav-link" name="contact" routerLink="/contact">Contact Us</a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" *ngIf="isLoggedIn" name="logout" (click)="logout()" routerLink="/login">Log Out</a>
+                  <a class="nav-link" *ngIf="!isLoggedIn" name="logout" routerLink="/login">Log In</a>
                 </li>
                 <!-- <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

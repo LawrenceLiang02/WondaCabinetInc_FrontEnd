@@ -48,7 +48,7 @@ const routes: Routes = [
     component: ContactComponent
   },
   {
-    path: 'track/:trackingNo',
+    path: 'track',
     component: ViewOrderWithTrackingNoComponent
   }
 ];

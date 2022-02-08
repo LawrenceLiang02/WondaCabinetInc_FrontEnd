@@ -23,6 +23,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { DeleteOrderComponent } from './delete-order/delete-order.component';
 import { DeletePasswordComponent } from './delete-password/delete-password.component';
 import { ViewOrderWithTrackingNoComponent } from './view-order-with-tracking-no/view-order-with-tracking-no.component';
+import {MatButtonModule} from '@angular/material/button';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,8 @@ import { ViewOrderWithTrackingNoComponent } from './view-order-with-tracking-no/
     MatTabsModule,
     NgxExtendedPdfViewerModule,
     MatDialogModule,
+    MatButtonModule,
+    MatTableModule
     
   ],
   providers: [OrderServiceService, authInterceptorProviders],

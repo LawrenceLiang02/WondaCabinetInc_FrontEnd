@@ -6,12 +6,12 @@ import { DeletePasswordComponent } from '../delete-password/delete-password.comp
   selector: 'app-delete-order',
   template: `
     <h2 mat-dialog-title>DELETE</h2>
-    <mat-dialog-content class="mat-typography">
+    <mat-dialog-content>
       <p>Are you sure you want to delete this order? You can not undo this action. If you wish to keep this in the records, please change the status to "cancelled".</p>
     </mat-dialog-content>
     <mat-dialog-actions align="end">
-      <button class="roundedbutton" mat-button mat-dialog-close>Cancel</button>
-      <button class="roundedbutton redbutton" mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="onClick()">Delete</button>
+      <button mat-raised-button mat-dialog-close>Cancel</button>
+      <button mat-raised-button color="warn" mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="onClick()">Delete</button>
     </mat-dialog-actions>
   `,
   styles: [
@@ -38,7 +38,7 @@ export class DeleteOrderComponent implements OnInit {
       id: this.id
       
     }
-    alert(dialogConfig.data.id);
+    // alert(dialogConfig.data.id);
     this.dialog.open(DeletePasswordComponent, dialogConfig);
     
     
