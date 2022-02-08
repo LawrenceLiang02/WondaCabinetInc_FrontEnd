@@ -8,6 +8,7 @@ import { UpdateOrderComponent } from './update-order/update-order.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ContactComponent } from './contact/contact.component';
+import { ViewOrderWithTrackingNoComponent } from './view-order-with-tracking-no/view-order-with-tracking-no.component';
 
 const routes: Routes = [
   {
@@ -45,6 +46,10 @@ const routes: Routes = [
   {
     path: 'contact',
     component: ContactComponent
+  },
+  {
+    path: 'track',
+    component: ViewOrderWithTrackingNoComponent
   }
 ];
 

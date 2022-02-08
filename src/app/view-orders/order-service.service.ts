@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { order } from './order';
+import { order, orderByTrackingNo } from './order';
 
 
 @Injectable({
@@ -50,6 +50,10 @@ export class OrderServiceService {
 
   public updateOrder(id:number,order:order):Observable<order>{
     return this.http.put<order>(`${this.apiServerUrl}/orders/${id}`, order)
+  }
+
+  public getOrderByTrackingNo(trackingNo:number):Observable<orderByTrackingNo>{
+    return this.http.get<orderByTrackingNo>(`${this.apiServerUrl}/orders/track/${trackingNo}`)
   }
 
   public deleteOrder(id:number){

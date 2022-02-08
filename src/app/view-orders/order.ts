@@ -12,3 +12,8 @@ export interface order{
     handleType:string;
     email:string;
 }
+
+export interface orderByTrackingNo{
+    orderStatus :string;
+    trackingNo:number;
+}
