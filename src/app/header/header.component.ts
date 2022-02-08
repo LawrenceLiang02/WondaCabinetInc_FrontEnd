@@ -35,7 +35,7 @@ import { Router } from '@angular/router';
                 <li>
                   <a class="nav-link" name="contact" routerLink="/contact">Contact Us</a>
                 </li>
-                <li class="nav-item ">
+                <li class="nav-item">
                   <a class="nav-link" *ngIf="isLoggedIn" name="logout" (click)="logout()" routerLink="/login">Log Out</a>
                   <a class="nav-link" *ngIf="!isLoggedIn" name="logout" routerLink="/login">Log In</a>
                 </li>
