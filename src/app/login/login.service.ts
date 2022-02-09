@@ -32,6 +32,8 @@ export class UserAuthService {
       password
     }, httpOptions);
   }
+
+
   
    loginNoToken(username: string, password: string): Observable<any> {
     return this.http.post(AUTH_API + 'loginnotoken', {
@@ -39,5 +41,15 @@ export class UserAuthService {
       password
     }, httpOptions);
   }
+
+
+
+
+  refreshToken(token: string) {
+    return this.http.post(AUTH_API + 'refreshtoken', {
+      refreshToken: token
+    }, httpOptions);
+  }
+ 
 
 }

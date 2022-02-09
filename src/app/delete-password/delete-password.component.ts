@@ -1,6 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
+import { EventData } from '../login/event.class';
+import { EventBusService } from '../login/eventbus.service';
 import { UserAuthService } from '../login/login.service';
 import { TokenStorageService } from '../login/tokenstorage.service';
 import { OrderServiceService } from '../view-orders/order-service.service';
@@ -58,6 +61,7 @@ export class DeletePasswordComponent implements OnInit {
     public dialogRef: MatDialogRef<DeletePasswordComponent>,
     private tokenStorageService: TokenStorageService,
     private OrderService:OrderServiceService,
+    private eventBusService: EventBusService,
     @Inject(MAT_DIALOG_DATA) data) {
       this.id = data.id
      }
@@ -71,8 +75,12 @@ export class DeletePasswordComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
+  eventBusSub?: Subscription;
 
   ngOnInit(): void {
+    this.eventBusSub = this.eventBusService.on('logout', () => {
+      this.logout();
+    });
   }
 
   public onSubmit(){
@@ -105,6 +113,9 @@ export class DeletePasswordComponent implements OnInit {
       err => {
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
+        if(err.status == 403){
+          this.eventBusService.emit(new EventData('logout', null));
+        }
       }
     );
 
@@ -112,5 +123,12 @@ export class DeletePasswordComponent implements OnInit {
 
   reloadPage(): void {
     window.location.reload();
+  }
+
+  logout(): void {
+    this.tokenStorageService.signOut();
+    this.isLoggedIn = false;
+    this.roles = [];
+    
   }
 }
