@@ -2,10 +2,12 @@
 
 html, body { 
     height: 100%; 
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: rgb(223, 195, 195) ;
     // margin:10% 2%;
 }
 body { 
-    margin: 20; 
     font-family: Roboto, "Helvetica Neue", sans-serif; 
 }
 
@@ -20,5 +22,18 @@ body {
 }
 
 .redbutton {
-    background-color: red;
+    background-color: rgb(223, 83, 83);
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+.active {
+    font-weight: bold;
+    font-size: large;  
+}
+
+.header-button {
+    color: white;
 }

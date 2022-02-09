@@ -27,6 +27,10 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatRippleModule} from '@angular/material/core';
+import {MatPaginator} from '@angular/material/paginator';
+
 
 @NgModule({
   declarations: [
@@ -57,7 +61,10 @@ import {MatIconModule} from '@angular/material/icon';
     MatButtonModule,
     MatTableModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatToolbarModule,
+    MatRippleModule,
+    MatPaginator
     
   ],
   providers: [OrderServiceService, authInterceptorProviders],

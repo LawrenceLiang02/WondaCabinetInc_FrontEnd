@@ -5,12 +5,9 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   template: `
-    <head>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    </head>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <!-- <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light flex-row align-center">
           <div class="container-fluid">
             <a class="navbar-brand" routerLink="/">
               <img src="assets/images/Wonda Cabinet Inc. Logo.png" alt="" width="30" height="auto" class="wci-logo d-inline-block align-text-top">
@@ -24,7 +21,7 @@ import { Router } from '@angular/router';
                   <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" *ngIf="isLoggedIn" name="view-orders" routerLink="/view-orders">View orders</a>
+                  <a class="nav-link" *ngIf="isLoggedIn" name="view-orders" routerLink="/view-orders">View Orders</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" *ngIf="isLoggedIn" name="add-orders" routerLink="/add-orders">Order Now</a>
@@ -35,28 +32,40 @@ import { Router } from '@angular/router';
                 <li>
                   <a class="nav-link" name="contact" routerLink="/contact">Contact Us</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item ">
                   <a class="nav-link" *ngIf="isLoggedIn" name="logout" (click)="logout()" routerLink="/login">Log Out</a>
                   <a class="nav-link" *ngIf="!isLoggedIn" name="logout" routerLink="/login">Log In</a>
                 </li>
-                <!-- <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                  </ul>
-                </li> -->
+
               </ul>
             </div>
             <p *ngIf="isLoggedIn">Welcome, {{ username }}</p>
           </div>
         </nav>
         
-    </header>
+    </header> -->
+      <mat-toolbar style="background-color: rgb(223, 83, 83);">
+        <mat-toolbar-row >
+          <a class="navbar-brand" routerLink="/" style="color: black" title="Home">
+            <img src="assets/images/Wonda Cabinet Inc. Logo.png" width="50" alt="Home" height="auto" class="wci-logo">
+            <span class="header-button">
+            Wonda Cabinet Inc.
+            </span>
+          </a>
+          <button mat-button class="header-button" name="home" routerLink="/" [routerLinkActive]="['active']" [routerLinkActiveOptions]={exact:true}>Home</button>
+          <button mat-button class="header-button" *ngIf="isLoggedIn" name="view-orders" routerLink="/view-orders" [routerLinkActive]="['active']">View Orders</button>
+          <button mat-button class="header-button" *ngIf="isLoggedIn" name="add-orders" routerLink="/add-orders" [routerLinkActive]="['active']">Add Orders</button>
+          <button mat-button class="header-button" name="view-order-with-tracking-no" routerLink="/track" [routerLinkActive]="['active']">Track Your Order</button>
+          <span class="example-spacer"></span>
+
+          <button mat-button class="header-button" *ngIf="!isLoggedIn" name="logout" routerLink="/login" [routerLinkActive]="['active']">Log in</button>
+          
+          <button mat-button class="header-button" *ngIf="isLoggedIn" name="profile">Welcome, {{ username }}</button>
+          
+          <button mat-button class="header-button" *ngIf="isLoggedIn" name="logout" (click)="logout()" routerLink="/login">Log Out</button> 
+          <button mat-button class="header-button" name="contact" routerLink="/contact" [routerLinkActive]="['active']">Contact Us</button>   
+        </mat-toolbar-row>
+      </mat-toolbar>
   `,
   styles: [
   ]
