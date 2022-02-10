@@ -5,7 +5,7 @@ import { OrderServiceService } from '../view-orders/order-service.service';
 @Component({
   selector: 'app-view-order-with-tracking-no',
   template: `
-  <div class="my-container" style="background-color: WhiteSmoke; width: 90%; padding: 2% 5%">
+  <div class="my-container bodyContentStyling" style="background-color: WhiteSmoke; width: 100%; padding: 2% 7%">
     <h2>Track your order!</h2>
     <p>Track your order by entering your order tracking number!</p>
     <div style="width: 30%;"> 

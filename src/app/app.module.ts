@@ -29,7 +29,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatRippleModule} from '@angular/material/core';
-import {MatPaginator} from '@angular/material/paginator';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 @NgModule({
@@ -64,7 +64,7 @@ import {MatPaginator} from '@angular/material/paginator';
     MatIconModule,
     MatToolbarModule,
     MatRippleModule,
-    MatPaginator
+    MatPaginatorModule
     
   ],
   providers: [OrderServiceService, authInterceptorProviders],

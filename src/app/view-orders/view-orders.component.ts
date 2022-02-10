@@ -28,14 +28,18 @@ import { DeleteOrderComponent } from '../delete-order/delete-order.component';
                 <td scope="row">{{order.trackingNo}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
                 <!-- <td name="design">{{order.design}}</td> -->
-                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button>Details</button></td>
-                <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button>Update</button></td>
-                <td name="delete-orders" ><button (click)="onCreate(order.orderId)">Delete</button></td>
+                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button>Details</button></td>
+                <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button mat-stroked-button>Update</button></td>
+                <td name="delete-orders" ><button (click)="onCreate(order.orderId)" mat-stroked-button>Delete</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
-
-              
+              <!-- <mat-paginator [length]="10"
+                [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 25, 100]"
+                aria-label="Select page">
+              </mat-paginator> -->
             </table>
+
             <table *ngIf="!showEmployeeContent" class="table table-bordered">
               <tr>
                 <th scope="col">Tracking Number</th>
@@ -46,18 +50,17 @@ import { DeleteOrderComponent } from '../delete-order/delete-order.component';
                 <td scope="row">{{order.trackingNo}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
                 <!-- <td name="design">{{order.design}}</td> -->
-                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button>Details</button></td>
+                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button >Details</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
             </table>
-            
           </div>
         </mat-tab>
         <mat-tab label="Cancelled Orders">
         <div class="my-container">
         <h2>Cancelled Orders</h2>
             <table *ngIf="showEmployeeContent" class="table table-striped table-bordered">
-              <tr>
+            <tr>
                 <th scope="col">Tracking Number</th>
                 <th scope="col">Order Status</th>
                 <!-- <th scope="col">Design</th> -->
@@ -66,8 +69,9 @@ import { DeleteOrderComponent } from '../delete-order/delete-order.component';
                 <td scope="row">{{order.trackingNo}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
                 <!-- <td name="design">{{order.design}}</td> -->
-                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button>Details</button></td>
-                <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button>Update</button></td>
+                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button>Details</button></td>
+                <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button mat-stroked-button>Update</button></td>
+                <td name="delete-orders" ><button mat-stroked-button (click)="onCreate(order.orderId)" >Delete</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
             </table>
@@ -82,7 +86,7 @@ import { DeleteOrderComponent } from '../delete-order/delete-order.component';
                 <td scope="row">{{order.trackingNo}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
                 <!-- <td name="design">{{order.design}}</td> -->
-                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button>Details</button></td>
+                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button>Details</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
             </table>
@@ -92,7 +96,7 @@ import { DeleteOrderComponent } from '../delete-order/delete-order.component';
         <div class="my-container">  
           <h2>All Orders</h2>
             <table *ngIf="showEmployeeContent" class="table table-striped table-bordered">
-              <tr>
+            <tr>
                 <th scope="col">Tracking Number</th>
                 <th scope="col">Order Status</th>
                 <!-- <th scope="col">Design</th> -->
@@ -101,8 +105,9 @@ import { DeleteOrderComponent } from '../delete-order/delete-order.component';
                 <td scope="row">{{order.trackingNo}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
                 <!-- <td name="design">{{order.design}}</td> -->
-                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button>Details</button></td>
-                <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button>Update</button></td>
+                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button>Details</button></td>
+                <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button mat-stroked-button>Update</button></td>
+                <td name="delete-orders" ><button mat-stroked-button (click)="onCreate(order.orderId)">Delete</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
             </table>
@@ -117,7 +122,7 @@ import { DeleteOrderComponent } from '../delete-order/delete-order.component';
               <td scope="row">{{order.trackingNo}}</td>
               <td name="orderStatus">{{order.orderStatus}}</td>
               <!-- <td name="design">{{order.design}}</td> -->
-              <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button>Details</button></td>
+              <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button>Details</button></td>
               <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
             </tr>
           </table>

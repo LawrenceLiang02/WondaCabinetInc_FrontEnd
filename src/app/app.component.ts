@@ -6,7 +6,9 @@ import { TokenStorageService } from './login/tokenstorage.service';
   template: `
     <app-header></app-header>
 
-    <router-outlet></router-outlet>
+    <router-outlet>
+      <!-- <div class="bodyContentStyling"></div> -->
+    </router-outlet>
 
     <app-footer></app-footer>
   
