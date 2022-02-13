@@ -5,6 +5,7 @@ html, body {
     margin-left: 10%;
     margin-right: 10%;
     background-color: rgb(223, 195, 195) ;
+    // overflow: hidden;
     // margin:10% 2%;
 }
 body { 
@@ -13,8 +14,11 @@ body {
 
 .my-container {
     padding-top: 30px;
-    margin: auto;
+    // padding-bottom:10%;
+    margin-left: auto;
+    margin-right: auto;
     width: 80%;
+    height:auto;
     font-family: Roboto, "Helvetica Neue", sans-serif;  
 }
 
@@ -37,6 +41,11 @@ body {
 
 .header-button {
     color: white;
+}
+
+.scrollable-table{
+    overflow-y:auto; 
+    height:70%;
 }
 
 .footer{

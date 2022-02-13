@@ -16,9 +16,9 @@ import { DeleteOrderComponent } from '../delete-order/delete-order.component';
   template: `
       <mat-tab-group>
         <mat-tab label="Active Orders">
-          <div class="my-container">
+          <div class="my-container scrollable-table">
           <h2>Active Orders</h2>
-            <table *ngIf="showEmployeeContent" class="table table-bordered">
+            <table *ngIf="showEmployeeContent" class="table table-bordered" >
               <tr>
                 <th scope="col">Tracking Number</th>
                 <th scope="col">Order Status</th>
@@ -57,7 +57,7 @@ import { DeleteOrderComponent } from '../delete-order/delete-order.component';
           </div>
         </mat-tab>
         <mat-tab label="Cancelled Orders">
-        <div class="my-container">
+        <div class="my-container scrollable-table">
         <h2>Cancelled Orders</h2>
             <table *ngIf="showEmployeeContent" class="table table-striped table-bordered">
             <tr>
@@ -93,7 +93,7 @@ import { DeleteOrderComponent } from '../delete-order/delete-order.component';
         </div>
         </mat-tab>
         <mat-tab label="All Orders">        
-        <div class="my-container">  
+        <div class="my-container scrollable-table">  
           <h2>All Orders</h2>
             <table *ngIf="showEmployeeContent" class="table table-striped table-bordered">
             <tr>
