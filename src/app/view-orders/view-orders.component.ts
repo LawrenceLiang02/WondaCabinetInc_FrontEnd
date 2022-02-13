@@ -9,9 +9,6 @@ import { ActivatedRoute } from '@angular/router';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddOrderComponent } from '../add-order/add-order.component';
 import { DeleteOrderComponent } from '../delete-order/delete-order.component';
-import { Subscription } from 'rxjs';
-import { EventBusService } from '../login/eventbus.service';
-import { EventData } from '../login/event.class';
 
 
 @Component({
@@ -19,9 +16,9 @@ import { EventData } from '../login/event.class';
   template: `
       <mat-tab-group>
         <mat-tab label="Active Orders">
-          <div class="my-container">
+          <div class="my-container scrollable-table">
           <h2>Active Orders</h2>
-            <table *ngIf="showEmployeeContent" class="table table-bordered">
+            <table *ngIf="showEmployeeContent" class="table table-bordered" >
               <tr>
                 <th scope="col">Tracking Number</th>
                 <th scope="col">Order Status</th>
@@ -31,11 +28,16 @@ import { EventData } from '../login/event.class';
                 <td scope="row">{{order.trackingNo}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
                 <!-- <td name="design">{{order.design}}</td> -->
-                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button>Details</button></td>
-                <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button>Update</button></td>
-                <td name="delete-orders" ><button (click)="onCreate(order.orderId)">Delete</button></td>
+                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button>Details</button></td>
+                <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button mat-stroked-button>Update</button></td>
+                <td name="delete-orders" ><button (click)="onCreate(order.orderId)" mat-stroked-button>Delete</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
+              <!-- <mat-paginator [length]="10"
+                [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 25, 100]"
+                aria-label="Select page">
+              </mat-paginator> -->
             </table>
 
             <table *ngIf="!showEmployeeContent" class="table table-bordered">
@@ -48,14 +50,14 @@ import { EventData } from '../login/event.class';
                 <td scope="row">{{order.trackingNo}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
                 <!-- <td name="design">{{order.design}}</td> -->
-                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button>Details</button></td>
+                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button >Details</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
             </table>
           </div>
         </mat-tab>
         <mat-tab label="Cancelled Orders">
-        <div class="my-container">
+        <div class="my-container scrollable-table">
         <h2>Cancelled Orders</h2>
             <table *ngIf="showEmployeeContent" class="table table-striped table-bordered">
             <tr>
@@ -67,9 +69,9 @@ import { EventData } from '../login/event.class';
                 <td scope="row">{{order.trackingNo}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
                 <!-- <td name="design">{{order.design}}</td> -->
-                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button>Details</button></td>
-                <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button>Update</button></td>
-                <td name="delete-orders" ><button (click)="onCreate(order.orderId)">Delete</button></td>
+                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button>Details</button></td>
+                <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button mat-stroked-button>Update</button></td>
+                <td name="delete-orders" ><button mat-stroked-button (click)="onCreate(order.orderId)" >Delete</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
             </table>
@@ -84,14 +86,14 @@ import { EventData } from '../login/event.class';
                 <td scope="row">{{order.trackingNo}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
                 <!-- <td name="design">{{order.design}}</td> -->
-                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button>Details</button></td>
+                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button>Details</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
             </table>
         </div>
         </mat-tab>
         <mat-tab label="All Orders">        
-        <div class="my-container">  
+        <div class="my-container scrollable-table">  
           <h2>All Orders</h2>
             <table *ngIf="showEmployeeContent" class="table table-striped table-bordered">
             <tr>
@@ -99,13 +101,13 @@ import { EventData } from '../login/event.class';
                 <th scope="col">Order Status</th>
                 <!-- <th scope="col">Design</th> -->
               </tr>
-              <tr *ngFor="let order of activeOrders">
+              <tr *ngFor="let order of orders">
                 <td scope="row">{{order.trackingNo}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
                 <!-- <td name="design">{{order.design}}</td> -->
-                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button>Details</button></td>
-                <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button>Update</button></td>
-                <td name="delete-orders" ><button (click)="onCreate(order.orderId)">Delete</button></td>
+                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button>Details</button></td>
+                <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button mat-stroked-button>Update</button></td>
+                <td name="delete-orders" ><button mat-stroked-button (click)="onCreate(order.orderId)">Delete</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
             </table>
@@ -120,7 +122,7 @@ import { EventData } from '../login/event.class';
               <td scope="row">{{order.trackingNo}}</td>
               <td name="orderStatus">{{order.orderStatus}}</td>
               <!-- <td name="design">{{order.design}}</td> -->
-              <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button>Details</button></td>
+              <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button>Details</button></td>
               <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
             </tr>
           </table>
@@ -140,7 +142,6 @@ export class ViewOrdersComponent implements OnInit {
   public activeByEmail: order[] = []
   public cancelledByEmail: order[] = []
   public allByEmail: order[] = []
-  eventBusSub?: Subscription
   // public dialogRef:any;
 
   private roles: string[] = [];
@@ -154,9 +155,7 @@ export class ViewOrdersComponent implements OnInit {
     private OrderService:OrderServiceService, 
     private tokenStorageService: TokenStorageService,  
     private route:ActivatedRoute,
-    private dialog:MatDialog,
-    private eventBusService: EventBusService
-
+    private dialog:MatDialog
     ) { }
 
   ngOnInit(): void {
@@ -184,11 +183,6 @@ export class ViewOrdersComponent implements OnInit {
     this.route.params.subscribe(params =>
       this.email = params['email']
     );
-
-    this.eventBusSub = this.eventBusService.on('logout', () => {
-      this.logout();
-    });
-
     
     this.getAllByEmail(this.tokenStorageService.getUser().email);
     this.getAllByEmailActive(this.tokenStorageService.getUser().email);
@@ -202,9 +196,6 @@ export class ViewOrdersComponent implements OnInit {
         this.orders = response;
       },
       (error: HttpErrorResponse) => {
-        if(error.status == 403){
-          this.eventBusService.emit(new EventData('logout', null))
-        }
         alert(error.message);
       }
     );
@@ -217,9 +208,6 @@ export class ViewOrdersComponent implements OnInit {
         this.activeOrders = response;
       },
       (error: HttpErrorResponse) => {
-        if(error.status == 403){
-          this.eventBusService.emit(new EventData('logout', null))
-        }
         alert(error.message);
       }
     );
@@ -231,9 +219,6 @@ export class ViewOrdersComponent implements OnInit {
         this.cancelledOrders = response;
       },
       (error: HttpErrorResponse) => {
-        if(error.status == 403){
-          this.eventBusService.emit(new EventData('logout', null))
-        }
         alert(error.message);
       }
     );
@@ -245,9 +230,6 @@ export class ViewOrdersComponent implements OnInit {
         this.allByEmail = response;
       },
       (error: HttpErrorResponse) => {
-        if(error.status == 403){
-          this.eventBusService.emit(new EventData('logout', null))
-        }
         alert(error.message)
       }
     );
@@ -259,9 +241,6 @@ export class ViewOrdersComponent implements OnInit {
         this.activeByEmail = response;
       },
       (error: HttpErrorResponse) => {
-        if(error.status == 403){
-          this.eventBusService.emit(new EventData('logout', null))
-        }
         alert(error.message)
       }
     );
@@ -273,9 +252,6 @@ export class ViewOrdersComponent implements OnInit {
         this.cancelledByEmail = response;
       },
       (error: HttpErrorResponse) => {
-        if(error.status == 403){
-          this.eventBusService.emit(new EventData('logout', null))
-        }
         alert(error.message)
       }
     );
@@ -300,17 +276,6 @@ export class ViewOrdersComponent implements OnInit {
 
   }
 
-  logout(): void {
-    this.tokenStorageService.signOut();
-    this.isLoggedIn = false;
-    this.roles = [];
-    this.showEmployeeContent = false;
-    
-  }
-
-  ngOnDestroy(): void {
-    if (this.eventBusSub)
-      this.eventBusSub.unsubscribe();
-  }
+  
 
 }
