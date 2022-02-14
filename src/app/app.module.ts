@@ -30,10 +30,14 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import {MatPaginatorModule} from '@angular/material/paginator';
+
 import { DateTimePickerComponent } from './date-time-picker/date-time-picker.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { DatePipe } from '@angular/common';
+
+
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 
 
 
@@ -53,7 +57,10 @@ import { DatePipe } from '@angular/common';
     DeleteOrderComponent,
     DeletePasswordComponent,
     ViewOrderWithTrackingNoComponent,
+
     DateTimePickerComponent
+    ForgotpasswordComponent,
+
   ],
   imports: [
     BrowserModule,
