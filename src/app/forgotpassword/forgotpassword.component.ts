@@ -151,6 +151,7 @@ export class ForgotpasswordComponent implements OnInit {
       err => {
         this.errorMessage = err.error.message;
         this.isRequestTokenFailed = true;
+        this.isRequestTokenSuccess = false;
       }
     )
   }
@@ -165,6 +166,7 @@ export class ForgotpasswordComponent implements OnInit {
       err => {
         this.errorMessage = err.error.message;
         this.isResetPasswordFailed = true;
+        this.isResetPasswordSuccess = false;
       }
     )
   }
