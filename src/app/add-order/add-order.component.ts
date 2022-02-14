@@ -23,7 +23,7 @@ import { EventData } from '../login/event.class';
         <input type="text" ngModel class="form-control" name ="color" id="color" placeholder="#000000">
       </div>
       <div class="form-group">
-      <label for="select_handle">Material</label>
+      <label for="select_material">Material</label>
       <select class="form-control" ngModel id="material" name="material">
         <option>Oak</option>
         <option>Maple</option>
@@ -49,6 +49,14 @@ import { EventData } from '../login/event.class';
       <label>Email</label>
       <input type="email" ngModel class="form-control" id="email" name = "email" placeholder="Email" [(ngModel)]="email">
       </div>
+      <div class="form-group">
+      <label>Address</label>
+      <input type="text" ngModel class="form-control" id="address" name = "address" placeholder="Address">
+      </div>
+      <div class="form-group">
+      <label>City</label>
+      <input type="text" ngModel class="form-control" id="city" name = "city" placeholder="City">
+      </div>
       <div>
         <label for="exampleFormControlTextarea1">Additional Items</label>
         <textarea class="form-control" id="additional_items" rows="3" placeholder="E.g. Lazy Suzan, Spice Rack" name="additional_items"></textarea>
@@ -57,7 +65,9 @@ import { EventData } from '../login/event.class';
       <div>
       <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary mb-2" name="submit">Submit</button>
       </div>
+      
     </form>
+    
   </div>
   `,
   styles: [

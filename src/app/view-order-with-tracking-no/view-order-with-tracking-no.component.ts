@@ -12,7 +12,7 @@ import { OrderServiceService } from '../view-orders/order-service.service';
     <mat-form-field class="example-form-field" appearance="fill">
 
     <mat-label>Tracking Number</mat-label>
-      <input matInput type="text" [(ngModel)]="value">
+      <input matInput type="text" [(ngModel)]="value" >
       <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
         <mat-icon>close</mat-icon>
       </button>
@@ -50,7 +50,7 @@ export class ViewOrderWithTrackingNoComponent implements OnInit {
   }
 
   public onClick(){
-    var numberTracking: number = +this.value;
+    var numberTracking: String = this.value;
     this.OrderService.getOrderByTrackingNo(numberTracking)
     .subscribe(
       (response:orderByTrackingNo) => {

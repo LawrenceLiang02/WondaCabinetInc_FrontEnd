@@ -8,6 +8,7 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 @Component({
   selector: 'app-orderdetails',
   template: `
+  <div class="my-container">
     <h2>Order Details</h2>
     <div *ngIf="order">
       <div>
@@ -31,6 +32,15 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
       <div >
        <strong>Email:</strong> {{order.email}}
       </div>
+      <div >
+       <strong>Address:</strong> {{order.address}}
+      </div>
+      <div >
+       <strong>City:</strong> {{order.city}}
+      </div>
+      <div *ngIf="order.deliveryDate != null">
+       <strong>Delivery Date:</strong> {{order.deliveryDate}}
+      </div>
       <div class="my-container">
         <!-- <embed type="application/pdf" scr="https://s2.q4cdn.com/498544986/files/doc_downloads/test.pdf" width="100%" height="600px"/> -->
         <!-- https://www.keepandshare.com/doc19/38089/210-arctic-court-oshawa-color-pdf-432k?da=y -->
@@ -41,7 +51,7 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
       </div>
       
     </div>
-    
+</div>
   `,
   styles: [
   ]
