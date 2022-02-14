@@ -7,7 +7,7 @@ import { TokenStorageService } from './tokenstorage.service';
   template: `
   <h1 class="jumbotron" style='text-align: center; font-weight: bold'>Welcome to Wonda Cabinet Inc</h1>
   <h1 style='text-align: center; font-weight: bold'>Login</h1>
-   <div class='my-container' style="display: flex; justify-content: center; align-items: center; height: 500px;">
+   <div class='my-container' style="display: flex; justify-content: center; align-items: center; height: 250px;">
       <form *ngIf="!isLoggedIn" (ngSubmit)="f.form.valid && onSubmit()" name="form" #f="ngForm" novalidate>
         <div class="form-group">
           <label for="username" style="font-size: 150%">Username</label>
@@ -53,8 +53,9 @@ import { TokenStorageService } from './tokenstorage.service';
 
         <div>
           <button type="submit" class="btn btn-primary mb-2" name="submit" style='margin-top: 10px; text-align: center; width: 900px;'>Login</button>
+          
         </div>
-
+        <a routerLink="/forgotpassword" style="float: right; font-size: 20px;">Forgot Password</a>
         <div class="form-group">
         <div
           class="alert alert-danger"
@@ -71,7 +72,7 @@ import { TokenStorageService } from './tokenstorage.service';
         <a href="#">Continue</a>
       </div>
     </div>
-    <div  *ngIf="!isLoggedIn" style="display: block; margin-left: 510px">
+    <div  *ngIf="!isLoggedIn" style="display: block; margin-left: 320px">
      <h1>Don't have an account?</h1>
      <a routerLink="/signup" style="font-size: 150%">Sign Up For Free</a><br><br>
      <a href="#" style="font-size: 150%">Continue as Guest</a>
