@@ -64,4 +64,18 @@ export class OrderServiceService {
   public deleteOrder(id:number){
     return this.http.delete(`${this.apiServerUrl}/orders/delete/${id}`)
   }
+
+  public requestUpdate(trackingNo: number, body: string){
+    return this.http.post(`${this.apiServerUrl}/orders/updaterequest`, {
+      trackingNo,
+      body
+    })
+  }
+
+  public requestCancellation(trackingNo: number, body: string){
+    return this.http.post(`${this.apiServerUrl}/orders/cancelrequest`, {
+      trackingNo,
+      body
+    })
+  }
 }

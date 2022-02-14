@@ -38,6 +38,8 @@ import { DatePipe } from '@angular/common';
 
 
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { UpdaterequestComponent } from './updaterequest/updaterequest.component';
+import { CancelrequestComponent } from './cancelrequest/cancelrequest.component';
 
 
 
@@ -60,7 +62,12 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
 
     DateTimePickerComponent
     ForgotpasswordComponent,
+<<<<<<< HEAD
 
+=======
+    UpdaterequestComponent,
+    CancelrequestComponent,
+>>>>>>> aea36e3 (Added components and service methods)
   ],
   imports: [
     BrowserModule,
