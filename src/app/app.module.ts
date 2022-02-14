@@ -58,7 +58,7 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
     DeletePasswordComponent,
     ViewOrderWithTrackingNoComponent,
 
-    DateTimePickerComponent
+    DateTimePickerComponent,
     ForgotpasswordComponent,
 
   ],
