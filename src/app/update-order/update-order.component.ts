@@ -11,10 +11,10 @@ import { OrderServiceService } from '../view-orders/order-service.service';
   template: `
   <div class ="my-container">
     <form #updateForm="ngForm" (ngSubmit)="onUpdateOrder(updateForm)">
-    <div class="form-group">
+    <!-- <div class="form-group">
         <label>ID</label>
         <input type="number" ngModel class="form-control" id="orderId" name = "orderId" placeholder="Id" [(ngModel)]="order.orderId">
-      </div> 
+      </div>  -->
       <div class="form-group">
         <label for="select_handle">Order Satus</label>
         <select class="form-control" ngModel id="orderStatus" name="orderStatus">
@@ -32,7 +32,7 @@ import { OrderServiceService } from '../view-orders/order-service.service';
         </select>
         </div>
       <div class="form-group">
-        <label>Design</label>
+        <label>Link to Design (PDF)</label>
         <input type="text" ngModel class="form-control" id="design" name = "design" placeholder="Design" [(ngModel)]="order.design">
       </div> 
     <div class="form-group">

@@ -33,6 +33,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { DateTimePickerComponent } from './date-time-picker/date-time-picker.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -76,7 +77,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     
     
   ],
-  providers: [OrderServiceService, authInterceptorProviders],
+  providers: [OrderServiceService, authInterceptorProviders, DatePipe],
   bootstrap: [AppComponent],
   entryComponents:[DeleteOrderComponent, DeletePasswordComponent, DateTimePickerComponent]
 })

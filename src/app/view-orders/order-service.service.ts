@@ -52,6 +52,11 @@ export class OrderServiceService {
     return this.http.put<order>(`${this.apiServerUrl}/orders/${id}`, order)
   }
 
+  
+  public updateOrderDelivery(id:number,date:string):Observable<order>{
+    return this.http.put<order>(`${this.apiServerUrl}/orders/delivery/${id}`, date)
+  }
+
   public getOrderByTrackingNo(trackingNo:String):Observable<orderByTrackingNo>{
     return this.http.get<orderByTrackingNo>(`${this.apiServerUrl}/orders/track/${trackingNo}`)
   }
