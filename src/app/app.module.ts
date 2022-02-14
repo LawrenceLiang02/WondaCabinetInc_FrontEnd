@@ -30,6 +30,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatRippleModule} from '@angular/material/core';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     DeleteOrderComponent,
     DeletePasswordComponent,
     ViewOrderWithTrackingNoComponent,
+    ForgotpasswordComponent,
   ],
   imports: [
     BrowserModule,

@@ -51,5 +51,16 @@ export class UserAuthService {
     }, httpOptions);
   }
  
+  passwordToken(email: string){
+    return this.http.post(AUTH_API + 'passwordtoken', {
+      email: email
+    }, httpOptions)
+  }
 
+  resetPassword(passwordToken: string, newPassword: string){
+    return this.http.post(AUTH_API + 'resetpassword', {
+      passwordToken: passwordToken,
+      newPassword: newPassword
+    }, httpOptions)
+  }
 }
