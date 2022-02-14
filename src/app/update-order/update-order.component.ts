@@ -15,11 +15,6 @@ import { OrderServiceService } from '../view-orders/order-service.service';
         <label>ID</label>
         <input type="number" ngModel class="form-control" id="orderId" name = "orderId" placeholder="Id" [(ngModel)]="order.orderId">
       </div> 
-      
-      <div class="form-group">
-        <label>Tracking Number</label>
-        <input type="number" ngModel class="form-control" id="trackingNo" name = "trackingNo" placeholder="123123" [(ngModel)]="order.trackingNo">
-      </div> 
       <div class="form-group">
         <label for="select_handle">Order Satus</label>
         <select class="form-control" ngModel id="orderStatus" name="orderStatus">
@@ -70,6 +65,14 @@ import { OrderServiceService } from '../view-orders/order-service.service';
         <option>Round</option>
         <option>Knob</option>
       </select>
+      </div>
+      <div class="form-group">
+      <label>Address</label>
+      <input type="text" ngModel class="form-control" id="address" name = "address" placeholder="Address" [(ngModel)]="order.address">
+      </div>
+      <div class="form-group">
+      <label>City</label>
+      <input type="text" ngModel class="form-control" id="city" name = "city" placeholder="City" [(ngModel)]="order.city">
       </div>
       <div>
         <label for="exampleFormControlTextarea1">Additional Items</label>

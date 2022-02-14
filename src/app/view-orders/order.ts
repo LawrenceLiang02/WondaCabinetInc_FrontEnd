@@ -7,13 +7,17 @@ export interface order{
     color:string;
     material:string;
     orderStatus :string;
-    trackingNo:number;
+    trackingNo:string;
     design:string;
     handleType:string;
     email:string;
+    address:string;
+    city:string;
+    orderDate:string;
+    deliveryDate:string;
 }
 
 export interface orderByTrackingNo{
     orderStatus :string;
-    trackingNo:number;
+    trackingNo:string;
 }

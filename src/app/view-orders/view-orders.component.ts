@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddOrderComponent } from '../add-order/add-order.component';
 import { DeleteOrderComponent } from '../delete-order/delete-order.component';
+import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.component';
 
 
 @Component({
@@ -31,6 +32,7 @@ import { DeleteOrderComponent } from '../delete-order/delete-order.component';
                 <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button>Details</button></td>
                 <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button mat-stroked-button>Update</button></td>
                 <td name="delete-orders" ><button (click)="onCreate(order.orderId)" mat-stroked-button>Delete</button></td>
+                <td name="delivery" ><button *ngIf="order.orderStatus=='Awaiting Shipment'" mat-stroked-button (click)="scheduleDelivery(order.orderId)">Delivery</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
               <!-- <mat-paginator [length]="10"
@@ -51,6 +53,7 @@ import { DeleteOrderComponent } from '../delete-order/delete-order.component';
                 <td name="orderStatus">{{order.orderStatus}}</td>
                 <!-- <td name="design">{{order.design}}</td> -->
                 <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button >Details</button></td>
+                <td name="delivery"><button *ngIf="order.orderStatus=='Awaiting Shipment'" mat-stroked-button (click)="scheduleDelivery(order.orderId)">Delivery</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
             </table>
@@ -72,6 +75,7 @@ import { DeleteOrderComponent } from '../delete-order/delete-order.component';
                 <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button>Details</button></td>
                 <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button mat-stroked-button>Update</button></td>
                 <td name="delete-orders" ><button mat-stroked-button (click)="onCreate(order.orderId)" >Delete</button></td>
+                <td name="delivery" ><button *ngIf="order.orderStatus=='Awaiting Shipment'" mat-stroked-button (click)="scheduleDelivery(order.orderId)">Delivery</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
             </table>
@@ -87,6 +91,7 @@ import { DeleteOrderComponent } from '../delete-order/delete-order.component';
                 <td name="orderStatus">{{order.orderStatus}}</td>
                 <!-- <td name="design">{{order.design}}</td> -->
                 <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button>Details</button></td>
+                <td name="delivery" ><button *ngIf="order.orderStatus=='Awaiting Shipment'" mat-stroked-button (click)="scheduleDelivery(order.orderId)">Delivery</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
             </table>
@@ -108,6 +113,7 @@ import { DeleteOrderComponent } from '../delete-order/delete-order.component';
                 <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button>Details</button></td>
                 <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button mat-stroked-button>Update</button></td>
                 <td name="delete-orders" ><button mat-stroked-button (click)="onCreate(order.orderId)">Delete</button></td>
+                <td name="delivery" ><button *ngIf="order.orderStatus=='Awaiting Shipment'" mat-stroked-button (click)="scheduleDelivery(order.orderId)">Delivery</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
             </table>
@@ -123,6 +129,7 @@ import { DeleteOrderComponent } from '../delete-order/delete-order.component';
               <td name="orderStatus">{{order.orderStatus}}</td>
               <!-- <td name="design">{{order.design}}</td> -->
               <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button>Details</button></td>
+              <td name="delivery" ><button *ngIf="order.orderStatus=='Awaiting Shipment'" mat-stroked-button (click)="scheduleDelivery(order.orderId)">Delivery</button></td>
               <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
             </tr>
           </table>
@@ -273,6 +280,16 @@ export class ViewOrdersComponent implements OnInit {
     //       this.reloadPage();
     // });
     
+
+  }
+
+  public scheduleDelivery(id){
+    const dialogConfig = new MatDialogConfig();
+    // dialogConfig.width = '250px';
+    dialogConfig.data = {
+      id: id
+    }
+    this.dialog.open(DateTimePickerComponent, dialogConfig);
 
   }
 

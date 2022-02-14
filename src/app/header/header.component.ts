@@ -54,7 +54,7 @@ import { Router } from '@angular/router';
           </a>
           <button mat-button class="header-button" name="home" routerLink="/" [routerLinkActive]="['active']" [routerLinkActiveOptions]={exact:true}>Home</button>
           <button mat-button class="header-button" *ngIf="isLoggedIn" name="view-orders" routerLink="/view-orders" [routerLinkActive]="['active']">View Orders</button>
-          <button mat-button class="header-button" *ngIf="isLoggedIn" name="add-orders" routerLink="/add-orders" [routerLinkActive]="['active']">Add Orders</button>
+          <button mat-button class="header-button" *ngIf="isLoggedIn" name="add-orders" routerLink="/add-orders" [routerLinkActive]="['active']">Order Now</button>
           <button mat-button class="header-button" name="view-order-with-tracking-no" routerLink="/track" [routerLinkActive]="['active']">Track Your Order</button>
           <span class="example-spacer"></span>
 

@@ -28,8 +28,12 @@ import {MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatRippleModule} from '@angular/material/core';
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { DateTimePickerComponent } from './date-time-picker/date-time-picker.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
 
 
 @NgModule({
@@ -48,6 +52,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     DeleteOrderComponent,
     DeletePasswordComponent,
     ViewOrderWithTrackingNoComponent,
+    DateTimePickerComponent
   ],
   imports: [
     BrowserModule,
@@ -64,11 +69,15 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatIconModule,
     MatToolbarModule,
     MatRippleModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule
+    
     
   ],
   providers: [OrderServiceService, authInterceptorProviders],
   bootstrap: [AppComponent],
-  entryComponents:[DeleteOrderComponent, DeletePasswordComponent]
+  entryComponents:[DeleteOrderComponent, DeletePasswordComponent, DateTimePickerComponent]
 })
 export class AppModule { }

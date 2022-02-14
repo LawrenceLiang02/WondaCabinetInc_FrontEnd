@@ -52,7 +52,7 @@ export class OrderServiceService {
     return this.http.put<order>(`${this.apiServerUrl}/orders/${id}`, order)
   }
 
-  public getOrderByTrackingNo(trackingNo:number):Observable<orderByTrackingNo>{
+  public getOrderByTrackingNo(trackingNo:String):Observable<orderByTrackingNo>{
     return this.http.get<orderByTrackingNo>(`${this.apiServerUrl}/orders/track/${trackingNo}`)
   }
 
