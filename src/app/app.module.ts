@@ -59,15 +59,10 @@ import { CancelrequestComponent } from './cancelrequest/cancelrequest.component'
     DeleteOrderComponent,
     DeletePasswordComponent,
     ViewOrderWithTrackingNoComponent,
-
-    DateTimePickerComponent
+    DateTimePickerComponent,
     ForgotpasswordComponent,
-<<<<<<< HEAD
-
-=======
     UpdaterequestComponent,
     CancelrequestComponent,
->>>>>>> aea36e3 (Added components and service methods)
   ],
   imports: [
     BrowserModule,

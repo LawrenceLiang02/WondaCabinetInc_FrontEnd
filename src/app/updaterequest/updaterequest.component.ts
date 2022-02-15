@@ -13,7 +13,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   <form *ngIf="!isSuccess" (ngSubmit)="f.form.valid && onSubmit()" name="form" #f="ngForm" novalidate>
     <div class="form-group">
     <label for="trackingNo" style="font-size: 150%">Tracking No</label>
-    <select
+    <input type="text"
      ngModel class="form-control"
      id="trackingNo"
      name="trackingNo"
@@ -22,9 +22,6 @@ import { HttpErrorResponse } from '@angular/common/http';
      [(ngModel)]="form.trackingNo"
      required
      #trackingNo="ngModel">
-     <option></option>
-      <option *ngFor="let order of activeByEmail">{{ order.trackingNo }}</option>
-     </select>
 
      <div
           class="alert alert-danger"
@@ -72,7 +69,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   </form>
   <div class="alert alert-success" name="success" *ngIf="isSuccess">
     Email sent to staff.
-    <a routerLink="/view-orders">Back to orders</a>
+    <a routerLink="/">Back to Home</a>
   </div>
  
   `,
@@ -84,11 +81,6 @@ export class UpdaterequestComponent implements OnInit {
     trackingNo: null,
     body: null
   }
-  public activeByEmail: order[] = [];
-  private roles: string[] = [];
-  isLoggedIn = false;
-  username?: string;
-  email?: string;
   errorMessage = '';
   isSuccess = false;
   isFailed = false;
@@ -96,16 +88,7 @@ export class UpdaterequestComponent implements OnInit {
   constructor(private orderService: OrderServiceService, private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
-    this.isLoggedIn = !!this.tokenStorageService.getToken();
-
-    if (this.isLoggedIn) {
-      const user = this.tokenStorageService.getUser();
-      this.roles = user.roles;
-
-      this.username = user.username;
-      this.email = user.email;
-    }
-    this.getAllByEmailActive(this.tokenStorageService.getUser().email);
+    
   }
 
   public onSubmit(){
@@ -123,15 +106,6 @@ export class UpdaterequestComponent implements OnInit {
     )
   }
 
-  public getAllByEmailActive(email): void{
-    this.orderService.getAllActiveOrdersByEmail(email).subscribe(
-      (response: order[]) => {
-        this.activeByEmail = response;
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message)
-      }
-    );
-  }
+
 
 }
