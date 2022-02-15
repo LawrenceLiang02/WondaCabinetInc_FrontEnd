@@ -49,18 +49,18 @@ import { Router } from '@angular/router';
     </header> -->
       <mat-toolbar style="background-color: rgb(223, 83, 83);">
         <mat-toolbar-row >
-          <a class="navbar-brand" routerLink="/" style="color: black" title="Home">
+          <a class="navbar-brand" routerLink="/home" style="color: black" title="Home">
             <img src="assets/images/Wonda Cabinet Inc. Logo.png" width="50" alt="Home" height="auto" class="wci-logo">
             <span class="header-button">
             Wonda Cabinet Inc.
             </span>
           </a>
-          <button mat-button class="header-button" name="home" routerLink="/" [routerLinkActive]="['active']" [routerLinkActiveOptions]={exact:true}>Home</button>
+          <button mat-button class="header-button" name="home" routerLink="home" [routerLinkActive]="['active']" [routerLinkActiveOptions]={exact:true}>Home</button>
           <button mat-button class="header-button" *ngIf="isLoggedIn" name="view-orders" routerLink="/view-orders" [routerLinkActive]="['active']">View Orders</button>
           <button mat-button class="header-button" *ngIf="isLoggedIn" name="add-orders" routerLink="/add-orders" [routerLinkActive]="['active']">Order Now</button>
           <button mat-button class="header-button" name="view-order-with-tracking-no" routerLink="/track" [routerLinkActive]="['active']">Track Your Order</button>
-          <button mat-button class="header-button" name="request-update" routerLink="/updaterequest" [routerLinkActive]="['active']">Request an Update</button>
-          <button mat-button class="header-button" name="request-cancel" routerLink="/cancelrequest" [routerLinkActive]="['active']">Request a Cancellation</button>
+          <button mat-button class="header-button" *ngIf="isLoggedIn && !showEmployeeContent" name="request-update" routerLink="/updaterequest" [routerLinkActive]="['active']">Request an Update</button>
+          <button mat-button class="header-button" *ngIf="isLoggedIn && !showEmployeeContent" name="request-cancel" routerLink="/cancelrequest" [routerLinkActive]="['active']">Request a Cancellation</button>
           <span class="example-spacer"></span>
 
           <button mat-button class="header-button" *ngIf="!isLoggedIn" name="logout" routerLink="/login" [routerLinkActive]="['active']">Log in</button>

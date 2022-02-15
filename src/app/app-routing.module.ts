@@ -12,11 +12,15 @@ import { ViewOrderWithTrackingNoComponent } from './view-order-with-tracking-no/
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { UpdaterequestComponent } from './updaterequest/updaterequest.component';
 import { CancelrequestComponent } from './cancelrequest/cancelrequest.component';
+import { AuthGuard } from './_auth/auth.guard';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     component: HomeComponent
+  },
+  {
+    path: '', redirectTo: 'home', pathMatch: 'full'
   },
   {
     path: 'view-orders',
@@ -28,7 +32,11 @@ const routes: Routes = [
   },
   {
     path: 'add-orders',
-    component: AddOrderComponent
+    component: AddOrderComponent, 
+    canActivate: [AuthGuard],
+    data: {
+      role: 'ROLE_EMPLOYEE'
+    }
   },
   {
     path: 'add-orders',
@@ -36,7 +44,11 @@ const routes: Routes = [
   },
   {
     path: 'update-orders/:orderId',
-    component: UpdateOrderComponent
+    component: UpdateOrderComponent, 
+    canActivate: [AuthGuard],
+    data: {
+      role: 'ROLE_EMPLOYEE'
+    }
   },
   {
     path: 'login',
@@ -60,11 +72,19 @@ const routes: Routes = [
   },
   {
     path: 'updaterequest',
-    component: UpdaterequestComponent
+    component: UpdaterequestComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'ROLE_CUSTOMER'
+    }
   },
   {
     path: 'cancelrequest',
-    component: CancelrequestComponent
+    component: CancelrequestComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'ROLE_CUSTOMER'
+    }
   }
 ];
 

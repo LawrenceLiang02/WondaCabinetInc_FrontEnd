@@ -8,16 +8,20 @@ const USER_KEY = 'auth-user';
   providedIn: 'root'
 })
 export class TokenStorageService {
+  isLogin: boolean = false;
+  roleAs: string;
 
   constructor() { }
 
   signOut() {
     window.sessionStorage.clear();
+    window.sessionStorage.setItem('STATE', 'false');
   }
 
   public saveToken(token: string) {
     window.sessionStorage.removeItem(TOKEN_KEY);
     window.sessionStorage.setItem(TOKEN_KEY, token);
+    window.sessionStorage.setItem('STATE', 'true');
   }
 
   public getToken(): string | null {
@@ -44,5 +48,19 @@ export class TokenStorageService {
     }
 
     return {};
+  }
+
+  isLoggedIn() {
+    const loggedIn = localStorage.getItem('STATE');
+    if (loggedIn == 'true')
+      this.isLogin = true;
+    else
+      this.isLogin = false;
+    return this.isLogin;
+  }
+
+  getRole() {
+    this.roleAs = localStorage.getItem('ROLE');
+    return this.roleAs;
   }
 }
