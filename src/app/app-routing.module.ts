@@ -10,6 +10,8 @@ import { SignupComponent } from './signup/signup.component';
 import { ContactComponent } from './contact/contact.component';
 import { ViewOrderWithTrackingNoComponent } from './view-order-with-tracking-no/view-order-with-tracking-no.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { UpdaterequestComponent } from './updaterequest/updaterequest.component';
+import { CancelrequestComponent } from './cancelrequest/cancelrequest.component';
 
 const routes: Routes = [
   {
@@ -55,6 +57,14 @@ const routes: Routes = [
   {
     path: 'forgotpassword',
     component: ForgotpasswordComponent
+  },
+  {
+    path: 'updaterequest',
+    component: UpdaterequestComponent
+  },
+  {
+    path: 'cancelrequest',
+    component: CancelrequestComponent
   }
 ];
 

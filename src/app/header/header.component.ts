@@ -30,6 +30,9 @@ import { Router } from '@angular/router';
                   <a class="nav-link" name="view-order-with-tracking-no" routerLink="/track">Track Your Order</a>
                 </li>
                 <li>
+                  <a class="nav-link" name="request-update" routerLink="/updaterequest">Request an Update</a>
+                </li>
+                <li>
                   <a class="nav-link" name="contact" routerLink="/contact">Contact Us</a>
                 </li>
                 <li class="nav-item ">
@@ -56,6 +59,8 @@ import { Router } from '@angular/router';
           <button mat-button class="header-button" *ngIf="isLoggedIn" name="view-orders" routerLink="/view-orders" [routerLinkActive]="['active']">View Orders</button>
           <button mat-button class="header-button" *ngIf="isLoggedIn" name="add-orders" routerLink="/add-orders" [routerLinkActive]="['active']">Order Now</button>
           <button mat-button class="header-button" name="view-order-with-tracking-no" routerLink="/track" [routerLinkActive]="['active']">Track Your Order</button>
+          <button mat-button class="header-button" name="request-update" routerLink="/updaterequest" [routerLinkActive]="['active']">Request an Update</button>
+          <button mat-button class="header-button" name="request-cancel" routerLink="/cancelrequest" [routerLinkActive]="['active']">Request a Cancellation</button>
           <span class="example-spacer"></span>
 
           <button mat-button class="header-button" *ngIf="!isLoggedIn" name="logout" routerLink="/login" [routerLinkActive]="['active']">Log in</button>
