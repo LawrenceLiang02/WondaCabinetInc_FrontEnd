@@ -22,12 +22,14 @@ import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.co
             <table *ngIf="showEmployeeContent" class="table table-bordered" >
               <tr>
                 <th scope="col">Tracking Number</th>
+                <th scope="col">Reference Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Order Status</th>
                 <!-- <th scope="col">Design</th> -->
               </tr>
               <tr *ngFor="let order of activeOrders">
                 <td scope="row">{{order.trackingNo}}</td>
+                <td name="cabinetType">{{order.cabinetType}}</td>
                 <td name="email">{{order.email}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
                 <!-- <td name="design">{{order.design}}</td> -->
@@ -69,12 +71,14 @@ import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.co
             <table *ngIf="showEmployeeContent" class="table table-striped table-bordered">
             <tr>
                 <th scope="col">Tracking Number</th>
+                <th scope="col">Reference Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Order Status</th>
                 <!-- <th scope="col">Design</th> -->
               </tr>
               <tr *ngFor="let order of cancelledOrders">
                 <td scope="row">{{order.trackingNo}}</td>
+                <td name="cabinetType">{{order.cabinetType}}</td>
                 <td name="email">{{order.email}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
                 <!-- <td name="design">{{order.design}}</td> -->
@@ -111,12 +115,14 @@ import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.co
             <table *ngIf="showEmployeeContent" class="table table-striped table-bordered">
             <tr>
                 <th scope="col">Tracking Number</th>
+                <th scope="col">Reference Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Order Status</th>
                 <!-- <th scope="col">Design</th> -->
               </tr>
               <tr *ngFor="let order of orders">
                 <td scope="row">{{order.trackingNo}}</td>
+                <td name="cabinetType">{{order.cabinetType}}</td>
                 <td name="email">{{order.email}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
                 <!-- <td name="design">{{order.design}}</td> -->

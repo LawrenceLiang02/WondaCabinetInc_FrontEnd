@@ -63,7 +63,7 @@ import { Router } from '@angular/router';
           <button mat-button class="header-button" *ngIf="isLoggedIn && !showEmployeeContent" name="request-cancel" routerLink="/cancelrequest" [routerLinkActive]="['active']">Request a Cancellation</button>
           <span class="example-spacer"></span>
 
-          <button mat-button class="header-button" *ngIf="!isLoggedIn" name="logout" routerLink="/login" [routerLinkActive]="['active']">Log in</button>
+          <button mat-button class="header-button" *ngIf="!isLoggedIn" name="logout" routerLink="/login" [routerLinkActive]="['active']">Log In</button>
           
           <button mat-button class="header-button" *ngIf="isLoggedIn" name="profile">Welcome, {{ username }}</button>
           

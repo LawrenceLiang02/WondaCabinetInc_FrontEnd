@@ -5,7 +5,7 @@ import { TokenStorageService } from './tokenstorage.service';
 @Component({
   selector: 'app-login',
   template: `
-  <h1 class="jumbotron" style='text-align: center; font-weight: bold'>Welcome to Wonda Cabinet Inc</h1>
+  <h1 class="jumbotron" style='text-align: center;'>Welcome to Wonda Cabinet Inc</h1>
   <h1 style='text-align: center; font-weight: bold'>Login</h1>
    <div class='my-container' style="display: flex; justify-content: center; align-items: center; height: 250px;">
       <form *ngIf="!isLoggedIn" (ngSubmit)="f.form.valid && onSubmit()" name="form" #f="ngForm" novalidate>
@@ -73,7 +73,7 @@ import { TokenStorageService } from './tokenstorage.service';
       </div>
     </div>
     <div  *ngIf="!isLoggedIn" style="display: block; margin-left: 320px">
-     <h1>Don't have an account?</h1>
+     <h2>Don't have an account?</h2>
      <a routerLink="/signup" style="font-size: 150%">Sign Up For Free</a><br><br>
      <a href="/home" style="font-size: 150%">Continue as Guest</a>
     </div>
