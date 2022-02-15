@@ -24,23 +24,27 @@ const routes: Routes = [
   },
   {
     path: 'view-orders',
-    component: ViewOrdersComponent
+    component: ViewOrdersComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'ROLE_EMPLOYEE' || 'ROLE_CUSTOMER'
+    }
   },
   {
     path: 'view-orders/:orderId',
-    component: OrderdetailsComponent
+    component: OrderdetailsComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'ROLE_EMPLOYEE' || 'ROLE_CUSTOMER'
+    }
   },
   {
     path: 'add-orders',
     component: AddOrderComponent, 
     canActivate: [AuthGuard],
     data: {
-      role: 'ROLE_EMPLOYEE'
+      role: 'ROLE_EMPLOYEE' || 'ROLE_CUSTOMER'
     }
-  },
-  {
-    path: 'add-orders',
-    component: AddOrderComponent
   },
   {
     path: 'update-orders/:orderId',

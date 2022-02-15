@@ -15,13 +15,14 @@ export class TokenStorageService {
 
   signOut() {
     window.sessionStorage.clear();
-    window.sessionStorage.setItem('STATE', 'false');
+    localStorage.setItem('STATE', 'false');
+    localStorage.setItem('ROLE', '');
   }
 
   public saveToken(token: string) {
     window.sessionStorage.removeItem(TOKEN_KEY);
     window.sessionStorage.setItem(TOKEN_KEY, token);
-    window.sessionStorage.setItem('STATE', 'true');
+    localStorage.setItem('STATE', 'true');
   }
 
   public getToken(): string | null {
@@ -39,6 +40,7 @@ export class TokenStorageService {
   public saveUser(user: any): void {
     window.sessionStorage.removeItem(USER_KEY);
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+    localStorage.setItem('ROLE', user.roles);
   }
 
   public getUser(): any {
