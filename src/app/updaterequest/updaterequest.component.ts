@@ -69,7 +69,11 @@ import { HttpErrorResponse } from '@angular/common/http';
   </form>
   <div class="alert alert-success" name="success" *ngIf="isSuccess">
     Email sent to staff.
+
     <a routerLink="/">Back to Home</a>
+
+    <a routerLink="/view-orders">Back to orders</a>
+
   </div>
  
   `,
@@ -105,7 +109,6 @@ export class UpdaterequestComponent implements OnInit {
       }
     )
   }
-
 
 
 }

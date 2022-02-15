@@ -59,8 +59,12 @@ import { Router } from '@angular/router';
           <button mat-button class="header-button" *ngIf="isLoggedIn" name="view-orders" routerLink="/view-orders" [routerLinkActive]="['active']">View Orders</button>
           <button mat-button class="header-button" *ngIf="isLoggedIn" name="add-orders" routerLink="/add-orders" [routerLinkActive]="['active']">Order Now</button>
           <button mat-button class="header-button" name="view-order-with-tracking-no" routerLink="/track" [routerLinkActive]="['active']">Track Your Order</button>
+<<<<<<< HEAD
           <button mat-button class="header-button" name="request-update" routerLink="/updaterequest" [routerLinkActive]="['active']">Request an Update</button>
           <button mat-button class="header-button" name="request-cancel" routerLink="/cancelrequest" [routerLinkActive]="['active']">Request a Cancellation</button>
+=======
+          <button mat-button class="header-button" name="request-update" routerLink="/updaterequest" [routerLinkActive]="['active']" *ngIf="!showEmployeeContent">Request an Update</button>
+>>>>>>> e58d8389bd633286704049d652c6c44327805db0
           <span class="example-spacer"></span>
 
           <button mat-button class="header-button" *ngIf="!isLoggedIn" name="logout" routerLink="/login" [routerLinkActive]="['active']">Log in</button>
