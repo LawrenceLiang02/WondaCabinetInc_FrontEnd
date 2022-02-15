@@ -75,6 +75,7 @@ import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.co
               </tr>
               <tr *ngFor="let order of cancelledOrders">
                 <td scope="row">{{order.trackingNo}}</td>
+                <td name="email">{{order.email}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
                 <!-- <td name="design">{{order.design}}</td> -->
                 <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button>Details</button></td>
