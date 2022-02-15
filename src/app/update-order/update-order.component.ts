@@ -74,10 +74,10 @@ import { OrderServiceService } from '../view-orders/order-service.service';
       <label>City</label>
       <input type="text" ngModel class="form-control" id="city" name = "city" placeholder="City" [(ngModel)]="order.city">
       </div>
-      <div>
+      <!-- <div>
         <label for="exampleFormControlTextarea1">Additional Items</label>
         <textarea class="form-control" id="additional_items" rows="3" placeholder="E.g. Lazy Suzan, Spice Rack" name="additional_items"></textarea>
-      </div>
+      </div> -->
       <br>
       <div>
       <button [disabled]="updateForm.invalid" type="submit" class="btn btn-primary mb-2" name="submit">Submit</button>

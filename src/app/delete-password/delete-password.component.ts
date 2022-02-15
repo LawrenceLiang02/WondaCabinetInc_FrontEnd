@@ -41,13 +41,14 @@ import { OrderServiceService } from '../view-orders/order-service.service';
         >
           Login failed: {{ errorMessage }}
         </div>
+      </mat-dialog-content>
         <mat-dialog-actions align="end">
           <button mat-raised-button mat-dialog-close>Cancel</button>
           <!-- mat-button [mat-dialog-close]="true" -->
           <button type="submit" mat-raised-button color="warn" cdkFocusInitial >Delete</button>
         </mat-dialog-actions>
           
-      </mat-dialog-content>
+      
     </form>
   `,
   styles: [
