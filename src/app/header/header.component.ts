@@ -47,30 +47,77 @@ import { Router } from '@angular/router';
         </nav>
         
     </header> -->
-      <mat-toolbar style="background-color: rgb(223, 83, 83);">
-        <mat-toolbar-row >
-          <a class="navbar-brand" routerLink="/home" style="color: black" title="Home">
+    <div>
+      <mat-toolbar fxLayout = "row" style="background-color: rgb(223, 83, 83);">
+          <a fxFlex class="navbar-brand" routerLink="/home" style="color: black" title="Home">
             <img src="assets/images/Wonda Cabinet Inc. Logo.png" width="50" alt="Home" height="auto" class="wci-logo">
             <span class="header-button">
             Wonda Cabinet Inc.
             </span>
           </a>
-          <button mat-button class="header-button" name="home" routerLink="home" [routerLinkActive]="['active']" [routerLinkActiveOptions]={exact:true}>Home</button>
-          <button mat-button class="header-button" *ngIf="isLoggedIn" name="view-orders" routerLink="/view-orders" [routerLinkActive]="['active']">View Orders</button>
-          <button mat-button class="header-button" *ngIf="isLoggedIn" name="add-orders" routerLink="/add-orders" [routerLinkActive]="['active']">Order Now</button>
-          <button mat-button class="header-button" name="view-order-with-tracking-no" routerLink="/track" [routerLinkActive]="['active']">Track Your Order</button>
-          <button mat-button class="header-button" *ngIf="isLoggedIn && !showEmployeeContent" name="request-update" routerLink="/updaterequest" [routerLinkActive]="['active']">Request an Update</button>
-          <button mat-button class="header-button" *ngIf="isLoggedIn && !showEmployeeContent" name="request-cancel" routerLink="/cancelrequest" [routerLinkActive]="['active']">Request a Cancellation</button>
-          <span class="example-spacer"></span>
+          <div > 
+            <button fxHide.xs mat-button class="header-button" name="home" routerLink="home" [routerLinkActive]="['active']" [routerLinkActiveOptions]={exact:true}>Home</button>
+            <button fxHide.xs mat-button class="header-button" *ngIf="isLoggedIn" name="view-orders" routerLink="/view-orders" [routerLinkActive]="['active']">View Orders</button>
+            <button fxHide.xs mat-button class="header-button" *ngIf="isLoggedIn" name="add-orders" routerLink="/add-orders" [routerLinkActive]="['active']">Order Now</button>
+            <button fxHide.xs mat-button class="header-button" name="view-order-with-tracking-no" routerLink="/track" [routerLinkActive]="['active']">Track Your Order</button>
+            <button fxHide.xs mat-button class="header-button" *ngIf="isLoggedIn && !showEmployeeContent" name="request-update" routerLink="/updaterequest" [routerLinkActive]="['active']">Request an Update</button>
+            <button fxHide.xs mat-button class="header-button" *ngIf="isLoggedIn && !showEmployeeContent" name="request-cancel" routerLink="/cancelrequest" [routerLinkActive]="['active']">Request a Cancellation</button>
+            <span class="example-spacer"></span>
 
-          <button mat-button class="header-button" *ngIf="!isLoggedIn" name="logout" routerLink="/login" [routerLinkActive]="['active']">Log In</button>
+            <button fxHide.xs mat-button class="header-button" *ngIf="!isLoggedIn" name="logout" routerLink="/login" [routerLinkActive]="['active']">Log In</button>
+            
+            <button fxFlex mat-button class="header-button" *ngIf="isLoggedIn" name="profile">Welcome, {{ username }}</button>
+            
+            <button fxHide.xs mat-button class="header-button" *ngIf="isLoggedIn" name="logout" (click)="logout()" routerLink="/login">Log Out</button> 
+            <button fxHide.xs mat-button class="header-button" name="contact" routerLink="/contact" [routerLinkActive]="['active']">Contact Us</button> 
+          </div>  
           
-          <button mat-button class="header-button" *ngIf="isLoggedIn" name="profile">Welcome, {{ username }}</button>
-          
-          <button mat-button class="header-button" *ngIf="isLoggedIn" name="logout" (click)="logout()" routerLink="/login">Log Out</button> 
-          <button mat-button class="header-button" name="contact" routerLink="/contact" [routerLinkActive]="['active']">Contact Us</button>   
-        </mat-toolbar-row>
+          <button mat-icon-button [matMenuTriggerFor]="dropMenu" fxHide fxShow.xs>
+              <mat-icon>more_vert</mat-icon>
+           </button>
+           <mat-menu #dropMenu="matMenu">
+          <ng-container>
+              <button mat-menu-item name="home" routerLink="home" [routerLinkActive]="['active']" [routerLinkActiveOptions]={exact:true}>
+                  <mat-icon class="mr"></mat-icon>Home
+              </button>
+              <mat-divider></mat-divider>
+              <button mat-menu-item *ngIf="isLoggedIn" name="view-orders" routerLink="/view-orders" [routerLinkActive]="['active']">
+                  <mat-icon class="mr"></mat-icon>View Orders
+              </button>
+              <mat-divider></mat-divider>
+              <button mat-menu-item *ngIf="isLoggedIn" name="add-orders" routerLink="/add-orders" [routerLinkActive]="['active']">
+                  <mat-icon class="mr"></mat-icon>Order Now
+              </button>
+              <mat-divider></mat-divider>
+              <button mat-menu-item name="view-order-with-tracking-no" routerLink="/track" [routerLinkActive]="['active']">
+                  <mat-icon class="mr"></mat-icon>Track Your Order
+              </button>
+              <mat-divider></mat-divider>
+              <button mat-menu-item *ngIf="isLoggedIn && !showEmployeeContent" name="request-update" routerLink="/updaterequest" [routerLinkActive]="['active']">
+                  <mat-icon class="mr"></mat-icon>Request an Update
+              </button>
+              <mat-divider></mat-divider>
+              <button mat-menu-item *ngIf="isLoggedIn && !showEmployeeContent" name="request-cancel" routerLink="/cancelrequest" [routerLinkActive]="['active']">
+                  <mat-icon class="mr"></mat-icon>Request a Cancellation
+              </button>
+              <mat-divider></mat-divider>
+              <button mat-menu-item *ngIf="!isLoggedIn" name="logout" routerLink="/login" [routerLinkActive]="['active']">
+                  <mat-icon class="mr"></mat-icon>Log In
+              </button>
+              <mat-divider></mat-divider>
+              <button mat-menu-item  *ngIf="isLoggedIn" name="logout" (click)="logout()" routerLink="/login">
+                  <mat-icon class="mr"></mat-icon>Log Out
+              </button>
+              <mat-divider></mat-divider>
+              <button mat-menu-item  name="contact" routerLink="/contact" [routerLinkActive]="['active']">
+                  <mat-icon class="mr"></mat-icon>Contact Us
+              </button>
+              <mat-divider></mat-divider>
+          </ng-container>
+          </mat-menu>
       </mat-toolbar>
+      
+    </div>
   `,
   styles: [
   ]

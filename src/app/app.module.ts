@@ -35,11 +35,12 @@ import { DateTimePickerComponent } from './date-time-picker/date-time-picker.com
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { DatePipe } from '@angular/common';
-
-
+import {MatMenuModule} from '@angular/material/menu';
+import {MatDividerModule} from '@angular/material/divider';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { UpdaterequestComponent } from './updaterequest/updaterequest.component';
 import { CancelrequestComponent } from './cancelrequest/cancelrequest.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -82,7 +83,10 @@ import { CancelrequestComponent } from './cancelrequest/cancelrequest.component'
     MatPaginatorModule,
     MatDatepickerModule,
     MatFormFieldModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    FlexLayoutModule,
+    MatMenuModule,
+    MatDividerModule
     
     
   ],
