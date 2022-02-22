@@ -99,6 +99,9 @@ export class AddOrderComponent implements OnInit {
       this.username = user.username;
       this.email = user.email;
     }
+    else{
+      
+    }
     this.eventBusSub = this.eventBusService.on('logout', () => {
       this.logout();
     });
