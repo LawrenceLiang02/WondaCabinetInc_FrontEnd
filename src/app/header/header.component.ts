@@ -65,7 +65,7 @@ import { Router } from '@angular/router';
 
             <button fxHide.xs mat-button class="header-button" *ngIf="!isLoggedIn" name="logout" routerLink="/login" [routerLinkActive]="['active']">Log In</button>
             
-            <button fxFlex mat-button class="header-button" *ngIf="isLoggedIn" name="profile">Welcome, {{ username }}</button>
+            <button fxHide.xs mat-button class="header-button" *ngIf="isLoggedIn" name="profile">Welcome, {{ username }}</button>
             
             <button fxHide.xs mat-button class="header-button" *ngIf="isLoggedIn" name="logout" (click)="logout()" routerLink="/login">Log Out</button> 
             <button fxHide.xs mat-button class="header-button" name="contact" routerLink="/contact" [routerLinkActive]="['active']">Contact Us</button> 
