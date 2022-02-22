@@ -16,12 +16,16 @@ import { AuthGuard } from './_auth/auth.guard';
 
 const oktaConfig = {
   issuer: 'https://dev-7962608.okta.com/oauth2/default',
-  redirectUri: window.location.origin + '/callback',
+  redirectUri: window.location.origin + '/home',
   clientId: '0oa3xvu3lmnRUOCAr5d7',
   pkce: true
 };
 
 const routes: Routes = [
+  // {
+  //   path: '/callback',
+  //   component: OktaCallbackComponent
+  // },
   {
     path: 'home',
     component: HomeComponent
