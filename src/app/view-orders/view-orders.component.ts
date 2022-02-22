@@ -16,7 +16,7 @@ import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.co
   selector: 'app-view-orders',
   template: `
       <mat-tab-group>
-        <mat-tab label="Active Orders">
+        <mat-tab name="active_tab" id="active_tab" label="Active Orders">
           <div class="my-container scrollable-table">
           <h2>Active Orders</h2>
             <table *ngIf="showEmployeeContent" class="table table-bordered" >
@@ -65,7 +65,7 @@ import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.co
             </table>
           </div>
         </mat-tab>
-        <mat-tab label="Cancelled Orders">
+        <mat-tab name="cancelled_tab" id="cancelled_tab" label="Cancelled Orders">
         <div class="my-container scrollable-table">
         <h2>Cancelled Orders</h2>
             <table *ngIf="showEmployeeContent" class="table table-striped table-bordered">
@@ -109,7 +109,7 @@ import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.co
             </table>
         </div>
         </mat-tab>
-        <mat-tab label="All Orders">        
+        <mat-tab name="all_tab" id="all_tab" label="All Orders">        
         <div class="my-container scrollable-table">  
           <h2>All Orders</h2>
             <table *ngIf="showEmployeeContent" class="table table-striped table-bordered">
