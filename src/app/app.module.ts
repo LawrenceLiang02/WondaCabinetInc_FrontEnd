@@ -99,7 +99,7 @@ const oktaConfig = {
     
     
   ],
-  providers: [OrderServiceService, authInterceptorProviders, DatePipe,     { provide: OKTA_CONFIG, useValue: oktaConfig }, ],
+  providers: [OrderServiceService, authInterceptorProviders, DatePipe],
   bootstrap: [AppComponent],
   entryComponents:[DeleteOrderComponent, DeletePasswordComponent, DateTimePickerComponent]
 })

@@ -25,10 +25,6 @@ const oktaConfig = {
 
 const routes: Routes = [
   {
-    path: 'callback',
-    component: OktaCallbackComponent
-  },
-  {
     path: 'home',
     component: HomeComponent
   },
