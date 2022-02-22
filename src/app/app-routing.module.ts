@@ -13,6 +13,8 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
 import { UpdaterequestComponent } from './updaterequest/updaterequest.component';
 import { CancelrequestComponent } from './cancelrequest/cancelrequest.component';
 import { AuthGuard } from './_auth/auth.guard';
+import { OKTA_CONFIG, OktaAuthModule } from '@okta/okta-angular';
+import { OktaCallbackComponent } from '@okta/okta-angular';
 
 const oktaConfig = {
   issuer: 'https://dev-7962608.okta.com/oauth2/default',
@@ -22,10 +24,10 @@ const oktaConfig = {
 };
 
 const routes: Routes = [
-  // {
-  //   path: '/callback',
-  //   component: OktaCallbackComponent
-  // },
+  {
+    path: '/callback',
+    component: OktaCallbackComponent
+  },
   {
     path: 'home',
     component: HomeComponent
