@@ -111,6 +111,7 @@ import { Router } from '@angular/router';
               <mat-divider></mat-divider>
               <button mat-menu-item  name="contact" routerLink="/contact" [routerLinkActive]="['active']">
                   <mat-icon class="mr">help</mat-icon>Contact Us
+                  
               </button>
               <mat-divider></mat-divider>
           </ng-container>
