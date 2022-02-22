@@ -55,7 +55,7 @@ import { Router } from '@angular/router';
             Wonda Cabinet Inc.
             </span>
           </a>
-          
+          <div > 
             <button fxHide.xs mat-button class="header-button" name="home" routerLink="home" [routerLinkActive]="['active']" [routerLinkActiveOptions]={exact:true}>Home</button>
             <button fxHide.xs mat-button class="header-button" *ngIf="isLoggedIn" name="view-orders" routerLink="/view-orders" [routerLinkActive]="['active']">View Orders</button>
             <button fxHide.xs mat-button class="header-button" *ngIf="isLoggedIn" name="add-orders" routerLink="/add-orders" [routerLinkActive]="['active']">Order Now</button>
@@ -70,10 +70,10 @@ import { Router } from '@angular/router';
             
             <button fxHide.xs mat-button class="header-button" *ngIf="isLoggedIn" name="logout" (click)="logout()" routerLink="/login">Log Out</button> 
             <button fxHide.xs mat-button class="header-button" name="contact" routerLink="/contact" [routerLinkActive]="['active']">Contact Us</button> 
-          
+          </div>  
           
           <button mat-icon-button [matMenuTriggerFor]="dropMenu" fxHide fxShow.xs>
-              <mat-icon>menu</mat-icon>
+              <mat-icon>more_vert</mat-icon>
            </button>
            <mat-menu #dropMenu="matMenu">
           <ng-container>

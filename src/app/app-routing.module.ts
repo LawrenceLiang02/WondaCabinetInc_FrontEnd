@@ -16,13 +16,6 @@ import { AuthGuard } from './_auth/auth.guard';
 import { OKTA_CONFIG, OktaAuthModule } from '@okta/okta-angular';
 import { OktaCallbackComponent } from '@okta/okta-angular';
 
-const oktaConfig = {
-  issuer: 'https://dev-7962608.okta.com/oauth2/default',
-  redirectUri: window.location.origin + '/callback',
-  clientId: '0oa3xvu3lmnRUOCAr5d7',
-  pkce: true
-};
-
 const routes: Routes = [
   {
     path: 'home',
