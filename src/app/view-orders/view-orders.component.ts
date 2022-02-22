@@ -33,10 +33,10 @@ import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.co
                 <td name="email">{{order.email}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
                 <!-- <td name="design">{{order.design}}</td> -->
-                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button>Details</button></td>
-                <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button mat-stroked-button>Update</button></td>
-                <td name="delete-orders" ><button (click)="onCreate(order.orderId)" mat-stroked-button>Delete</button></td>
-                <td name="delivery" ><button *ngIf="order.orderStatus=='Awaiting Shipment'" mat-stroked-button (click)="scheduleDelivery(order.orderId, order.deliveryDate)">Delivery</button></td>
+                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button name="details" id="details">Details</button></td>
+                <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button mat-stroked-button name="update" id="update">Update</button></td>
+                <td name="delete-orders" ><button (click)="onCreate(order.orderId)" mat-stroked-button  name="delete" id="delete">Delete</button></td>
+                <td name="delivery" ><button *ngIf="order.orderStatus=='Awaiting Shipment'" mat-stroked-button (click)="scheduleDelivery(order.orderId, order.deliveryDate)" name="delivery" id="delivery">Delivery</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
               <!-- <mat-paginator [length]="10"
@@ -58,8 +58,8 @@ import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.co
                 <td name="cabinetType">{{order.cabinetType}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
                 <!-- <td name="design">{{order.design}}</td> -->
-                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button >Details</button></td>
-                <td name="delivery"><button *ngIf="order.orderStatus=='Awaiting Shipment'" mat-stroked-button (click)="scheduleDelivery(order.orderId, order.deliveryDate)">Delivery</button></td>
+                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button name="details" id="details" >Details</button></td>
+                <td name="delivery"><button *ngIf="order.orderStatus=='Awaiting Shipment'" mat-stroked-button (click)="scheduleDelivery(order.orderId, order.deliveryDate)" name="delivery" id="delivery">Delivery</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
             </table>
@@ -82,10 +82,10 @@ import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.co
                 <td name="email">{{order.email}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
                 <!-- <td name="design">{{order.design}}</td> -->
-                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button>Details</button></td>
-                <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button mat-stroked-button>Update</button></td>
-                <td name="delete-orders" ><button mat-stroked-button (click)="onCreate(order.orderId)" >Delete</button></td>
-                <td name="delivery" ><button *ngIf="order.orderStatus=='Awaiting Shipment'" mat-stroked-button (click)="scheduleDelivery(order.orderId, order.deliveryDate)">Delivery</button></td>
+                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button name="details" id="details">Details</button></td>
+                <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button mat-stroked-button name="update" id="update">Update</button></td>
+                <td name="delete-orders" ><button mat-stroked-button (click)="onCreate(order.orderId)" name="delete" id="delete" >Delete</button></td>
+                <td name="delivery" ><button *ngIf="order.orderStatus=='Awaiting Shipment'" mat-stroked-button (click)="scheduleDelivery(order.orderId, order.deliveryDate)" name="delivery" id="delivery">Delivery</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
             </table>
@@ -102,8 +102,8 @@ import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.co
                 <td name="cabinetType">{{order.cabinetType}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
                 <!-- <td name="design">{{order.design}}</td> -->
-                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button>Details</button></td>
-                <td name="delivery" ><button *ngIf="order.orderStatus=='Awaiting Shipment'" mat-stroked-button (click)="scheduleDelivery(order.orderId, order.deliveryDate)">Delivery</button></td>
+                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button name="details" id="details">Details</button></td>
+                <td name="delivery" ><button *ngIf="order.orderStatus=='Awaiting Shipment'" mat-stroked-button (click)="scheduleDelivery(order.orderId, order.deliveryDate)" name="delivery" id="delivery">Delivery</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
             </table>
@@ -126,10 +126,10 @@ import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.co
                 <td name="email">{{order.email}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
                 <!-- <td name="design">{{order.design}}</td> -->
-                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button>Details</button></td>
-                <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button mat-stroked-button>Update</button></td>
-                <td name="delete-orders" ><button mat-stroked-button (click)="onCreate(order.orderId)">Delete</button></td>
-                <td name="delivery" ><button *ngIf="order.orderStatus=='Awaiting Shipment'" mat-stroked-button (click)="scheduleDelivery(order.orderId, order.deliveryDate)">Delivery</button></td>
+                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button name="details" id="details">Details</button></td>
+                <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button mat-stroked-button name="update" id="update">Update</button></td>
+                <td name="delete-orders" ><button mat-stroked-button (click)="onCreate(order.orderId)" name="delete" id="delete">Delete</button></td>
+                <td name="delivery" ><button *ngIf="order.orderStatus=='Awaiting Shipment'" mat-stroked-button (click)="scheduleDelivery(order.orderId, order.deliveryDate)" name="delivery" id="delivery">Delivery</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
             </table>
@@ -147,7 +147,7 @@ import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.co
               <td name="orderStatus">{{order.orderStatus}}</td>
               <!-- <td name="design">{{order.design}}</td> -->
               <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button>Details</button></td>
-              <td name="delivery" ><button *ngIf="order.orderStatus=='Awaiting Shipment'" mat-stroked-button (click)="scheduleDelivery(order.orderId, order.deliveryDate)">Delivery</button></td>
+              <td name="delivery" ><button *ngIf="order.orderStatus=='Awaiting Shipment'" mat-stroked-button (click)="scheduleDelivery(order.orderId, order.deliveryDate)" name="delivery" id="delivery">Delivery</button></td>
               <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
             </tr>
           </table>
