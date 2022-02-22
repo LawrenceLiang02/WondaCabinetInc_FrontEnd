@@ -78,39 +78,39 @@ import { Router } from '@angular/router';
            <mat-menu #dropMenu="matMenu">
           <ng-container>
               <button mat-menu-item name="home" routerLink="home" [routerLinkActive]="['active']" [routerLinkActiveOptions]={exact:true}>
-                  <mat-icon class="mr">home</mat-icon>Home
+                  <mat-icon class="mr"></mat-icon>Home
               </button>
               <mat-divider></mat-divider>
               <button mat-menu-item *ngIf="isLoggedIn" name="view-orders" routerLink="/view-orders" [routerLinkActive]="['active']">
-                  <mat-icon class="mr">assignment</mat-icon>View Orders
+                  <mat-icon class="mr"></mat-icon>View Orders
               </button>
               <mat-divider></mat-divider>
               <button mat-menu-item *ngIf="isLoggedIn" name="add-orders" routerLink="/add-orders" [routerLinkActive]="['active']">
-                  <mat-icon class="mr">add_shopping_cart</mat-icon>Order Now
+                  <mat-icon class="mr"></mat-icon>Order Now
               </button>
               <mat-divider></mat-divider>
               <button mat-menu-item name="view-order-with-tracking-no" routerLink="/track" [routerLinkActive]="['active']">
-                  <mat-icon class="mr"timeline>timeline</mat-icon>Track Your Order
+                  <mat-icon class="mr"></mat-icon>Track Your Order
               </button>
               <mat-divider></mat-divider>
               <button mat-menu-item *ngIf="isLoggedIn && !showEmployeeContent" name="request-update" routerLink="/updaterequest" [routerLinkActive]="['active']">
-                  <mat-icon class="mr">update</mat-icon>Request an Update
+                  <mat-icon class="mr"></mat-icon>Request an Update
               </button>
               <mat-divider></mat-divider>
               <button mat-menu-item *ngIf="isLoggedIn && !showEmployeeContent" name="request-cancel" routerLink="/cancelrequest" [routerLinkActive]="['active']">
-                  <mat-icon class="mr">remove_shopping_cart</mat-icon>Request a Cancellation
+                  <mat-icon class="mr"></mat-icon>Request a Cancellation
               </button>
               <mat-divider></mat-divider>
               <button mat-menu-item *ngIf="!isLoggedIn" name="logout" routerLink="/login" [routerLinkActive]="['active']">
-                  <mat-icon class="mr">login</mat-icon>Log In
+                  <mat-icon class="mr"></mat-icon>Log In
               </button>
               <mat-divider></mat-divider>
               <button mat-menu-item  *ngIf="isLoggedIn" name="logout" (click)="logout()" routerLink="/login">
-                  <mat-icon class="mr">account_box</mat-icon>Log Out
+                  <mat-icon class="mr"></mat-icon>Log Out
               </button>
               <mat-divider></mat-divider>
               <button mat-menu-item  name="contact" routerLink="/contact" [routerLinkActive]="['active']">
-                  <mat-icon class="mr">help</mat-icon>Contact Us
+                  <mat-icon class="mr"></mat-icon>Contact Us
               </button>
               <mat-divider></mat-divider>
           </ng-container>
