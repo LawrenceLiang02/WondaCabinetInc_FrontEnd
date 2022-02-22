@@ -41,6 +41,14 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
 import { UpdaterequestComponent } from './updaterequest/updaterequest.component';
 import { CancelrequestComponent } from './cancelrequest/cancelrequest.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { OktaAuthModule, OKTA_CONFIG } from '@okta/okta-angular';
+
+const oktaConfig = {
+  issuer: 'https://dev-7962608.okta.com/oauth2/default',
+  redirectUri: window.location.origin + '/callback',
+  clientId: '0oa3xvu3lmnRUOCAr5d7',
+  pkce: true
+};
 
 
 @NgModule({
@@ -86,7 +94,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatNativeDateModule,
     FlexLayoutModule,
     MatMenuModule,
-    MatDividerModule
+    MatDividerModule,
+    OktaAuthModule,
     
     
   ],

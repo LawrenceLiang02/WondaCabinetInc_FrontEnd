@@ -13,6 +13,8 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
 import { UpdaterequestComponent } from './updaterequest/updaterequest.component';
 import { CancelrequestComponent } from './cancelrequest/cancelrequest.component';
 import { AuthGuard } from './_auth/auth.guard';
+import { OKTA_CONFIG, OktaAuthModule } from '@okta/okta-angular';
+import { OktaCallbackComponent } from '@okta/okta-angular';
 
 const routes: Routes = [
   {
