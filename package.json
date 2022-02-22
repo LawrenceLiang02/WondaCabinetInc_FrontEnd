@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "http-server-spa dist/WondaCabinetInc_FrontEnd src/index.html $PORT",
+    "start": "http-server-spa dist index.html $PORT",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "heroku-postbuild": "ng build --prod && npm install -g http-server-spa"
