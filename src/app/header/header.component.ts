@@ -75,8 +75,8 @@ import { locales } from '../locales.values';
             <!-- <mat-list-item *ngFor="let locale of locales">
               <a class="lang-option" [href]="'/' + locale.code + currentUrl">{{ locale.text }}</a>
             </mat-list-item> -->
-            <button fxHide.xs mat-button class="header-button" *ngIf="isEnglish" [routerLink]="'/' + localeId + currentUrl" (click)="changeLanguage()" >FR</button>
-            <button fxHide.xs mat-button class="header-button" *ngIf="!isEnglish" [routerLink]="'/' + localeId + currentUrl" (click)="changeLanguage()">EN</button>
+            <button fxHide.xs mat-button class="header-button" *ngIf="isEnglish" [routerLink]="'/' + 'en' + currentUrl" (click)="changeLanguage()" >FR</button>
+            <button fxHide.xs mat-button class="header-button" *ngIf="!isEnglish" [routerLink]="'/' + 'fr' + currentUrl" (click)="changeLanguage()">EN</button>
             
           <button mat-icon-button [matMenuTriggerFor]="dropMenu" fxHide fxShow.xs>
               <mat-icon>more_vert</mat-icon>
