@@ -28,7 +28,7 @@ import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.co
                 <!-- <th scope="col">Design</th> -->
               </tr>
               <tr *ngFor="let order of activeOrders">
-                <td scope="row">{{order.trackingNo}}</td>
+                <td scope="row" name="trackingNo" id="trackingNo">{{order.trackingNo}}</td>
                 <td name="cabinetType">{{order.cabinetType}}</td>
                 <td name="email">{{order.email}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
@@ -54,7 +54,7 @@ import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.co
                 <!-- <th scope="col">Design</th> -->
               </tr>
               <tr *ngFor="let order of activeByEmail">
-                <td scope="row">{{order.trackingNo}}</td>
+                <td scope="row" name="trackingNo" id="trackingNo">{{order.trackingNo}}</td>
                 <td name="cabinetType">{{order.cabinetType}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
                 <!-- <td name="design">{{order.design}}</td> -->
@@ -77,7 +77,7 @@ import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.co
                 <!-- <th scope="col">Design</th> -->
               </tr>
               <tr *ngFor="let order of cancelledOrders">
-                <td scope="row">{{order.trackingNo}}</td>
+                <td scope="row" name="trackingNo" id="trackingNo">{{order.trackingNo}}</td>
                 <td name="cabinetType">{{order.cabinetType}}</td>
                 <td name="email">{{order.email}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
@@ -98,7 +98,7 @@ import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.co
                 <!-- <th scope="col">Design</th> -->
               </tr>
               <tr *ngFor="let order of cancelledByEmail">
-                <td scope="row">{{order.trackingNo}}</td>
+                <td scope="row" name="trackingNo" id="trackingNo">{{order.trackingNo}}</td>
                 <td name="cabinetType">{{order.cabinetType}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
                 <!-- <td name="design">{{order.design}}</td> -->
@@ -121,7 +121,7 @@ import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.co
                 <!-- <th scope="col">Design</th> -->
               </tr>
               <tr *ngFor="let order of orders">
-                <td scope="row">{{order.trackingNo}}</td>
+                <td scope="row" name="trackingNo" id="trackingNo">{{order.trackingNo}}</td>
                 <td name="cabinetType">{{order.cabinetType}}</td>
                 <td name="email">{{order.email}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
@@ -142,7 +142,7 @@ import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.co
               <!-- <th scope="col">Design</th> -->
             </tr>
             <tr *ngFor="let order of allByEmail">
-              <td scope="row">{{order.trackingNo}}</td>
+              <td scope="row" name="trackingNo" id="trackingNo">{{order.trackingNo}}</td>
               <td name="cabinetType">{{order.cabinetType}}</td>
               <td name="orderStatus">{{order.orderStatus}}</td>
               <!-- <td name="design">{{order.design}}</td> -->
