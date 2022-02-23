@@ -43,9 +43,9 @@ import { OrderServiceService } from '../view-orders/order-service.service';
         </div>
       </mat-dialog-content>
         <mat-dialog-actions align="end">
-          <button mat-raised-button mat-dialog-close>Cancel</button>
+          <button mat-raised-button mat-dialog-close name="cancel" id="cancel">Cancel</button>
           <!-- mat-button [mat-dialog-close]="true" -->
-          <button type="submit" mat-raised-button color="warn" cdkFocusInitial >Delete</button>
+          <button type="submit" mat-raised-button color="warn" cdkFocusInitial name="delete" id="delete" >Delete</button>
         </mat-dialog-actions>
           
       

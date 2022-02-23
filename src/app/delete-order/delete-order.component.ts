@@ -10,8 +10,8 @@ import { DeletePasswordComponent } from '../delete-password/delete-password.comp
       <p>Are you sure you want to delete this order? You can not undo this action. If you wish to keep this in the records, please change the status to "cancelled".</p>
     </mat-dialog-content>
     <mat-dialog-actions align="end">
-      <button mat-raised-button mat-dialog-close>Cancel</button>
-      <button mat-raised-button color="warn" mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="onClick()">Delete</button>
+      <button mat-raised-button mat-dialog-close name="cancel" id="cancel">Cancel</button>
+      <button mat-raised-button color="warn" mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="onClick()" name="delete" id="delete">Delete</button>
     </mat-dialog-actions>
   `,
   styles: [
