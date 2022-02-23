@@ -12,15 +12,15 @@ import { OrderServiceService } from '../view-orders/order-service.service';
     <mat-form-field class="example-form-field" appearance="fill">
 
     <mat-label>Tracking Number</mat-label>
-      <input matInput type="text" [(ngModel)]="value" >
-      <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+      <input matInput type="text" [(ngModel)]="value" name="trackingNo-input" id="trackingNo-input">
+      <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''" name="clear" id="clear">
         <mat-icon>close</mat-icon>
       </button>
       
     </mat-form-field>
     
     </div>
-    <button mat-raised-button (click)="onClick()" >Track</button>
+    <button mat-raised-button (click)="onClick()" name="submit-track" id="submit-track" >Track</button>
 
 </div>
     <div class="my-container" name="orderFound" *ngIf="order && orderFound"> 
