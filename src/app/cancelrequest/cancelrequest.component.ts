@@ -4,13 +4,15 @@ import { OrderServiceService } from '../view-orders/order-service.service';
 @Component({
   selector: 'app-cancelrequest',
   template: `
-  <h1 class="jumbotron" style='text-align: center; font-weight: bold'>Request Specifications About Your Orders</h1>
-  <h1 style='text-align: center; font-weight: bold'>Cancellation Request</h1>
+  <h1 i18n class="jumbotron" style='text-align: center; font-weight: bold'>Request Specifications About Your Orders</h1>
+  <h1 i18n style='text-align: center; font-weight: bold'>Cancellation Request</h1>
   <div class='my-container' style="display: flex; justify-content: center; align-items: center; height: 500px;">
   <form *ngIf="!isSuccess" (ngSubmit)="f.form.valid && onSubmit()" name="form" #f="ngForm" novalidate>
     <div class="form-group">
-    <label for="trackingNo" style="font-size: 150%">Tracking No</label>
-    <input type="text"
+    <label i18n for="trackingNo" style="font-size: 150%">Tracking No</label>
+    <input
+    i18n-placeholder
+    type="text"
      ngModel class="form-control"
      id="trackingNo"
      name="trackingNo"
@@ -21,6 +23,7 @@ import { OrderServiceService } from '../view-orders/order-service.service';
      #trackingNo="ngModel">
 
      <div
+     i18n
           class="alert alert-danger"
           role="alert"
           *ngIf="trackingNo.errors && f.submitted"
@@ -29,8 +32,9 @@ import { OrderServiceService } from '../view-orders/order-service.service';
         </div>
     </div>
     <div class="form-group">
-    <label for="body" style="font-size: 150%">Extra Specifications to Cancellation</label>
+    <label i18n for="body" style="font-size: 150%">Extra Specifications to Cancellation</label>
     <textarea
+    i18n-placeholder
     ngModel class="form-control"
      id="body"
      name="body"
@@ -41,11 +45,12 @@ import { OrderServiceService } from '../view-orders/order-service.service';
      #body="ngModel">
      </textarea>
      <div>
-     <button type="submit" class="btn btn-primary mb-2" name="submit" style='margin-top: 10px; text-align: center; float: right'>Send Request</button>
+     <button i18n type="submit" class="btn btn-primary mb-2" name="submit" style='margin-top: 10px; text-align: center; float: right'>Send Request</button>
      </div>
 
      <div class="form-group">
       <div
+      i18n
       class="alert alert-danger"
       role="alert"
       name="failedSend"
@@ -56,7 +61,7 @@ import { OrderServiceService } from '../view-orders/order-service.service';
     </div>
     </div>
   </form>
-  <div class="alert alert-success" name="success" *ngIf="isSuccess">
+  <div i18n class="alert alert-success" name="success" *ngIf="isSuccess">
     Email sent to staff.
     <a routerLink="/">Back to Home</a>
   </div>

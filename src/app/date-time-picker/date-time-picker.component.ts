@@ -8,9 +8,9 @@ import { OrderServiceService } from '../view-orders/order-service.service';
 @Component({
   selector: 'app-date-time-picker',
   template: `
-    <h2 mat-dialog-title>DELIVERY</h2>
+    <h2 i18n mat-dialog-title>DELIVERY</h2>
     <form #f="ngForm" (ngSubmit)="f.form.valid && onClick()">
-      <p>Choose a date</p>
+      <p i18n>Choose a date</p>
       <div style="display: flex;">
       <input matInput [matDatepicker]="picker" id="date" name="date" [(ngModel)]="form.date" class="form-control" >
       <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle>
@@ -18,8 +18,8 @@ import { OrderServiceService } from '../view-orders/order-service.service';
       </div>
       <input type="time" id="time" name="time" class="form-control" [(ngModel)]="form.time" min="09:00" max="18:00" required  >
     <mat-dialog-actions align="end">
-      <button mat-raised-button mat-dialog-close>Cancel</button>
-      <button type="submit" mat-raised-button mat-button [mat-dialog-close]="true" cdkFocusInitial [disabled]="!f.form.valid">Select</button>
+      <button i18n mat-raised-button mat-dialog-close>Cancel</button>
+      <button i18n type="submit" mat-raised-button mat-button [mat-dialog-close]="true" cdkFocusInitial [disabled]="!f.form.valid">Select</button>
     </mat-dialog-actions>
     </form>
   `,

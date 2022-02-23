@@ -15,19 +15,19 @@ import { EventData } from '../login/event.class';
   <div class="my-container">
     <form #addForm="ngForm" (ngSubmit)="onAddEmployee(addForm)">
     <div class="form-group">
-        <label>Reference Name</label>
-        <input type="text" ngModel class="form-control" id="cabinetType" name = "cabinetType" placeholder="Kitchen">
+        <label i18n>Reference Name</label>
+        <input i18n-placeholder type="text" ngModel class="form-control" id="cabinetType" name = "cabinetType" placeholder="Kitchen">
       </div>
       <div class="form-group">
-        <label>Color (please reference to <a href="https://www.benjaminmoore.com/en-ca/colour-overview" target="_blank" >BenjaminMoore</a> catalog)</label>
-        <input type="text" ngModel class="form-control" name ="color" id="color" placeholder="#000000">
+        <label i18n>Color (please reference to <a href="https://www.benjaminmoore.com/en-ca/colour-overview" target="_blank" >BenjaminMoore</a> catalog)</label>
+        <input i18n-placeholder type="text" ngModel class="form-control" name ="color" id="color" placeholder="#000000">
       </div>
       <div class="form-group">
-      <label for="select_material">Material</label>
+      <label i18n for="select_material">Material</label>
       <select class="form-control" ngModel id="material" name="material">
-        <option>Oak</option>
-        <option>Maple</option>
-        <option>Medium-density fibreboard</option>
+        <option i18n>Oak</option>
+        <option i18n>Maple</option>
+        <option i18n>Medium-density fibreboard</option>
       </select>
       </div>
       <!-- <div class="form-group">
@@ -38,32 +38,32 @@ import { EventData } from '../login/event.class';
       </select>
       </div> -->
       <div class="form-group">
-      <label for="select_handle">Select a handle</label>
+      <label i18n for="select_handle">Select a handle</label>
       <select class="form-control" ngModel id="handleType" name="handleType">
-        <option>Square</option>
-        <option>Round</option>
-        <option>Knob</option>
+        <option i18n>Square</option>
+        <option i18n>Round</option>
+        <option i18n>Knob</option>
       </select>
       </div>
       <div class="form-group">
-      <label>Email</label>
-      <input type="email" ngModel class="form-control" id="email" name = "email" placeholder="Email" [(ngModel)]="email">
+      <label i18n>Email</label>
+      <input i18n-placeholder type="email" ngModel class="form-control" id="email" name = "email" placeholder="Email" [(ngModel)]="email">
       </div>
       <div class="form-group">
-      <label>Address</label>
-      <input type="text" ngModel class="form-control" id="address" name = "address" placeholder="Address">
+      <label i18n>Address</label>
+      <input i18n-placeholder type="text" ngModel class="form-control" id="address" name = "address" placeholder="Address">
       </div>
       <div class="form-group">
-      <label>City</label>
-      <input type="text" ngModel class="form-control" id="city" name = "city" placeholder="City">
+      <label i18n>City</label>
+      <input i18n-placeholder type="text" ngModel class="form-control" id="city" name = "city" placeholder="City">
       </div>
       <div>
-        <label for="exampleFormControlTextarea1">Additional Items</label>
-        <textarea class="form-control" id="additional_items" rows="3" placeholder="E.g. Lazy Suzan, Spice Rack" name="additional_items"></textarea>
+        <label i18n for="exampleFormControlTextarea1">Additional Items</label>
+        <textarea i18n-placeholder class="form-control" id="additional_items" rows="3" placeholder="E.g. Lazy Suzan, Spice Rack" name="additional_items"></textarea>
       </div>
       <br>
       <div>
-      <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary mb-2" name="submit">Submit</button>
+      <button i18n [disabled]="addForm.invalid" type="submit" class="btn btn-primary mb-2" name="submit">Submit</button>
       </div>
       
     </form>

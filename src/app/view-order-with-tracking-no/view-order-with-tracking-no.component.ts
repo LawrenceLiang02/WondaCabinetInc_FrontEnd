@@ -6,12 +6,12 @@ import { OrderServiceService } from '../view-orders/order-service.service';
   selector: 'app-view-order-with-tracking-no',
   template: `
   <div class="my-container bodyContentStyling" style="background-color: WhiteSmoke; width: 100%; padding: 2% 7%">
-    <h2>Track your order!</h2>
-    <p>Track your order by entering your order tracking number!</p>
+    <h2 i18n>Track your order!</h2>
+    <p i18n>Track your order by entering your order tracking number!</p>
     <div style="width: 30%;"> 
     <mat-form-field class="example-form-field" appearance="fill">
 
-    <mat-label>Tracking Number</mat-label>
+    <mat-label i18n>Tracking Number</mat-label>
       <input matInput type="text" [(ngModel)]="value" name="trackingNo-input" id="trackingNo-input">
       <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''" name="clear" id="clear">
         <mat-icon>close</mat-icon>
@@ -20,18 +20,18 @@ import { OrderServiceService } from '../view-orders/order-service.service';
     </mat-form-field>
     
     </div>
-    <button mat-raised-button (click)="onClick()" name="submit-track" id="submit-track" >Track</button>
+    <button i18n mat-raised-button (click)="onClick()" name="submit-track" id="submit-track" >Track</button>
 
 </div>
     <div class="my-container" name="orderFound" *ngIf="order && orderFound"> 
-      <h2>Here is the found order</h2>
-      <p>Tracking Number: {{order.trackingNo}}</p>
-      <p>Status: {{order.orderStatus}}</p>
+      <h2 i18n>Here is the found order</h2>
+      <p i18n>Tracking Number: {{order.trackingNo}}</p>
+      <p i18n>Status: {{order.orderStatus}}</p>
     </div>
     <div class="my-container" name="errorFound" *ngIf="hasError"> 
-      <h2>Uh oh, can't seem to find your order.</h2>
-      <p>This is what we got: {{ errorMessage }}</p>
-      <p>Please check your tracking number and try again.</p>
+      <h2 i18n>Uh oh, can't seem to find your order.</h2>
+      <p i18n>This is what we got: {{ errorMessage }}</p>
+      <p i18n>Please check your tracking number and try again.</p>
     </div>
   `,
   styles: [

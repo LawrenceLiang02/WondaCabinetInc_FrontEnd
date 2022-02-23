@@ -9,37 +9,37 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
   selector: 'app-orderdetails',
   template: `
   <div class="my-container">
-    <h2>Order Details</h2>
+    <h2 i18n>Order Details</h2>
     <div *ngIf="order">
       <div>
-       <strong>Tracking Number:</strong> {{order.trackingNo}}
+       <strong i18n>Tracking Number:</strong> {{order.trackingNo}}
       </div>
       <div>
-       <strong>Status:</strong> {{order.orderStatus}}
+       <strong i18n>Status:</strong> {{order.orderStatus}}
       </div>
       <div >
-       <strong>Name:</strong> {{order.cabinetType}}
+       <strong i18n>Name:</strong> {{order.cabinetType}}
       </div>
       <div >
-       <strong>Color:</strong> {{order.color}}
+       <strong i18n>Color:</strong> {{order.color}}
       </div>
       <div >
-       <strong>Material:</strong> {{order.material}}
+       <strong i18n>Material:</strong> {{order.material}}
       </div>
       <div >
-       <strong>Handle Type:</strong> {{order.handleType}}
+       <strong i18n>Handle Type:</strong> {{order.handleType}}
       </div>
       <div >
-       <strong>Email:</strong> {{order.email}}
+       <strong i18n>Email:</strong> {{order.email}}
       </div>
       <div >
-       <strong>Address:</strong> {{order.address}}
+       <strong i18n>Address:</strong> {{order.address}}
       </div>
       <div >
-       <strong>City:</strong> {{order.city}}
+       <strong i18n>City:</strong> {{order.city}}
       </div>
       <div *ngIf="order.deliveryDate != null">
-       <strong>Delivery Date:</strong> {{order.deliveryDate}}
+       <strong i18n>Delivery Date:</strong> {{order.deliveryDate}}
       </div>
       <div class="my-container">
         <!-- <embed type="application/pdf" scr="https://s2.q4cdn.com/498544986/files/doc_downloads/test.pdf" width="100%" height="600px"/> -->

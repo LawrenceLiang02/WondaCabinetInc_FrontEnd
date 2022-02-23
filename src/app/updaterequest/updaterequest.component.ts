@@ -7,13 +7,13 @@ import { HttpErrorResponse } from '@angular/common/http';
   selector: 'app-updaterequest',
   template: `
   
-  <h1 class="jumbotron" style='text-align: center; font-weight: bold'>Request Specifications About Your Orders</h1>
-  <h1 style='text-align: center; font-weight: bold'>Update Request</h1>
+  <h1  i18n class="jumbotron" style='text-align: center; font-weight: bold'>Request Specifications About Your Orders</h1>
+  <h1 i18n style='text-align: center; font-weight: bold'>Update Request</h1>
   <div class='my-container' style="display: flex; justify-content: center; align-items: center; height: 500px;">
   <form *ngIf="!isSuccess" (ngSubmit)="f.form.valid && onSubmit()" name="form" #f="ngForm" novalidate>
     <div class="form-group">
-    <label for="trackingNo" style="font-size: 150%">Tracking No</label>
-    <input type="text"
+    <label i18n for="trackingNo" style="font-size: 150%">Tracking No</label>
+    <input i18n-placeholder type="text"
      ngModel class="form-control"
      id="trackingNo"
      name="trackingNo"
@@ -23,7 +23,7 @@ import { HttpErrorResponse } from '@angular/common/http';
      required
      #trackingNo="ngModel">
 
-     <div
+     <div i18n
           class="alert alert-danger"
           role="alert"
           *ngIf="trackingNo.errors && f.submitted"
@@ -32,8 +32,8 @@ import { HttpErrorResponse } from '@angular/common/http';
         </div>
     </div>
     <div class="form-group">
-    <label for="body" style="font-size: 150%">Specify Modifications to your order</label>
-    <textarea
+    <label i18n for="body" style="font-size: 150%">Specify Modifications to your order</label>
+    <textarea i18n-placeholder
     ngModel class="form-control"
      id="body"
      name="body"
@@ -44,7 +44,7 @@ import { HttpErrorResponse } from '@angular/common/http';
      rows="10"
      #body="ngModel">
      </textarea>
-     <div
+     <div i18n
      class="alert alert-danger"
      role="alert"
      *ngIf="body.errors && f.submitted"
@@ -52,11 +52,11 @@ import { HttpErrorResponse } from '@angular/common/http';
      Body is required!
     </div>
      <div>
-     <button type="submit" class="btn btn-primary mb-2" name="submit" style='margin-top: 10px; text-align: center; float: right'>Send Request</button>
+     <button i18n type="submit" class="btn btn-primary mb-2" name="submit" style='margin-top: 10px; text-align: center; float: right'>Send Request</button>
      </div>
 
      <div class="form-group">
-      <div
+      <div i18n
       class="alert alert-danger"
       role="alert"
       name="failedSend"
