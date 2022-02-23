@@ -45,9 +45,6 @@
         "locales": {
           "fr":{
             "translation": "src/translate/messages.fr.xlf"
-          },
-          "en":{
-            "translation": "src/translate/messages.en.xlf"
           }
         }
       },
