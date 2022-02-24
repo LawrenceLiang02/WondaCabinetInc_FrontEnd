@@ -41,12 +41,9 @@
       "sourceRoot": "src",
       "prefix": "app",
       "i18n": {
-        "sourceLocale": "en-US",
         "locales": {
-          "fr": {
-            "translation": "src/translate/messages.fr.xlf",
-            "baseHref": "/fr/"
-          }
+          "fr":"src/translate/messages.fr.xlf",
+          "en":"src/translate/messages.en.xlf"
         }
       },
       "architect": {

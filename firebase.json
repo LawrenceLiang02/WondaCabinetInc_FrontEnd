@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "wonda-cabinet-inc-front-end",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
