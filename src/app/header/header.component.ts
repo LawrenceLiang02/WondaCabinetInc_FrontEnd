@@ -72,12 +72,12 @@ import { locales } from '../locales.values';
             
             <button i18n fxHide.xs mat-button class="header-button" *ngIf="isLoggedIn" name="logout" (click)="logout()" routerLink="/login">Log Out</button> 
             <button i18n fxHide.xs mat-button class="header-button" name="contact" routerLink="/contact" [routerLinkActive]="['active']">Contact Us</button> 
-            <mat-list-item *ngFor="let locale of locales">
+            <!-- <mat-list-item *ngFor="let locale of locales">
               <button fxHide.xs mat-button class="header-button"><a class="lang-option" [href]="'/' + locale.code + currentUrl">{{ locale.text }}</a></button>
-            </mat-list-item>
-            <!-- <button fxHide.xs mat-button class="header-button" *ngIf="isEnglish" [routerLink]="'/' + 'en' + currentUrl" (click)="changeLanguage()" >FR</button>
-            <button fxHide.xs mat-button class="header-button" *ngIf="!isEnglish" [routerLink]="'/' + 'fr' + currentUrl" (click)="changeLanguage()">EN</button>
-             -->
+            </mat-list-item> -->
+            <button fxHide.xs mat-button class="header-button" *ngIf="isEnglish" routerLink="/en/" (click)="changeLanguage()" >FR</button>
+            <button fxHide.xs mat-button class="header-button" *ngIf="!isEnglish" routerLink="/fr/" (click)="changeLanguage()">EN</button>
+            
           <button mat-icon-button [matMenuTriggerFor]="dropMenu" fxHide fxShow.xs>
               <mat-icon>more_vert</mat-icon>
            </button>

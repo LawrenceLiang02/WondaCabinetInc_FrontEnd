@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "wonda-cabinet-inc-front-end",
+    "public": "dist/wonda-cabinet-inc-front-end",
     "ignore": [
       "firebase.json",
       "**/.*",
