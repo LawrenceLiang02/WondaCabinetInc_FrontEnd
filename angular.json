@@ -42,8 +42,7 @@
       "prefix": "app",
       "i18n": {
         "locales": {
-          "fr":"src/translate/messages.fr.xlf",
-          "en":"src/translate/messages.en.xlf"
+          "fr":"src/translate/messages.fr.xlf"
         }
       },
       "architect": {
@@ -76,9 +75,6 @@
             ]
           },
           "configurations": {
-            "en":{
-              "localize": ["en"]
-            },
             "fr":{
               "localize":["fr"]
             },
@@ -122,9 +118,6 @@
             },
             "development": {
               "browserTarget": "WondaCabinetInc_FrontEnd:build:development"
-            },
-            "en":{
-              "browserTarget": "WondaCabinetInc_FrontEnd:build:en"
             },
             "fr":{
               "browserTarget": "WondaCabinetInc_FrontEnd:build:fr"

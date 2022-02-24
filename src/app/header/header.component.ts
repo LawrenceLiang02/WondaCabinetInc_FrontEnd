@@ -75,8 +75,8 @@ import { locales } from '../locales.values';
             <!-- <mat-list-item *ngFor="let locale of locales">
               <button fxHide.xs mat-button class="header-button"><a class="lang-option" [href]="'/' + locale.code + currentUrl">{{ locale.text }}</a></button>
             </mat-list-item> -->
-            <button fxHide.xs mat-button class="header-button" *ngIf="isEnglish"  (click)="changeLanguage()" ><a style="text-decoration: none; color: white;" href="/en-US/">FR</a></button>
-            <button fxHide.xs mat-button class="header-button" *ngIf="!isEnglish" (click)="changeLanguage()"><a style="text-decoration: none; color: white;" href="/fr/">EN</a></button>
+            <button *ngIf="isEnglish" fxHide.xs mat-button class="header-button" ><a  style="text-decoration: none; color: white;" href="/fr/">FR</a></button>
+            <button *ngIf="!isEnglish" fxHide.xs mat-button class="header-button" ><a  style="text-decoration: none; color: white;" href="/en-US/">EN</a></button>
             
           <button mat-icon-button [matMenuTriggerFor]="dropMenu" fxHide fxShow.xs>
               <mat-icon>more_vert</mat-icon>
@@ -136,7 +136,7 @@ export class HeaderComponent implements OnInit {
   showEmployeeContent = false;
   username?: string;
 
-  isEnglish = true;
+  isEnglish: boolean;
   currentUrl = "";
   locales = [];
 
@@ -147,10 +147,23 @@ export class HeaderComponent implements OnInit {
   ];
 
   siteLocale:string;
+  siteLanguage:string;
 
   constructor(private tokenStorageService: TokenStorageService, private router: Router, @Inject(LOCALE_ID) public localeId: string) { }
 
   ngOnInit(): void {
+    this.siteLocale = window.location.pathname.split('/')[1];
+    
+    
+    this.siteLanguage = this.languageList.find(f => f.code === this.siteLocale).label;
+
+    if (window.location.pathname.split('/')[1] == "fr"){
+      this.isEnglish = false;
+    }
+    else if (window.location.pathname.split('/')[1] == "en-US"){
+      this.isEnglish = true;
+    }
+
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
     if (this.isLoggedIn) {
@@ -185,15 +198,15 @@ export class HeaderComponent implements OnInit {
    
   }
 
-  changeLanguage():void{
-    if (this.localeId === 'fr'){
-      this.isEnglish = true;
-      this.localeId = 'en';
-    }
-    else{
-      this.isEnglish = false;
-      this.localeId = 'fr';
-    }
-  }
+  // changeLanguage():void{
+  //   if (this.localeId === 'fr'){
+  //     this.isEnglish = true;
+  //     this.localeId = 'en';
+  //   }
+  //   else{
+  //     this.isEnglish = false;
+  //     this.localeId = 'fr';
+  //   }
+  // }
 
 }
