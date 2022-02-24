@@ -44,7 +44,8 @@
         "sourceLocale":"en",
         "locales": {
           "fr":{
-            "translation": "src/translate/messages.fr.xlf"
+            "translation": "src/translate/messages.fr.xlf",
+            "baseHref": "/fr/"
           }
         }
       },
