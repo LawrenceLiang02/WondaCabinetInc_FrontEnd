@@ -16,7 +16,7 @@ import { OrderServiceService } from '../view-orders/order-service.service';
         <input type="number" ngModel class="form-control" id="orderId" name = "orderId" placeholder="Id" [(ngModel)]="order.orderId">
       </div>  -->
       <div class="form-group">
-        <label for="select_handle">Order Satus</label>
+        <label i18n for="select_handle">Order Satus</label>
         <select class="form-control" ngModel id="orderStatus" name="orderStatus">
           <option>Awaiting Order</option>
           <option>Order Received</option>
@@ -32,23 +32,23 @@ import { OrderServiceService } from '../view-orders/order-service.service';
         </select>
         </div>
       <div class="form-group">
-        <label>Link to Design (PDF)</label>
-        <input type="text" ngModel class="form-control" id="design" name = "design" placeholder="Design" [(ngModel)]="order.design">
+        <label i18n>Link to Design (PDF)</label>
+        <input i18n-placeholder type="text" ngModel class="form-control" id="design" name = "design" placeholder="Design" [(ngModel)]="order.design">
       </div> 
     <div class="form-group">
-        <label>Reference Name</label>
-        <input type="text" ngModel class="form-control" id="cabinetType" name = "cabinetType" placeholder="Kitchen" [(ngModel)]="order.cabinetType">
+        <label i18n>Reference Name</label>
+        <input i18n-placeholder type="text" ngModel class="form-control" id="cabinetType" name = "cabinetType" placeholder="Kitchen" [(ngModel)]="order.cabinetType">
       </div>
       <div class="form-group">
-        <label>Color (please reference to <a href="https://www.benjaminmoore.com/en-ca/colour-overview">BenjaminMoore</a> catalog)</label>
-        <input type="text" ngModel class="form-control" name ="color" id="color" placeholder="#000000" [(ngModel)]="order.color">
+        <label i18n>Color (please reference to <a href="https://www.benjaminmoore.com/en-ca/colour-overview">BenjaminMoore</a> catalog)</label>
+        <input i18n-placeholder type="text" ngModel class="form-control" name ="color" id="color" placeholder="#000000" [(ngModel)]="order.color">
       </div>
       <div class="form-group">
-      <label for="select_handle">Material</label>
+      <label i18n for="select_handle">Material</label>
       <select class="form-control" ngModel id="material" name="material" [(ngModel)]="order.material">
-        <option>Oak</option>
-        <option>Maple</option>
-        <option>Medium-density fibreboard</option>
+        <option i18n>Oak</option>
+        <option i18n>Maple</option>
+        <option i18n>Medium-density fibreboard</option>
       </select>
       </div>
       <!-- <div class="form-group">
@@ -59,20 +59,20 @@ import { OrderServiceService } from '../view-orders/order-service.service';
       </select>
       </div> -->
       <div class="form-group">
-      <label for="select_handle">Select a handle</label>
+      <label i18n for="select_handle">Select a handle</label>
       <select class="form-control" ngModel id="handleType" name="handleType" [(ngModel)]="order.handleType">
-        <option>Square</option>
-        <option>Round</option>
-        <option>Knob</option>
+        <option i18n>Square</option>
+        <option i18n>Round</option>
+        <option i18n>Knob</option>
       </select>
       </div>
       <div class="form-group">
-      <label>Address</label>
-      <input type="text" ngModel class="form-control" id="address" name = "address" placeholder="Address" [(ngModel)]="order.address">
+      <label i18n>Address</label>
+      <input i18n-placeholder type="text" ngModel class="form-control" id="address" name = "address" placeholder="Address" [(ngModel)]="order.address">
       </div>
       <div class="form-group">
-      <label>City</label>
-      <input type="text" ngModel class="form-control" id="city" name = "city" placeholder="City" [(ngModel)]="order.city">
+      <label i18n>City</label>
+      <input i18n-placeholder type="text" ngModel class="form-control" id="city" name = "city" placeholder="City" [(ngModel)]="order.city">
       </div>
       <!-- <div>
         <label for="exampleFormControlTextarea1">Additional Items</label>
@@ -80,7 +80,7 @@ import { OrderServiceService } from '../view-orders/order-service.service';
       </div> -->
       <br>
       <div>
-      <button [disabled]="updateForm.invalid" type="submit" class="btn btn-primary mb-2" name="submit">Submit</button>
+      <button i18n [disabled]="updateForm.invalid" type="submit" class="btn btn-primary mb-2" name="submit">Submit</button>
       </div>
     </form>
   </div>

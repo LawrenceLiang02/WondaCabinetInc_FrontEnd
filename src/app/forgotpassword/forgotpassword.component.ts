@@ -4,14 +4,16 @@ import { UserAuthService } from '../login/login.service';
 @Component({
   selector: 'app-forgotpassword',
   template: `
-  <h1 class="jumbotron" style='text-align: center; font-weight: bold'>Reset your Password</h1>
-  <h1 style='text-align: center; font-weight: bold'>Get a password token to reset your password and then set your new password</h1>
+  <h1 i18n class="jumbotron" style='text-align: center; font-weight: bold'>Reset your Password</h1>
+  <h1 i18n style='text-align: center; font-weight: bold'>Get a password token to reset your password and then set your new password</h1>
   <div class='my-container' style="display: flex; justify-content: center; align-items: center; height: 250px;">
   
   <form *ngIf="!isRequestTokenSuccess" (ngSubmit)="f.form.valid && onSubmitTokenRequest()" name="form" #f="ngForm" novalidate>
     <div class="form-group">
-      <label for="email" style="font-size: 150%">Email</label>
-      <input type="email"
+      <label i18n for="email" style="font-size: 150%">Email</label>
+      <input
+      i18n-placeholder
+      type="email"
       ngModel class="form-control"
       id="email"
       name="email"
@@ -21,7 +23,8 @@ import { UserAuthService } from '../login/login.service';
       required
       #email="ngModel">
 
-      <div
+      <div 
+          i18n
           class="alert alert-danger"
           role="alert"
           *ngIf="email.errors && f.submitted"
@@ -31,11 +34,12 @@ import { UserAuthService } from '../login/login.service';
     </div>
 
     <div>
-      <button type="submit" class="btn btn-primary mb-2" name="submit" style='margin-top: 10px; text-align: center; width: 900px;'>Send Password Token Email</button>
+      <button i18n type="submit" class="btn btn-primary mb-2" name="submit" style='margin-top: 10px; text-align: center; width: 900px;'>Send Password Token Email</button>
     </div>
     
     <div class="form-group">
       <div
+      i18n
       class="alert alert-danger"
       role="alert"
       name="failedTokenSend"
@@ -47,7 +51,7 @@ import { UserAuthService } from '../login/login.service';
     
   </form>
 
-  <div class="alert alert-success" name="success" *ngIf="isRequestTokenSuccess && !isResetPasswordSuccess">
+  <div i18n class="alert alert-success" name="success" *ngIf="isRequestTokenSuccess && !isResetPasswordSuccess">
     Token sent to {{ form.email }}.
     </div>
   </div>
@@ -55,8 +59,10 @@ import { UserAuthService } from '../login/login.service';
 <div class='my-container' style="display: flex; justify-content: center; align-items: center;">
   <form *ngIf="!isResetPasswordSuccess && isRequestTokenSuccess" (ngSubmit)="f.form.valid && onSubmitPasswordReset()" name="form2" #f="ngForm" novalidate>
     <div class="form-group">
-      <label for="passwordToken" style="font-size: 150%">Password Token</label>
-      <input type="text"
+      <label i18n for="passwordToken" style="font-size: 150%">Password Token</label>
+      <input 
+      i18n-placeholder
+      type="text"
       ngModel class="form-control"
       id="passwordToken"
       name="passwordToken"
@@ -67,6 +73,7 @@ import { UserAuthService } from '../login/login.service';
       #passwordToken="ngModel">
 
       <div
+      i18n
       class="alert alert-danger"
       role="alert"
       *ngIf="passwordToken.errors && f.submitted"
@@ -76,8 +83,10 @@ import { UserAuthService } from '../login/login.service';
    </div>
 
    <div class="form-group">
-      <label for="newPassword" style="font-size: 150%">New Password</label>
-      <input type="password"
+      <label i18n for="newPassword" style="font-size: 150%">New Password</label>
+      <input
+      i18n-placeholder
+      type="password"
       ngModel class="form-control"
       id="newPassword"
       name="newPassword"
@@ -88,8 +97,8 @@ import { UserAuthService } from '../login/login.service';
       #newPassword="ngModel">
 
       <div class="alert-danger" *ngIf="newPassword.errors && f.submitted">
-          <div *ngIf="newPassword.errors['required']">New Password is required</div>
-          <div *ngIf="newPassword.errors['minlength']">
+          <div i18n *ngIf="newPassword.errors['required']">New Password is required</div>
+          <div i18n *ngIf="newPassword.errors['minlength']">
             Password must be at least 6 characters
           </div>
         </div>
@@ -97,6 +106,7 @@ import { UserAuthService } from '../login/login.service';
 
    <div class="form-group">
       <div
+      i18n
       class="alert alert-danger"
       role="alert"
       name="failedUpdateSend"
@@ -107,12 +117,12 @@ import { UserAuthService } from '../login/login.service';
     </div>
 
    <div>
-   <button type="submit" class="btn btn-primary mb-2" name="submit" style='margin-top: 10px; text-align: center; width: 900px;'>Reset Password</button>
+   <button i18n type="submit" class="btn btn-primary mb-2" name="submit" style='margin-top: 10px; text-align: center; width: 900px;'>Reset Password</button>
    </div>
   
   </form>
 
-  <div class="alert alert-success" name="success" *ngIf="isResetPasswordSuccess">
+  <div i18n class="alert alert-success" name="success" *ngIf="isResetPasswordSuccess">
     Password updated successfully.
     <a routerLink="/login" style="font-size: 150%">Back To Login</a>
   </div>

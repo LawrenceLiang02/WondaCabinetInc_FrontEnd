@@ -30,18 +30,17 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import {MatPaginatorModule} from '@angular/material/paginator';
-
+import {MatListModule} from '@angular/material/list';
 import { DateTimePickerComponent } from './date-time-picker/date-time-picker.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { DatePipe } from '@angular/common';
+import { DatePipe, registerLocaleData } from '@angular/common';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDividerModule} from '@angular/material/divider';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { UpdaterequestComponent } from './updaterequest/updaterequest.component';
 import { CancelrequestComponent } from './cancelrequest/cancelrequest.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
 
 @NgModule({
   declarations: [
@@ -86,11 +85,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatNativeDateModule,
     FlexLayoutModule,
     MatMenuModule,
-    MatDividerModule
+    MatDividerModule,
+    MatListModule,
     
     
   ],
-  providers: [OrderServiceService, authInterceptorProviders, DatePipe],
+  providers: [OrderServiceService, authInterceptorProviders, DatePipe, ],
   bootstrap: [AppComponent],
   entryComponents:[DeleteOrderComponent, DeletePasswordComponent, DateTimePickerComponent]
 })

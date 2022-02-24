@@ -18,13 +18,13 @@ import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.co
       <mat-tab-group>
         <mat-tab name="active_tab" id="active_tab" label="Active Orders">
           <div class="my-container scrollable-table">
-          <h2>Active Orders</h2>
+          <h2 i18n>Active Orders</h2>
             <table *ngIf="showEmployeeContent" class="table table-bordered" >
               <tr>
-                <th scope="col">Tracking Number</th>
-                <th scope="col">Reference Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Order Status</th>
+                <th i18n scope="col" >Tracking Number</th>
+                <th i18n scope="col">Reference Name</th>
+                <th i18n scope="col">Email</th>
+                <th i18n scope="col">Order Status</th>
                 <!-- <th scope="col">Design</th> -->
               </tr>
               <tr *ngFor="let order of activeOrders">
@@ -33,10 +33,10 @@ import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.co
                 <td name="email">{{order.email}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
                 <!-- <td name="design">{{order.design}}</td> -->
-                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button name="details" id="details">Details</button></td>
-                <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button mat-stroked-button name="update" id="update">Update</button></td>
-                <td name="delete-orders" ><button (click)="onCreate(order.orderId)" mat-stroked-button  name="delete" id="delete">Delete</button></td>
-                <td name="delivery" ><button *ngIf="order.orderStatus=='Awaiting Shipment'" mat-stroked-button (click)="scheduleDelivery(order.orderId, order.deliveryDate)" name="delivery" id="delivery">Delivery</button></td>
+                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button i18n mat-stroked-button name="details" id="details">Details</button></td>
+                <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button i18n mat-stroked-button name="update" id="update">Update</button></td>
+                <td name="delete-orders" ><button i18n (click)="onCreate(order.orderId)" mat-stroked-button  name="delete" id="delete">Delete</button></td>
+                <td name="delivery" ><button i18n *ngIf="order.orderStatus=='Awaiting Shipment'" mat-stroked-button (click)="scheduleDelivery(order.orderId, order.deliveryDate)" name="delivery" id="delivery">Delivery</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
               <!-- <mat-paginator [length]="10"
@@ -48,9 +48,9 @@ import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.co
 
             <table *ngIf="!showEmployeeContent" class="table table-bordered">
               <tr>
-                <th scope="col">Tracking Number</th>
-                <th scope="col">Reference Name</th>
-                <th scope="col">Order Status</th>
+                <th i18n scope="col">Tracking Number</th>
+                <th i18n scope="col">Reference Name</th>
+                <th i18n scope="col">Order Status</th>
                 <!-- <th scope="col">Design</th> -->
               </tr>
               <tr *ngFor="let order of activeByEmail">
@@ -58,8 +58,8 @@ import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.co
                 <td name="cabinetType">{{order.cabinetType}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
                 <!-- <td name="design">{{order.design}}</td> -->
-                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button name="details" id="details" >Details</button></td>
-                <td name="delivery"><button *ngIf="order.orderStatus=='Awaiting Shipment'" mat-stroked-button (click)="scheduleDelivery(order.orderId, order.deliveryDate)" name="delivery" id="delivery">Delivery</button></td>
+                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button i18n mat-stroked-button name="details" id="details" >Details</button></td>
+                <td name="delivery"><button i18n *ngIf="order.orderStatus=='Awaiting Shipment'" mat-stroked-button (click)="scheduleDelivery(order.orderId, order.deliveryDate)" name="delivery" id="delivery">Delivery</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
             </table>
@@ -67,13 +67,13 @@ import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.co
         </mat-tab>
         <mat-tab name="cancelled_tab" id="cancelled_tab" label="Cancelled Orders">
         <div class="my-container scrollable-table">
-        <h2>Cancelled Orders</h2>
+        <h2 i18n>Cancelled Orders</h2>
             <table *ngIf="showEmployeeContent" class="table table-striped table-bordered">
             <tr>
-                <th scope="col">Tracking Number</th>
-                <th scope="col">Reference Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Order Status</th>
+                <th i18n scope="col">Tracking Number</th>
+                <th i18n scope="col">Reference Name</th>
+                <th i18n scope="col">Email</th>
+                <th i18n scope="col">Order Status</th>
                 <!-- <th scope="col">Design</th> -->
               </tr>
               <tr *ngFor="let order of cancelledOrders">
@@ -82,19 +82,19 @@ import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.co
                 <td name="email">{{order.email}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
                 <!-- <td name="design">{{order.design}}</td> -->
-                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button name="details" id="details">Details</button></td>
-                <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button mat-stroked-button name="update" id="update">Update</button></td>
-                <td name="delete-orders" ><button mat-stroked-button (click)="onCreate(order.orderId)" name="delete" id="delete" >Delete</button></td>
-                <td name="delivery" ><button *ngIf="order.orderStatus=='Awaiting Shipment'" mat-stroked-button (click)="scheduleDelivery(order.orderId, order.deliveryDate)" name="delivery" id="delivery">Delivery</button></td>
+                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button i18n mat-stroked-button name="details" id="details">Details</button></td>
+                <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button i18n mat-stroked-button name="update" id="update">Update</button></td>
+                <td name="delete-orders" ><button i18n mat-stroked-button (click)="onCreate(order.orderId)" name="delete" id="delete" >Delete</button></td>
+                <td name="delivery" ><button i18n *ngIf="order.orderStatus=='Awaiting Shipment'" mat-stroked-button (click)="scheduleDelivery(order.orderId, order.deliveryDate)" name="delivery" id="delivery">Delivery</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
             </table>
 
             <table *ngIf="!showEmployeeContent" class="table table-bordered">
               <tr>
-                <th scope="col">Tracking Number</th>
-                <th scope="col">Reference Name</th>
-                <th scope="col">Order Status</th>
+                <th i18n scope="col">Tracking Number</th>
+                <th i18n scope="col">Reference Name</th>
+                <th i18n scope="col">Order Status</th>
                 <!-- <th scope="col">Design</th> -->
               </tr>
               <tr *ngFor="let order of cancelledByEmail">
@@ -102,8 +102,8 @@ import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.co
                 <td name="cabinetType">{{order.cabinetType}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
                 <!-- <td name="design">{{order.design}}</td> -->
-                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button name="details" id="details">Details</button></td>
-                <td name="delivery" ><button *ngIf="order.orderStatus=='Awaiting Shipment'" mat-stroked-button (click)="scheduleDelivery(order.orderId, order.deliveryDate)" name="delivery" id="delivery">Delivery</button></td>
+                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button i18n mat-stroked-button name="details" id="details">Details</button></td>
+                <td name="delivery" ><button i18n *ngIf="order.orderStatus=='Awaiting Shipment'" mat-stroked-button (click)="scheduleDelivery(order.orderId, order.deliveryDate)" name="delivery" id="delivery">Delivery</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
             </table>
@@ -111,13 +111,13 @@ import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.co
         </mat-tab>
         <mat-tab name="all_tab" id="all_tab" label="All Orders">        
         <div class="my-container scrollable-table">  
-          <h2>All Orders</h2>
+          <h2 i18n>All Orders</h2>
             <table *ngIf="showEmployeeContent" class="table table-striped table-bordered">
             <tr>
-                <th scope="col">Tracking Number</th>
-                <th scope="col">Reference Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Order Status</th>
+                <th i18n scope="col">Tracking Number</th>
+                <th i18n scope="col">Reference Name</th>
+                <th i18n scope="col">Email</th>
+                <th i18n scope="col">Order Status</th>
                 <!-- <th scope="col">Design</th> -->
               </tr>
               <tr *ngFor="let order of orders">
@@ -126,19 +126,19 @@ import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.co
                 <td name="email">{{order.email}}</td>
                 <td name="orderStatus">{{order.orderStatus}}</td>
                 <!-- <td name="design">{{order.design}}</td> -->
-                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button name="details" id="details">Details</button></td>
-                <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button mat-stroked-button name="update" id="update">Update</button></td>
-                <td name="delete-orders" ><button mat-stroked-button (click)="onCreate(order.orderId)" name="delete" id="delete">Delete</button></td>
-                <td name="delivery" ><button *ngIf="order.orderStatus=='Awaiting Shipment'" mat-stroked-button (click)="scheduleDelivery(order.orderId, order.deliveryDate)" name="delivery" id="delivery">Delivery</button></td>
+                <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button i18n mat-stroked-button name="details" id="details">Details</button></td>
+                <td name="update-orders" routerLink="/update-orders/{{order.orderId}}"><button i18n mat-stroked-button name="update" id="update">Update</button></td>
+                <td name="delete-orders" ><button i18nmat-stroked-button (click)="onCreate(order.orderId)" name="delete" id="delete">Delete</button></td>
+                <td name="delivery" ><button i18n *ngIf="order.orderStatus=='Awaiting Shipment'" mat-stroked-button (click)="scheduleDelivery(order.orderId, order.deliveryDate)" name="delivery" id="delivery">Delivery</button></td>
                 <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
               </tr>
             </table>
 
             <table *ngIf="!showEmployeeContent" class="table table-bordered">
             <tr>
-              <th scope="col">Tracking Number</th>
-              <th scope="col">Reference Name</th>
-              <th scope="col">Order Status</th>
+              <th i18n scope="col">Tracking Number</th>
+              <th i18nscope="col">Reference Name</th>
+              <th i18n scope="col">Order Status</th>
               <!-- <th scope="col">Design</th> -->
             </tr>
             <tr *ngFor="let order of allByEmail">
@@ -146,8 +146,8 @@ import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.co
               <td name="cabinetType">{{order.cabinetType}}</td>
               <td name="orderStatus">{{order.orderStatus}}</td>
               <!-- <td name="design">{{order.design}}</td> -->
-              <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button mat-stroked-button>Details</button></td>
-              <td name="delivery" ><button *ngIf="order.orderStatus=='Awaiting Shipment'" mat-stroked-button (click)="scheduleDelivery(order.orderId, order.deliveryDate)" name="delivery" id="delivery">Delivery</button></td>
+              <td name="view-order-details" routerLink="/view-orders/{{order.orderId}}"><button i18n mat-stroked-button>Details</button></td>
+              <td name="delivery" ><button i18n *ngIf="order.orderStatus=='Awaiting Shipment'" mat-stroked-button (click)="scheduleDelivery(order.orderId, order.deliveryDate)" name="delivery" id="delivery">Delivery</button></td>
               <!-- <td name="cancel-order" routerLink=""><button>Cancel</button></td> -->
             </tr>
           </table>

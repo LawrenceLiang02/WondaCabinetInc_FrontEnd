@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, LOCALE_ID, OnInit } from '@angular/core';
 import { TokenStorageService } from '../login/tokenstorage.service';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
+import { locales } from '../locales.values';
+
 
 @Component({
   selector: 'app-header',
@@ -55,39 +58,44 @@ import { Router } from '@angular/router';
             Wonda Cabinet Inc.
             </span>
           </a>
-            <button fxHide.xs mat-button class="header-button" name="home" routerLink="home" [routerLinkActive]="['active']" [routerLinkActiveOptions]={exact:true}>Home</button>
-            <button fxHide.xs mat-button class="header-button" *ngIf="isLoggedIn" name="view-orders" routerLink="/view-orders" [routerLinkActive]="['active']">View Orders</button>
-            <button fxHide.xs mat-button class="header-button" *ngIf="isLoggedIn" name="add-orders" routerLink="/add-orders" [routerLinkActive]="['active']">Order Now</button>
-            <button fxHide.xs mat-button class="header-button" name="view-order-with-tracking-no" routerLink="/track" [routerLinkActive]="['active']">Track Your Order</button>
-            <button fxHide.xs mat-button class="header-button" *ngIf="isLoggedIn && !showEmployeeContent" name="request-update" routerLink="/updaterequest" [routerLinkActive]="['active']">Request an Update</button>
-            <button fxHide.xs mat-button class="header-button" *ngIf="isLoggedIn && !showEmployeeContent" name="request-cancel" routerLink="/cancelrequest" [routerLinkActive]="['active']">Request a Cancellation</button>
+            <button i18n fxHide.xs mat-button class="header-button" name="home" routerLink="home" [routerLinkActive]="['active']" [routerLinkActiveOptions]={exact:true}>Home</button>
+            <button i18n fxHide.xs mat-button class="header-button" *ngIf="isLoggedIn" name="view-orders" routerLink="/view-orders" [routerLinkActive]="['active']">View Orders</button>
+            <button i18n fxHide.xs mat-button class="header-button" *ngIf="isLoggedIn" name="add-orders" routerLink="/add-orders" [routerLinkActive]="['active']">Order Now</button>
+            <button i18n fxHide.xs mat-button class="header-button" name="view-order-with-tracking-no" routerLink="/track" [routerLinkActive]="['active']">Track Your Order</button>
+            <button i18n fxHide.xs mat-button class="header-button" *ngIf="isLoggedIn && !showEmployeeContent" name="request-update" routerLink="/updaterequest" [routerLinkActive]="['active']">Request an Update</button>
+            <button i18nfxHide.xs mat-button class="header-button" *ngIf="isLoggedIn && !showEmployeeContent" name="request-cancel" routerLink="/cancelrequest" [routerLinkActive]="['active']">Request a Cancellation</button>
             <span class="example-spacer"></span>
 
-            <button fxHide.xs mat-button class="header-button" *ngIf="!isLoggedIn" name="logout" routerLink="/login" [routerLinkActive]="['active']">Log In</button>
+            <button i18n fxHide.xs mat-button class="header-button" *ngIf="!isLoggedIn" name="logout" routerLink="/login" [routerLinkActive]="['active']">Log In</button>
             
-            <button fxHide.xs mat-button class="header-button" *ngIf="isLoggedIn" name="profile">Welcome, {{ username }}</button>
+            <button i18n fxHide.xs mat-button class="header-button" *ngIf="isLoggedIn" name="profile">Welcome, {{ username }}</button>
             
-            <button fxHide.xs mat-button class="header-button" *ngIf="isLoggedIn" name="logout" (click)="logout()" routerLink="/login">Log Out</button> 
-            <button fxHide.xs mat-button class="header-button" name="contact" routerLink="/contact" [routerLinkActive]="['active']">Contact Us</button> 
-          
+            <button i18n fxHide.xs mat-button class="header-button" *ngIf="isLoggedIn" name="logout" (click)="logout()" routerLink="/login">Log Out</button> 
+            <button i18n fxHide.xs mat-button class="header-button" name="contact" routerLink="/contact" [routerLinkActive]="['active']">Contact Us</button> 
+            <mat-list-item *ngFor="let locale of locales">
+              <button fxHide.xs mat-button class="header-button"><a class="lang-option" [href]="'/' + locale.code + currentUrl">{{ locale.text }}</a></button>
+            </mat-list-item>
+            <!-- <button fxHide.xs mat-button class="header-button" *ngIf="isEnglish" [routerLink]="'/' + 'en' + currentUrl" (click)="changeLanguage()" >FR</button>
+            <button fxHide.xs mat-button class="header-button" *ngIf="!isEnglish" [routerLink]="'/' + 'fr' + currentUrl" (click)="changeLanguage()">EN</button>
+             -->
           <button mat-icon-button [matMenuTriggerFor]="dropMenu" fxHide fxShow.xs>
               <mat-icon>more_vert</mat-icon>
            </button>
            <mat-menu #dropMenu="matMenu">
           <ng-container>
-              <button mat-menu-item name="home" routerLink="home" [routerLinkActive]="['active']" [routerLinkActiveOptions]={exact:true}>
+              <button i18n mat-menu-item name="home" routerLink="home" [routerLinkActive]="['active']" [routerLinkActiveOptions]={exact:true}>
                   <mat-icon class="mr">home</mat-icon>Home
               </button>
               <mat-divider></mat-divider>
-              <button mat-menu-item *ngIf="isLoggedIn" name="view-orders" routerLink="/view-orders" [routerLinkActive]="['active']">
+              <button i18n mat-menu-item *ngIf="isLoggedIn" name="view-orders" routerLink="/view-orders" [routerLinkActive]="['active']">
                   <mat-icon class="mr">assignment</mat-icon>View Orders
               </button>
               <mat-divider></mat-divider>
-              <button mat-menu-item *ngIf="isLoggedIn" name="add-orders" routerLink="/add-orders" [routerLinkActive]="['active']">
+              <button i18n mat-menu-item *ngIf="isLoggedIn" name="add-orders" routerLink="/add-orders" [routerLinkActive]="['active']">
                   <mat-icon class="mr">add_shopping_cart</mat-icon>Order Now
               </button>
               <mat-divider></mat-divider>
-              <button mat-menu-item name="view-order-with-tracking-no" routerLink="/track" [routerLinkActive]="['active']">
+              <button i18n mat-menu-item name="view-order-with-tracking-no" routerLink="/track" [routerLinkActive]="['active']">
                   <mat-icon class="mr"timeline>timeline</mat-icon>Track Your Order
               </button>
               <mat-divider></mat-divider>
@@ -95,19 +103,19 @@ import { Router } from '@angular/router';
                   <mat-icon class="mr">update</mat-icon>Request an Update
               </button>
               <mat-divider></mat-divider>
-              <button mat-menu-item *ngIf="isLoggedIn && !showEmployeeContent" name="request-cancel" routerLink="/cancelrequest" [routerLinkActive]="['active']">
+              <button i18n mat-menu-item *ngIf="isLoggedIn && !showEmployeeContent" name="request-cancel" routerLink="/cancelrequest" [routerLinkActive]="['active']">
                   <mat-icon class="mr">remove_shopping_cart</mat-icon>Request a Cancellation
               </button>
               <mat-divider></mat-divider>
-              <button mat-menu-item *ngIf="!isLoggedIn" name="logout" routerLink="/login" [routerLinkActive]="['active']">
+              <button i18n mat-menu-item *ngIf="!isLoggedIn" name="logout" routerLink="/login" [routerLinkActive]="['active']">
                   <mat-icon class="mr">login</mat-icon>Log In
               </button>
               <mat-divider></mat-divider>
-              <button mat-menu-item  *ngIf="isLoggedIn" name="logout" (click)="logout()" routerLink="/login">
+              <button i18n mat-menu-item  *ngIf="isLoggedIn" name="logout" (click)="logout()" routerLink="/login">
                   <mat-icon class="mr">account_box</mat-icon>Log Out
               </button>
               <mat-divider></mat-divider>
-              <button mat-menu-item  name="contact" routerLink="/contact" [routerLinkActive]="['active']">
+              <button i18n mat-menu-item  name="contact" routerLink="/contact" [routerLinkActive]="['active']">
                   <mat-icon class="mr">help</mat-icon>Contact Us
                   
               </button>
@@ -128,7 +136,19 @@ export class HeaderComponent implements OnInit {
   showEmployeeContent = false;
   username?: string;
 
-  constructor(private tokenStorageService: TokenStorageService, private router: Router) { }
+  isEnglish = true;
+  currentUrl = "";
+  locales = [];
+
+  languageList = [  
+    { code: 'en', label: 'English' },  
+    { code: 'fr', label: 'Français' },  
+  
+  ];
+
+  siteLocale:string;
+
+  constructor(private tokenStorageService: TokenStorageService, private router: Router, @Inject(LOCALE_ID) public localeId: string) { }
 
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
@@ -141,6 +161,14 @@ export class HeaderComponent implements OnInit {
 
       this.username = user.username;
     }
+
+    this.locales = locales;
+
+    this.router.events
+    .pipe(filter(event => event instanceof NavigationEnd))
+     .subscribe((event:NavigationEnd) => {
+       this.currentUrl = this.router.url;
+     });
   }
 
   logout(): void {
@@ -155,6 +183,17 @@ export class HeaderComponent implements OnInit {
       this.isLoggedIn = false;
     }
    
+  }
+
+  changeLanguage():void{
+    if (this.localeId === 'fr'){
+      this.isEnglish = true;
+      this.localeId = 'en';
+    }
+    else{
+      this.isEnglish = false;
+      this.localeId = 'fr';
+    }
   }
 
 }

@@ -5,13 +5,13 @@ import { TokenStorageService } from './tokenstorage.service';
 @Component({
   selector: 'app-login',
   template: `
-  <h1 class="jumbotron" style='text-align: center;'>Welcome to Wonda Cabinet Inc</h1>
-  <h1 style='text-align: center; font-weight: bold'>Login</h1>
+  <h1 i18n class="jumbotron" style='text-align: center;'>Welcome to Wonda Cabinet Inc</h1>
+  <h1 i18n style='text-align: center; font-weight: bold'>Login</h1>
    <div class='my-container' style="display: flex; justify-content: center; align-items: center; height: 250px;">
       <form *ngIf="!isLoggedIn" (ngSubmit)="f.form.valid && onSubmit()" name="form" #f="ngForm" novalidate>
         <div class="form-group">
-          <label for="username" style="font-size: 150%">Username</label>
-          <input 
+          <label i18n for="username" style="font-size: 150%">Username</label>
+          <input i18n-placeholder
           type="text" 
           ngModel class="form-control" 
           id="username" name="username" 
@@ -22,6 +22,7 @@ import { TokenStorageService } from './tokenstorage.service';
           #username="ngModel">
 
           <div
+          i18n
           class="alert alert-danger"
           role="alert"
           *ngIf="username.errors && f.submitted"
@@ -31,8 +32,8 @@ import { TokenStorageService } from './tokenstorage.service';
         </div>
 
         <div class="form-group">
-        <label for="password" style="font-size: 150%">Password</label>
-        <input 
+        <label i18n for="password" style="font-size: 150%">Password</label>
+        <input i18n-placeholder
         type="password" 
         ngModel class="form-control" 
         id="password" 
@@ -47,17 +48,18 @@ import { TokenStorageService } from './tokenstorage.service';
           role="alert"
           *ngIf="password.errors && f.submitted"
         >
-          <div *ngIf="password.errors['required']">Password is required</div>
+          <div i18n *ngIf="password.errors['required']">Password is required</div>
         </div>
         </div>
 
         <div>
-          <button type="submit" class="btn btn-primary mb-2" name="submit" style='margin-top: 10px; text-align: center; width: 900px;'>Login</button>
+          <button i18n type="submit" class="btn btn-primary mb-2" name="submit" style='margin-top: 10px; text-align: center; width: 900px;'>Login</button>
           
         </div>
-        <a routerLink="/forgotpassword" style="float: right; font-size: 20px;">Forgot Password</a>
+        <a i18n routerLink="/forgotpassword" style="float: right; font-size: 20px;">Forgot Password</a>
         <div class="form-group">
         <div
+          i18n
           class="alert alert-danger"
           role="alert"
           name="failedLogin"
@@ -67,15 +69,15 @@ import { TokenStorageService } from './tokenstorage.service';
         </div>
        </div>
       </form>
-      <div class="alert alert-success" name="success" *ngIf="isLoggedIn">
+      <div i18n class="alert alert-success" name="success" *ngIf="isLoggedIn">
         Logged in as {{ roles }}.
         <a href="/home">Continue</a>
       </div>
     </div>
     <div  *ngIf="!isLoggedIn" style="display: block; margin-left: 320px">
-     <h2>Don't have an account?</h2>
-     <a routerLink="/signup" style="font-size: 150%">Sign Up For Free</a><br><br>
-     <a href="/home" style="font-size: 150%">Continue as Guest</a>
+     <h2 i18n>Don't have an account?</h2>
+     <a i18n routerLink="/signup" style="font-size: 150%">Sign Up For Free</a><br><br>
+     <a i18n href="/home" style="font-size: 150%">Continue as Guest</a>
     </div>
 
   

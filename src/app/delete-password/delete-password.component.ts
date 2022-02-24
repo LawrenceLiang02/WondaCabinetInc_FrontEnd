@@ -11,14 +11,14 @@ import { OrderServiceService } from '../view-orders/order-service.service';
 @Component({
   selector: 'app-delete-password',
   template: `
-    <h2 mat-dialog-title>DELETE</h2>
+    <h2 i18n mat-dialog-title>DELETE</h2>
     <form #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()">
       <mat-dialog-content>
-        <p>Please enter your password in order to continue.</p>
+        <p i18n>Please enter your password in order to continue.</p>
         <!-- <label for="password" style="font-size: 150%">Password</label> -->
         
           <input 
-          
+          i18n-placeholder
             type="password" 
             ngModel class="form-control" 
             id="password" 
@@ -31,9 +31,9 @@ import { OrderServiceService } from '../view-orders/order-service.service';
             class="alert alert-danger"
             role="alert"
             *ngIf="password.errors && f.submitted">
-            <p> Error, please try again.</p>
+            <p i18n>Error, please try again.</p>
           </div> 
-          <div
+          <div i18n
           class="alert alert-danger"
           role="alert"
           name="failedLogin"
@@ -43,9 +43,9 @@ import { OrderServiceService } from '../view-orders/order-service.service';
         </div>
       </mat-dialog-content>
         <mat-dialog-actions align="end">
-          <button mat-raised-button mat-dialog-close name="cancel-prompt-2" id="cancel-prompt-2">Cancel</button>
+          <button i18n mat-raised-button mat-dialog-close name="cancel-prompt-2" id="cancel-prompt-2">Cancel</button>
           <!-- mat-button [mat-dialog-close]="true" -->
-          <button type="submit" mat-raised-button color="warn" cdkFocusInitial name="delete-prompt-2" id="delete-prompt-2" >Delete</button>
+          <button i18n type="submit" mat-raised-button color="warn" cdkFocusInitial name="delete-prompt-2" id="delete-prompt-2" >Delete</button>
         </mat-dialog-actions>
           
       

@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-footer',
   template: `
     <footer class="footer">
-      <p>Made by Lawrence Liang and Vlad Popa from Champlain College St-Lambert</p>
+      <p i18n>Made by Lawrence Liang and Vlad Popa from Champlain College St-Lambert</p>
     </footer>
   `,
   styles: [

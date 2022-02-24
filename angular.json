@@ -40,6 +40,12 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "locales": {
+          "fr":"src/translate/messages.fr.xlf",
+          "en":"src/translate/messages.en.xlf"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -70,6 +76,12 @@
             ]
           },
           "configurations": {
+            "en":{
+              "localize": ["en"]
+            },
+            "fr":{
+              "localize":["fr"]
+            },
             "production": {
               "budgets": [
                 {
@@ -110,6 +122,12 @@
             },
             "development": {
               "browserTarget": "WondaCabinetInc_FrontEnd:build:development"
+            },
+            "en":{
+              "browserTarget": "WondaCabinetInc_FrontEnd:build:en"
+            },
+            "fr":{
+              "browserTarget": "WondaCabinetInc_FrontEnd:build:fr"
             }
           },
           "defaultConfiguration": "development"
